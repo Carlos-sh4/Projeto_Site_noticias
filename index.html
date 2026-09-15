@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notícias Hoje - Portal de Notícias</title>
+    <!-- Importando Tailwind CSS para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importando Google Fonts (Inter) para tipografia moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Configuração de estilo customizado base -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+        }
+        /* Efeito suave de transição em links e botões */
+        a, button {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="/" title="Página Inicial">
+                        <img src="https://placehold.co/150x50/333333/FFFFFF?text=LOGO" alt="Logotipo do Site" class="h-12 w-auto rounded">
+                    </a>
+                </div>
+
+                <!-- Navegação Desktop -->
+                <nav class="hidden lg:flex space-x-3 xl:space-x-5">
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Esportes</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Economia</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Política</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Brasil</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Mundo</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Saúde</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Tecnologia</a>
+                    <a href="#" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Entretenimento</a>
+                </nav>
+
+                <!-- Botão de Menu Mobile -->
+                <div class="flex lg:hidden items-center">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Mobile (Oculto por padrão) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-inner max-h-[70vh] overflow-y-auto">
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Esportes</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Economia</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Política</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Brasil</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Mundo</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Saúde</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Tecnologia</a>
+                <a href="#" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Entretenimento</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        
+        <!-- Seção de Notícia Principal -->
+        <section class="mb-16">
+            <div class="mb-4 flex items-center gap-2 text-sm font-bold tracking-widest text-red-600 uppercase">
+                <span class="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
+                Destaque
+            </div>
+            
+            <!-- Card da Notícia Principal -->
+            <article class="group cursor-pointer rounded-2xl overflow-hidden bg-white shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100 flex flex-col lg:flex-row">
+                <!-- Imagem Principal (Ocupa largura total no mobile e 2/3 no desktop) -->
+                <div class="lg:w-2/3 relative overflow-hidden h-72 sm:h-96 lg:h-[500px]">
+                    <img src="https://placehold.co/1200x800/1e293b/ffffff?text=Imagem+Destaque+Principal" 
+                         alt="Imagem da notícia principal" 
+                         class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <!-- Badge de categoria flutuante -->
+                    <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        Tecnologia
+                    </span>
+                </div>
+                
+                <!-- Conteúdo Textual da Principal -->
+                <div class="lg:w-1/3 p-6 sm:p-8 lg:p-10 flex flex-col justify-center bg-white z-10">
+                    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4 group-hover:text-blue-600 transition-colors">
+                        Avanços na Inteligência Artificial transformam o mercado de trabalho global
+                    </h1>
+                    <p class="text-gray-600 text-lg mb-6 line-clamp-4">
+                        Especialistas discutem como as novas tecnologias estão criando oportunidades inéditas e também desafios para profissionais de diversas áreas. A adoção rápida de ferramentas autônomas exige adaptação e aprendizado contínuo nas empresas.
+                    </p>
+                    <div class="mt-auto flex items-center justify-between">
+                        <span class="text-sm text-gray-500 font-medium">Há 2 horas</span>
+                        <a href="#" class="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800">
+                            Ler matéria completa
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Seção de Notícias Secundárias (Grid) -->
+        <section>
+            <div class="flex items-center justify-between mb-8 border-b pb-4">
+                <h2 class="text-2xl font-bold text-gray-900">Últimas Notícias</h2>
+                <a href="#" class="text-blue-600 font-medium hover:underline">Ver todas</a>
+            </div>
+
+            <!-- Grid: 1 coluna no mobile, 3 colunas no desktop (md+) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Notícia Secundária 1 -->
+                <article class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400/0f172a/ffffff?text=Notícia+Saúde" 
+                             alt="Imagem secundária 1" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="text-xs font-bold text-teal-600 uppercase tracking-wider mb-2">Saúde</span>
+                        <a href="#" class="block group-hover:text-blue-600 transition-colors">
+                            <h3 class="text-xl font-bold text-gray-900 leading-snug mb-3">
+                                Novo tratamento promete avanços significativos na recuperação celular
+                            </h3>
+                        </a>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">
+                            Estudo publicado nesta semana revela resultados promissores de uma nova terapia que pode acelerar tratamentos de longa duração.
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium mt-auto">Hoje, 09:30</span>
+                    </div>
+                </article>
+
+                <!-- Notícia Secundária 2 -->
+                <article class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400/166534/ffffff?text=Notícia+Economia" 
+                             alt="Imagem secundária 2" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider mb-2">Economia</span>
+                        <a href="#" class="block group-hover:text-blue-600 transition-colors">
+                            <h3 class="text-xl font-bold text-gray-900 leading-snug mb-3">
+                                Economia global apresenta sinais de forte recuperação no trimestre
+                            </h3>
+                        </a>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">
+                            Mercados reagem positivamente após a divulgação de relatórios industriais que superaram as expectativas dos analistas financeiros.
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium mt-auto">Ontem, 18:45</span>
+                    </div>
+                </article>
+
+                <!-- Notícia Secundária 3 -->
+                <article class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400/b91c1c/ffffff?text=Notícia+Esportes" 
+                             alt="Imagem secundária 3" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <span class="text-xs font-bold text-orange-600 uppercase tracking-wider mb-2">Esportes</span>
+                        <a href="#" class="block group-hover:text-blue-600 transition-colors">
+                            <h3 class="text-xl font-bold text-gray-900 leading-snug mb-3">
+                                Seleção anuncia convocação para os amistosos internacionais
+                            </h3>
+                        </a>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">
+                            Técnico revela a lista de jogadores com surpresas e retornos importantes para a preparação rumo ao próximo campeonato.
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium mt-auto">Ontem, 15:12</span>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <!-- Logo no Rodapé -->
+                <a href="/" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="https://placehold.co/150x50/111827/FFFFFF?text=LOGO" alt="Logotipo do Site" class="h-10 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre o Brasil e o mundo.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Assine nossa Newsletter</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail" class="px-4 py-2 w-full rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md font-semibold transition-colors">Assinar</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <!-- Lógica de interação Javascript para o menu mobile -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                // Alterna a visibilidade do menu (removendo ou adicionando a classe "hidden")
+                menu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
