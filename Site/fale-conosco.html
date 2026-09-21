@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fale Conosco - Notícias Hoje</title>
+    <!-- Importando Tailwind CSS para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importando Google Fonts (Inter) para tipografia moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Configuração de estilo customizado base -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind slate-50 */
+        }
+        /* Efeito suave de transição em links e botões */
+        a, button {
+            transition: all 0.2s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- CABEÇALHO / HEADER (Padronizado com index.html) -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-36 w-auto rounded">
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden lg:flex space-x-3 xl:space-x-5 items-center">
+                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Economia</a>
+                <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Saúde</a>
+                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Tecnologia</a>
+                <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Entretenimento</a>
+                <a href="fale-conosco.html" class="text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide border-b-2 border-blue-600">Fale Conosco</a>
+            </nav>
+
+            <!-- Botão de Menu Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu Mobile (Oculto por padrão) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-inner max-h-[70vh] overflow-y-auto">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Entretenimento</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-blue-700 bg-blue-50 uppercase">Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow container mx-auto px-4 py-8 w-full">
+
+        <section class="max-w-2xl mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3">Fale Conosco</h1>
+                <p class="text-gray-600">
+                    Tem uma sugestão de pauta, encontrou um erro ou quer enviar um comentário?
+                    Preencha o formulário abaixo e nossa equipe vai responder o quanto antes.
+                </p>
+            </div>
+
+            <form id="form-contato" class="bg-white rounded-2xl shadow-md border border-gray-100 p-6 sm:p-10 space-y-6">
+
+                <!-- Nome -->
+                <div>
+                    <label for="nome" class="block text-sm font-semibold text-gray-700 mb-2">Nome</label>
+                    <input type="text" id="nome" name="nome" required
+                           placeholder="Seu nome completo"
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <!-- E-mail -->
+                <div>
+                    <label for="email" class="block text-sm font-semibold text-gray-700 mb-2">E-mail</label>
+                    <input type="email" id="email" name="email" required
+                           placeholder="seuemail@exemplo.com"
+                           class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+
+                <!-- Assunto -->
+                <div>
+                    <label for="assunto" class="block text-sm font-semibold text-gray-700 mb-2">Assunto</label>
+                    <select id="assunto" name="assunto" required
+                            class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white">
+                        <option value="" disabled selected>Selecione um assunto</option>
+                        <option value="sugestao">Sugestão de pauta</option>
+                        <option value="erro">Reportar um erro</option>
+                        <option value="parceria">Parceria / Publicidade</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <!-- Mensagem -->
+                <div>
+                    <label for="mensagem" class="block text-sm font-semibold text-gray-700 mb-2">Mensagem</label>
+                    <textarea id="mensagem" name="mensagem" required rows="5"
+                              placeholder="Escreva sua mensagem aqui..."
+                              class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"></textarea>
+                </div>
+
+                <!-- Mensagem de status (sucesso) -->
+                <div id="mensagem-sucesso" class="hidden rounded-lg bg-green-50 border border-green-200 text-green-700 text-sm font-medium px-4 py-3">
+                    Mensagem enviada com sucesso! Em breve entraremos em contato.
+                </div>
+
+                <button type="submit"
+                        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg shadow-sm hover:shadow-md">
+                    Enviar mensagem
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- RODAPÉ / FOOTER (Padronizado com index.html) -->
+    <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <!-- Logo no Rodapé -->
+                <a href="index.html" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre o Brasil e o mundo.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="fale-conosco.html" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Assine nossa Newsletter</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail" class="px-4 py-2 w-full rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md font-semibold transition-colors">Assinar</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+            <h6>Em desenvolvimento por alunos do turma de Banco de Dados</h6>
+        </div>
+    </footer>
+
+    <!-- Lógica de interação Javascript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Menu mobile
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Envio do formulário (front-end apenas; sem backend conectado ainda)
+            const form = document.getElementById('form-contato');
+            const sucesso = document.getElementById('mensagem-sucesso');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                sucesso.classList.remove('hidden');
+                form.reset();
+                sucesso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        });
+    </script>
+</body>
+</html>
