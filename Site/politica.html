@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política - Seu Site de Notícias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee:hover { animation-play-state: paused; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- CABEÇALHO / HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+             <a href="index.html" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logo do Site" class="h-24 w-auto rounded">
+            </a>
+            <button id="mobile-menu-button" class="lg:hidden text-gray-700 hover:text-blue-900 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <nav class="hidden lg:flex space-x-6 font-semibold text-gray-700">
+                <a href="esportes.html" class="hover:text-blue-900 transition">ESPORTES</a>
+                <a href="economia.html" class="hover:text-blue-900 transition">ECONOMIA</a>
+                <a href="politica.html" class="text-blue-900 border-b-2 border-blue-900">POLÍTICA</a>
+                <a href="brasil.html" class="hover:text-blue-900 transition">BRASIL</a>
+                <a href="mundo.html" class="hover:text-blue-900 transition">MUNDO</a>
+                <a href="saude.html" class="hover:text-blue-900 transition">SAÚDE</a>
+                <a href="tecnologia.html" class="hover:text-blue-900 transition">TECNOLOGIA</a>
+                <a href="entretenimento.html" class="hover:text-blue-900 transition">ENTRETENIMENTO</a>
+            </nav>
+        </div>
+        <!-- Menu Mobile -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-gray-100 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
+            <div class="flex flex-col px-4 py-2 space-y-3 font-semibold text-gray-700">
+                <a href="esportes.html" class="block hover:text-blue-900">ESPORTES</a>
+                <a href="economia.html" class="block hover:text-blue-900">ECONOMIA</a>
+                <a href="politica.html" class="block text-blue-900">POLÍTICA</a>
+                <a href="brasil.html" class="block hover:text-blue-900">BRASIL</a>
+                <a href="mundo.html" class="block hover:text-blue-900">MUNDO</a>
+                <a href="saude.html" class="block hover:text-blue-900">SAÚDE</a>
+                <a href="tecnologia.html" class="block hover:text-blue-900">TECNOLOGIA</a>
+                <a href="entretenimento.html" class="block hover:text-blue-900">ENTRETENIMENTO</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- TICKER POLÍTICA -->
+    <div class="bg-gray-800 text-white overflow-hidden py-2 shadow-inner">
+        <div class="container mx-auto">
+            <div class="animate-marquee text-sm font-semibold tracking-wide">
+                CONGRESSO: Votação da nova LDO adiada para terça-feira &bull; STF: Sessão plenária retoma julgamento de marco temporal &bull; ELEIÇÕES: TSE lança nova campanha
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL: POLÍTICA -->
+    <main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+        <section class="lg:w-2/3 flex flex-col gap-8">
+            <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
+                <a href="#" class="block">
+                    <img src="https://placehold.co/800x400/eeeeee/333333?text=Congresso+Nacional" alt="Notícia Principal" class="w-full h-auto object-cover group-hover:opacity-90 transition">
+                    <div class="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-6 text-white">
+                        <span class="bg-gray-600 text-xs font-bold uppercase px-2 py-1 rounded mb-2 inline-block">Plenário</span>
+                        <h1 class="text-2xl md:text-3xl font-bold mt-1 group-hover:underline">Senado aprova pacote de medidas de transparência para gastos públicos</h1>
+                        <p class="hidden md:block mt-2 text-gray-200 text-sm">O texto segue agora para sanção presidencial e estabelece novas regras para portais de transparência de municípios.</p>
+                    </div>
+                </a>
+            </article>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <a href="#" class="block group">
+                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Diplomacia" class="w-full h-40 object-cover group-hover:opacity-90 transition">
+                        <div class="p-4">
+                            <span class="text-gray-600 text-xs font-bold uppercase mb-1 block">Relações Exteriores</span>
+                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-gray-700 leading-tight">Acordo comercial bilateral será assinado na próxima cúpula</h2>
+                        </div>
+                    </a>
+                </article>
+                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <a href="#" class="block group">
+                        <img src="https://placehold.co/400x250/eeeeee/333333?text=TSE" class="w-full h-40 object-cover group-hover:opacity-90 transition">
+                        <div class="p-4">
+                            <span class="text-gray-600 text-xs font-bold uppercase mb-1 block">Justiça Eleitoral</span>
+                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-gray-700 leading-tight">Tribunal Superior define regras contra o uso de deepfakes em campanhas</h2>
+                        </div>
+                    </a>
+                </article>
+                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <a href="#" class="block group">
+                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Municipios" class="w-full h-40 object-cover group-hover:opacity-90 transition">
+                        <div class="p-4">
+                            <span class="text-gray-600 text-xs font-bold uppercase mb-1 block">Executivo</span>
+                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-gray-700 leading-tight">Prefeitos pressionam por novo repasse do Fundo de Participação</h2>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <aside class="lg:w-1/3 flex flex-col gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-gray-800">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Radar do Congresso</h3>
+                <ul class="space-y-4">
+                    <li>
+                        <span class="text-xs font-bold text-orange-500 uppercase">Em pauta hoje</span>
+                        <p class="font-medium text-gray-800 mt-1">Reforma Administrativa - 2º Turno</p>
+                    </li>
+                    <li>
+                        <span class="text-xs font-bold text-blue-500 uppercase">Comissões</span>
+                        <p class="font-medium text-gray-800 mt-1">CCJ avalia constitucionalidade de PLs da Saúde</p>
+                    </li>
+                    <li>
+                        <span class="text-xs font-bold text-green-500 uppercase">Sanção</span>
+                        <p class="font-medium text-gray-800 mt-1">Lei de incentivo à tecnologia aguarda assinatura</p>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <!-- RODAPÉ / FOOTER -->
+    <footer class="bg-gray-900 text-white mt-12 py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="index.html">
+                <img src="img/logo 01.gif" alt="Logo Rodapé" class="h-24 w-auto rounded opacity-80 hover:opacity-100 transition">
+            </a>
+            <p class="text-sm text-gray-400">&copy; 2026 Seu Site de Notícias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT MENU MOBILE -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>                    

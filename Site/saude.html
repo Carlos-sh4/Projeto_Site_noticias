@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde - Seu Site de Notícias</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee:hover { animation-play-state: paused; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- CABEÇALHO / HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logo do Site" class="h-24 w-auto rounded">
+            </a>
+            <button id="mobile-menu-button" class="lg:hidden text-gray-700 hover:text-blue-900 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <nav class="hidden lg:flex space-x-6 font-semibold text-gray-700">
+                <a href="esportes.html" class="hover:text-blue-900 transition">ESPORTES</a>
+                <a href="economia.html" class="hover:text-blue-900 transition">ECONOMIA</a>
+                <a href="politica.html" class="hover:text-blue-900 transition">POLÍTICA</a>
+                <a href="brasil.html" class="hover:text-blue-900 transition">BRASIL</a>
+                <a href="mundo.html" class="hover:text-blue-900 transition">MUNDO</a>
+                <a href="saude.html" class="text-blue-900 border-b-2 border-blue-900">SAÚDE</a>
+                <a href="tecnologia.html" class="hover:text-blue-900 transition">TECNOLOGIA</a>
+                <a href="entretenimento.html" class="hover:text-blue-900 transition">ENTRETENIMENTO</a>
+            </nav>
+        </div>
+        <!-- Menu Mobile -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-gray-100 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
+            <div class="flex flex-col px-4 py-2 space-y-3 font-semibold text-gray-700">
+                <a href="esportes.html" class="block hover:text-blue-900">ESPORTES</a>
+                <a href="economia.html" class="block hover:text-blue-900">ECONOMIA</a>
+                <a href="politica.html" class="block hover:text-blue-900">POLÍTICA</a>
+                <a href="brasil.html" class="block hover:text-blue-900">BRASIL</a>
+                <a href="mundo.html" class="block hover:text-blue-900">MUNDO</a>
+                <a href="saude.html" class="block text-blue-900">SAÚDE</a>
+                <a href="tecnologia.html" class="block hover:text-blue-900">TECNOLOGIA</a>
+                <a href="entretenimento.html" class="block hover:text-blue-900">ENTRETENIMENTO</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- TICKER SAÚDE -->
+    <div class="bg-teal-700 text-white overflow-hidden py-2 shadow-inner">
+        <div class="container mx-auto">
+            <div class="animate-marquee text-sm font-semibold tracking-wide">
+                CAMPANHA DE VACINAÇÃO: Atualize sua caderneta &bull; DENGUE: Casos recuam 15% na última semana &bull; ATENDIMENTO: Novos protocolos do e-SUS PEC implementados nas UBS
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL: SAÚDE -->
+    <main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+        <section class="lg:w-2/3 flex flex-col gap-8">
+            <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
+                <a href="#" class="block">
+                    <img src="https://placehold.co/800x400/eeeeee/333333?text=Tecnologia+na+Saude" alt="Notícia" class="w-full h-auto object-cover group-hover:opacity-90 transition">
+                    <div class="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-6 text-white">
+                        <span class="bg-teal-600 text-xs font-bold uppercase px-2 py-1 rounded mb-2 inline-block">Gestão em Saúde</span>
+                        <h1 class="text-2xl md:text-3xl font-bold mt-1 group-hover:underline">Agentes Comunitários recebem novos dashboards interativos para o e-SUS</h1>
+                        <p class="hidden md:block mt-2 text-gray-200 text-sm">Painéis desenvolvidos com HTML e JavaScript permitem filtrar microáreas e acompanhar relatórios em tempo real.</p>
+                    </div>
+                </a>
+            </article>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <a href="#" class="block group">
+                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Camara+Fria" class="w-full h-40 object-cover group-hover:opacity-90 transition">
+                        <div class="p-4">
+                            <span class="text-teal-600 text-xs font-bold uppercase mb-1 block">Controle</span>
+                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-teal-700 leading-tight">Sistema alerta quando temperatura da câmara fria sai da faixa de 2°C a 8°C</h2>
+                        </div>
+                    </a>
+                </article>
+                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <a href="#" class="block group">
+                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Manutencao" class="w-full h-40 object-cover group-hover:opacity-90 transition">
+                        <div class="p-4">
+                            <span class="text-teal-600 text-xs font-bold uppercase mb-1 block">Infraestrutura</span>
+                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-teal-700 leading-tight">Novo cronograma de manutenção de ar-condicionado na Triagem e Farmácia</h2>
+                        </div>
+                    </a>
+                </article>
+                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
+                    <a href="#" class="block group">
+                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Idosos" class="w-full h-40 object-cover group-hover:opacity-90 transition">
+                        <div class="p-4">
+                            <span class="text-teal-600 text-xs font-bold uppercase mb-1 block">Avaliação</span>
+                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-teal-700 leading-tight">Uso do protocolo IVCF-20 agiliza o atendimento de idosos</h2>
+                        </div>
+                    </a>
+                </article>
+            </div>
+        </section>
+
+        <aside class="lg:w-1/3 flex flex-col gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-teal-600">
+                <h3 class="text-xl font-bold mb-4 text-gray-800">Quadro de Avisos UBS</h3>
+                <ul class="space-y-4 text-sm">
+                    <li class="p-3 bg-teal-50 rounded-md border-l-4 border-teal-500">
+                        <strong class="block text-teal-800">Recepção e Triagem</strong>
+                        Tempo médio de espera: 15 minutos.
+                    </li>
+                    <li class="p-3 bg-blue-50 rounded-md border-l-4 border-blue-500">
+                        <strong class="block text-blue-800">Sala de Vacina</strong>
+                        Estoque normalizado. Manter controle da câmara em 5°C.
+                    </li>
+                    <li class="p-3 bg-red-50 rounded-md border-l-4 border-red-500">
+                        <strong class="block text-red-800">Visitas Domiciliares</strong>
+                        Alerta para atrasos nas microáreas 3 e 4.
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <!-- RODAPÉ / FOOTER -->
+    <footer class="bg-gray-900 text-white mt-12 py-8">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
+            <a href="index.html">
+                <img src="img/logo 01.gif" alt="Logo Rodapé" class="h-24 w-auto rounded opacity-80 hover:opacity-100 transition">
+            </a>
+            <p class="text-sm text-gray-400">&copy; 2026 Seu Site de Notícias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT MENU MOBILE -->
+    <script>
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
