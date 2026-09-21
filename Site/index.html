@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notícias Hoje - Portal de Notícias</title>
+    <!-- === PWA: transforma a página em app instalável === -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Notícias">
+    <meta name="description" content="Portal de notícias: cobertura diária sobre o Brasil e o mundo.">
+    <!-- ================================================= -->
     <!-- Importando Tailwind CSS para estilização rápida e responsiva -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Importando Google Fonts (Inter) para tipografia moderna -->
@@ -232,6 +241,17 @@
                 menu.classList.toggle('hidden');
             });
         });
+    </script>
+
+    <!-- Registro do service worker: habilita instalação e uso offline -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(() => console.log('Service worker registrado.'))
+                    .catch(err => console.error('Falha ao registrar o service worker:', err));
+            });
+        }
     </script>
 </body>
 </html>
