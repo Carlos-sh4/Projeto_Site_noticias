@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EqpEstacio Pay — Checkout</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0B1F45;
+    --navy-soft:#16305C;
+    --navy-line:#2A4576;
+    --white:#FFFFFF;
+    --paper:#F6F7F9;
+    --red:#E4141C;
+    --red-dark:#B10E15;
+    --red-soft:#FDE9EA;
+    --gray-900:#16181D;
+    --gray-600:#5C6270;
+    --gray-400:#98A0AF;
+    --line:#E2E5EA;
+    --sans:'Inter', sans-serif;
+    --display:'Space Grotesk', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{background:var(--paper); color:var(--gray-900); font-family:var(--sans); min-height:100vh;}
+  .hidden{display:none !important;}
+
+  .topbar{
+    background:var(--navy);
+    color:var(--white);
+    padding:14px 28px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .brand{font-family:var(--display); font-weight:700; font-size:18px; letter-spacing:-0.01em;}
+  .brand span{color:var(--red);}
+  .secure-tag{display:flex; align-items:center; gap:6px; font-size:12px; color:#C7D0E4; font-family:var(--mono);}
+  .secure-tag svg{width:12px;height:12px;fill:#C7D0E4;}
+
+  .btn-voltar{
+    display:flex; align-items:center; gap:5px;
+    background:transparent;
+    border:1px solid var(--navy-line);
+    color:#C7D0E4;
+    font-family:var(--sans);
+    font-size:11.5px;
+    font-weight:500;
+    padding:5px 10px;
+    border-radius:7px;
+    cursor:pointer;
+    transition:background .2s ease, color .2s ease;
+  }
+  .btn-voltar:hover{background:var(--navy-soft); color:var(--white);}
+  .btn-voltar svg{width:12px;height:12px;fill:currentColor;}
+
+  .page{max-width:1020px; margin:0 auto; padding:40px 20px 80px;}
+
+  .checkout{
+    display:grid;
+    grid-template-columns: 0.95fr 1.2fr;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 20px 50px rgba(11,31,69,0.14);
+  }
+  @media (max-width:760px){ .checkout{grid-template-columns:1fr;} }
+
+  /* PAINEL ESQUERDO */
+  .panel-left{background:var(--navy); color:var(--white); padding:34px 30px;}
+  .panel-left h2{font-family:var(--display); font-size:15px; font-weight:600; color:#AEBBDA; margin:0 0 20px;}
+
+  .visual-box{
+    background:linear-gradient(135deg, var(--navy-soft) 0%, #081633 100%);
+    border:1px solid var(--navy-line);
+    border-radius:14px;
+    padding:22px;
+    min-height:170px;
+    position:relative;
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .visual-box::after{
+    content:"";
+    position:absolute; right:-40px; top:-60px;
+    width:180px; height:180px;
+    background:var(--red); opacity:0.20; border-radius:50%; filter:blur(14px);
+  }
+
+  /* cartao */
+  #visual-card{display:flex; flex-direction:column; justify-content:space-between; height:170px;}
+  .chip{width:38px; height:28px; border-radius:5px; background:linear-gradient(135deg,#D7D7D7,#A9A9A9); z-index:2; position:relative;}
+  .card-number-preview{font-family:var(--mono); font-size:19px; letter-spacing:0.06em; color:var(--white); z-index:2; position:relative;}
+  .card-meta-preview{display:flex; justify-content:space-between; font-family:var(--mono); font-size:11px; color:#C7D0E4; text-transform:uppercase; letter-spacing:0.03em; z-index:2; position:relative;}
+  .card-brand-mark{position:absolute; right:20px; bottom:20px; font-family:var(--display); font-weight:700; font-size:13px; color:var(--red); z-index:2;}
+
+  /* pix / boleto visual */
+  .method-visual{position:relative; z-index:2; display:flex; flex-direction:column; gap:8px; justify-content:center; height:126px;}
+  .method-visual .icon{width:34px; height:34px; fill:var(--red);}
+  .method-visual .mtitle{font-family:var(--display); font-weight:700; font-size:16px;}
+  .method-visual .msub{font-size:12.5px; color:#C7D0E4; line-height:1.5;}
+
+  .line-item{display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--navy-line); font-size:14px;}
+  .line-item .desc{color:var(--white);}
+  .line-item .desc small{display:block; color:#8FA0C8; font-size:11.5px; margin-top:2px;}
+  .line-item .val{font-family:var(--mono); color:#E4E9F5;}
+  .total-row{display:flex; justify-content:space-between; padding-top:16px; margin-top:4px; font-size:16px; font-weight:600; color:var(--white);}
+  .total-row .val{font-family:var(--mono); color:var(--red);}
+  .discount-note{font-size:11.5px; color:#8FA0C8; margin-top:6px;}
+
+  .pipeline{margin-top:30px;}
+  .pipeline h3{font-size:11px; color:#8FA0C8; font-family:var(--mono); letter-spacing:0.04em; margin:0 0 12px;}
+  .step{display:flex; gap:12px; padding:8px 0; font-size:13px; color:#8FA0C8; align-items:flex-start; transition:color .25s ease;}
+  .step .dot{width:8px; height:8px; border-radius:50%; background:var(--navy-line); margin-top:5px; flex-shrink:0; transition:background .25s ease, box-shadow .25s ease;}
+  .step.active{color:var(--white);}
+  .step.active .dot{background:var(--red); box-shadow:0 0 0 4px rgba(228,20,28,0.25);}
+  .step.done{color:var(--white);}
+  .step.done .dot{background:#F2F2F2;}
+  .step.fail .dot{background:var(--red);}
+  .step b{font-weight:600;}
+  .step span.explain{display:block; color:#7385AC; font-size:11.5px; margin-top:2px; line-height:1.4;}
+  .step.active span.explain, .step.done span.explain{color:#AEBBDA;}
+
+  /* PAINEL DIREITO */
+  .panel-right{background:var(--white); padding:30px 32px;}
+
+  .tabs{display:flex; gap:6px; margin-bottom:24px; background:var(--paper); padding:5px; border-radius:9px;}
+  .tab-btn{
+    flex:1; padding:10px 8px; border:none; background:transparent; border-radius:6px;
+    font-family:var(--sans); font-weight:600; font-size:13.5px; color:var(--gray-600);
+    cursor:pointer; transition:background .15s ease, color .15s ease;
+  }
+  .tab-btn.active{background:var(--navy); color:var(--white);}
+
+  form{display:flex; flex-direction:column; gap:16px;}
+  .field label{display:block; font-size:12.5px; font-weight:600; margin-bottom:6px; color:var(--gray-900);}
+  .field input{
+    width:100%; font-family:var(--mono); font-size:14.5px; padding:12px 13px;
+    border:1.5px solid var(--line); border-radius:8px; background:var(--white); color:var(--gray-900);
+    outline:none; transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .field input#holder{font-family:var(--sans); text-transform:uppercase; font-weight:500;}
+  .field input:focus{border-color:var(--navy); box-shadow:0 0 0 3px rgba(11,31,69,0.08);}
+  .field input.invalid{border-color:var(--red); box-shadow:0 0 0 3px var(--red-soft);}
+  .field .err{font-size:12px; color:var(--red-dark); margin-top:5px; min-height:14px; font-weight:500;}
+  .row3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
+
+  .card-number-wrap{position:relative;}
+  .brand-tag{
+    position:absolute; right:12px; top:50%; transform:translateY(-50%);
+    font-family:var(--sans); font-size:10.5px; font-weight:700; padding:3px 8px; border-radius:4px;
+    background:var(--navy); color:var(--white); letter-spacing:0.03em;
+  }
+
+  .test-cards{
+    font-size:11.5px; color:var(--gray-600); background:var(--paper);
+    border:1px dashed var(--line); border-radius:8px; padding:12px 14px; line-height:1.7;
+  }
+  .test-cards b{color:var(--gray-900); font-family:var(--mono); font-weight:600;}
+
+  .pay-btn{
+    margin-top:6px; padding:15px 18px; border:none; border-radius:8px;
+    background:var(--red); color:var(--white); font-size:15px; font-family:var(--display); font-weight:600;
+    cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;
+    transition:background .15s ease, transform .1s ease; width:100%;
+  }
+  .pay-btn:hover{background:var(--red-dark);}
+  .pay-btn:active{transform:scale(0.99);}
+  .pay-btn:disabled{opacity:0.55; cursor:not-allowed;}
+  .pay-btn .lock{width:13px; height:13px; fill:var(--white);}
+  .pay-btn.secondary{background:var(--navy);}
+  .pay-btn.secondary:hover{background:#0E2C5E;}
+
+  .spinner{width:15px; height:15px; border-radius:50%; border:2px solid rgba(255,255,255,0.4); border-top-color:var(--white); animation:spin .7s linear infinite; display:none;}
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  .result{margin-top:10px; border-radius:9px; padding:16px 18px; display:none; font-size:14px;}
+  .result.show{display:block;}
+  .result.success{background:var(--navy); border:1px solid var(--navy); color:var(--white);}
+  .result.success .rtitle{color:var(--white);}
+  .result.success .rtitle::before{content:"✓  "; color:var(--red);}
+  .result.fail{background:var(--red-soft); border:1px solid #F5C4C6; color:var(--red-dark);}
+  .result .rtitle{font-weight:700; font-size:15px; margin-bottom:4px; font-family:var(--display);}
+  .result .rmeta{font-family:var(--mono); font-size:11.5px; opacity:0.75; margin-top:8px;}
+
+  /* PIX */
+  .pix-box{display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap;}
+  .qr-wrap{
+    background:var(--white); border:1.5px solid var(--line); border-radius:10px; padding:10px;
+    width:150px; height:150px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .pix-info{flex:1; min-width:180px;}
+  .pix-timer{font-family:var(--mono); font-size:12.5px; color:var(--navy); font-weight:600; margin-bottom:10px;}
+  .copy-row{display:flex; gap:8px; margin-top:6px;}
+  .copy-input{
+    flex:1; font-family:var(--mono); font-size:11.5px; padding:10px 11px; border:1.5px solid var(--line);
+    border-radius:7px; background:var(--paper); color:var(--gray-600); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .copy-btn{
+    padding:0 16px; border:none; border-radius:7px; background:var(--navy); color:var(--white);
+    font-family:var(--sans); font-weight:600; font-size:12.5px; cursor:pointer; white-space:nowrap;
+  }
+  .copy-btn:hover{background:#0E2C5E;}
+  .copy-btn.copied{background:var(--red);}
+
+  /* BOLETO */
+  .barcode-wrap{background:var(--white); border:1.5px solid var(--line); border-radius:10px; padding:14px; margin-bottom:14px;}
+  .linha-digitavel{
+    font-family:var(--mono); font-size:13px; letter-spacing:0.02em; color:var(--gray-900);
+    background:var(--paper); border:1px dashed var(--line); border-radius:7px; padding:11px 12px; margin-bottom:12px; word-break:break-all;
+  }
+  .boleto-meta{display:flex; justify-content:space-between; font-size:12.5px; color:var(--gray-600); margin-bottom:16px;}
+  .boleto-meta b{color:var(--gray-900);}
+
+  .top-note{font-family:var(--mono); font-size:11.5px; color:var(--gray-600); text-align:center; margin:16px auto 0; max-width:600px;}
+
+  footer{
+    max-width:1020px; margin:44px auto 0; font-size:12px; color:var(--gray-600);
+    border-top:1px solid var(--line); padding:16px 20px 0; line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div style="display:flex; align-items:center; gap:16px;">
+    <button class="btn-voltar" onclick="window.history.back()">
+      <svg viewBox="0 0 24 24"><path d="M20 11H7.83l4.88-4.88a1 1 0 0 0-1.42-1.41l-6.58 6.58a1 1 0 0 0 0 1.42l6.58 6.58a1 1 0 0 0 1.42-1.41L7.83 13H20a1 1 0 0 0 0-2z"/></svg>
+      Voltar
+    </button>
+    <div class="brand">Eqp<span>Estacio</span> Pay</div>
+  </div>
+  <div class="secure-tag">
+    <svg viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3z"/></svg>
+    conexão segura — ambiente de teste
+  </div>
+</div>
+
+<div class="page">
+  <div class="checkout">
+
+    <!-- PAINEL ESQUERDO -->
+    <div class="panel-left">
+      <h2>Resumo do plano</h2>
+
+      <div class="visual-box">
+        <div id="visual-card">
+          <div class="chip"></div>
+          <div class="card-number-preview" id="previewNumber">•••• •••• •••• ••••</div>
+          <div class="card-meta-preview">
+            <span id="previewHolder">NOME NO CARTÃO</span>
+            <span id="previewExp">MM/AA</span>
+          </div>
+          <div class="card-brand-mark" id="previewBrand"></div>
+        </div>
+
+        <div id="visual-pix" class="method-visual hidden">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l4.24 4.24a3 3 0 0 1 0 4.24L12 14.72 7.76 10.48a3 3 0 0 1 0-4.24L12 2zM2 12l4.24-4.24a3 3 0 0 1 4.24 0L14.72 12l-4.24 4.24a3 3 0 0 1-4.24 0L2 12zm10 10l-4.24-4.24a3 3 0 0 1 0-4.24L12 9.28l4.24 4.24a3 3 0 0 1 0 4.24L12 22zm10-10l-4.24 4.24a3 3 0 0 1-4.24 0L9.28 12l4.24-4.24a3 3 0 0 1 4.24 0L22 12z"/></svg>
+          <div class="mtitle">Pagamento instantâneo</div>
+          <div class="msub">A confirmação do Pix costuma acontecer em poucos segundos, a qualquer hora do dia.</div>
+        </div>
+
+        <div id="visual-boleto" class="method-visual hidden">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M4 4h2v16H4V4zm3 0h1v16H7V4zm2 0h2v16H9V4zm3 0h1v16h-1V4zm2 0h2v16h-2V4zm3 0h1v16h-1V4zm2 0h2v16h-2V4z"/></svg>
+          <div class="mtitle">Boleto bancário</div>
+          <div class="msub">Pagável em qualquer banco, app ou casa lotérica. Compensação em até 3 dias úteis.</div>
+        </div>
+      </div>
+
+      <div id="summary-card">
+        <div class="line-item"><span class="desc">Plano Premium<small>Notícias em geral — acesso ilimitado, mensal</small></span><span class="val">R$ 39,90</span></div>
+        <div class="line-item"><span class="desc">Taxa de processamento<small>Simulada — 2,5% + R$0,40</small></span><span class="val">R$ 1,40</span></div>
+        <div class="total-row"><span>Total</span><span class="val">R$ 41,30</span></div>
+      </div>
+
+      <div id="summary-pix" class="hidden">
+        <div class="line-item"><span class="desc">Plano Premium<small>Notícias em geral — acesso ilimitado, mensal</small></span><span class="val">R$ 39,90</span></div>
+        <div class="line-item"><span class="desc">Desconto Pix<small>5% à vista</small></span><span class="val">− R$ 1,99</span></div>
+        <div class="total-row"><span>Total</span><span class="val">R$ 37,91</span></div>
+        <div class="discount-note">Pagamentos via Pix não têm taxa de processamento de cartão.</div>
+      </div>
+
+      <div id="summary-boleto" class="hidden">
+        <div class="line-item"><span class="desc">Plano Premium<small>Notícias em geral — acesso ilimitado, mensal</small></span><span class="val">R$ 39,90</span></div>
+        <div class="line-item"><span class="desc">Taxa de emissão<small>Boleto bancário</small></span><span class="val">R$ 2,00</span></div>
+        <div class="total-row"><span>Total</span><span class="val">R$ 41,90</span></div>
+      </div>
+
+      <div class="pipeline">
+        <h3>PIPELINE DO GATEWAY</h3>
+        <div id="pipeline-card">
+          <div class="step" data-step="1"><div class="dot"></div><div><b>Validação dos dados</b><span class="explain">Checa formato do número, validade e CVV antes de qualquer envio.</span></div></div>
+          <div class="step" data-step="2"><div class="dot"></div><div><b>Tokenização</b><span class="explain">O número do cartão vira um token — a loja nunca guarda o cartão em si.</span></div></div>
+          <div class="step" data-step="3"><div class="dot"></div><div><b>Autorização</b><span class="explain">O banco emissor é consultado para aprovar ou recusar.</span></div></div>
+          <div class="step" data-step="4"><div class="dot"></div><div><b>Captura</b><span class="explain">Autorizado, o valor é efetivamente cobrado.</span></div></div>
+        </div>
+        <div id="pipeline-pix" class="hidden">
+          <div class="step" data-step="1"><div class="dot"></div><div><b>Geração da cobrança</b><span class="explain">O gateway cria uma cobrança Pix com valor fixo e QR Code.</span></div></div>
+          <div class="step" data-step="2"><div class="dot"></div><div><b>Emissão do código EMV</b><span class="explain">A chave é convertida no QR Code e no código copia-e-cola.</span></div></div>
+          <div class="step" data-step="3"><div class="dot"></div><div><b>Confirmação do SPI</b><span class="explain">O Sistema de Pagamentos Instantâneos confirma a transferência entre bancos.</span></div></div>
+          <div class="step" data-step="4"><div class="dot"></div><div><b>Liquidação</b><span class="explain">O valor cai na conta do lojista, geralmente em segundos.</span></div></div>
+        </div>
+        <div id="pipeline-boleto" class="hidden">
+          <div class="step" data-step="1"><div class="dot"></div><div><b>Geração do boleto</b><span class="explain">O gateway registra a cobrança e gera a linha digitável e o código de barras.</span></div></div>
+          <div class="step" data-step="2"><div class="dot"></div><div><b>Registro no banco emissor</b><span class="explain">O boleto é registrado na instituição financeira responsável pela cobrança.</span></div></div>
+          <div class="step" data-step="3"><div class="dot"></div><div><b>Compensação bancária</b><span class="explain">Após o pagamento, o banco do pagador repassa a informação ao lojista.</span></div></div>
+          <div class="step" data-step="4"><div class="dot"></div><div><b>Confirmação de pagamento</b><span class="explain">O lojista recebe a confirmação de que o boleto foi quitado.</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PAINEL DIREITO -->
+    <div class="panel-right">
+
+      <div class="tabs">
+        <button type="button" class="tab-btn active" data-tab="card">Cartão de crédito</button>
+        <button type="button" class="tab-btn" data-tab="pix">Pix</button>
+        <button type="button" class="tab-btn" data-tab="boleto">Boleto</button>
+      </div>
+
+      <!-- CARTAO -->
+      <form id="payForm">
+        <div class="field">
+          <label for="holder">Nome impresso no cartão</label>
+          <input type="text" id="holder" placeholder="MARIA F SOUZA" autocomplete="cc-name">
+          <div class="err" id="err-holder"></div>
+        </div>
+        <div class="field">
+          <label for="number">Número do cartão</label>
+          <div class="card-number-wrap">
+            <input type="text" id="number" inputmode="numeric" placeholder="0000 0000 0000 0000" autocomplete="cc-number" maxlength="19">
+            <span class="brand-tag" id="brandTag" style="display:none;"></span>
+          </div>
+          <div class="err" id="err-number"></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label for="expMonth">Validade (mês)</label><input type="text" id="expMonth" inputmode="numeric" placeholder="MM" maxlength="2" autocomplete="cc-exp-month"></div>
+          <div class="field"><label for="expYear">Validade (ano)</label><input type="text" id="expYear" inputmode="numeric" placeholder="AA" maxlength="2" autocomplete="cc-exp-year"></div>
+          <div class="field"><label for="cvv">CVV</label><input type="text" id="cvv" inputmode="numeric" placeholder="123" maxlength="4" autocomplete="cc-csc"></div>
+        </div>
+        <div class="err" id="err-exp"></div>
+        <div class="test-cards">Cartões de teste — <b>4000 0000 0000 0002</b> aprova sempre · <b>4000 0000 0000 0069</b> simula recusa por saldo · <b>4000 0000 0000 0119</b> simula erro de processamento.</div>
+        <button type="submit" class="pay-btn" id="payBtn">
+          <svg class="lock" viewBox="0 0 24 24"><path d="M12 1a5 5 0 0 0-5 5v3H6a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-9a2 2 0 0 0-2-2h-1V6a5 5 0 0 0-5-5zm-3 8V6a3 3 0 0 1 6 0v3z"/></svg>
+          <span class="spinner" id="spinner"></span>
+          <span id="payBtnLabel">Pagar R$ 41,30</span>
+        </button>
+      </form>
+
+      <!-- PIX -->
+      <div id="tab-pix" class="hidden">
+        <div class="pix-box">
+          <div class="qr-wrap" id="qrHolder"></div>
+          <div class="pix-info">
+            <div class="pix-timer" id="pixTimer">Código expira em 15:00</div>
+            <div style="font-size:12.5px; color:var(--gray-600); line-height:1.5;">Abra o app do seu banco, escolha Pix → Ler QR Code, ou copie o código abaixo e cole na opção Pix Copia e Cola.</div>
+            <div class="copy-row">
+              <div class="copy-input" id="pixCode"></div>
+              <button type="button" class="copy-btn" id="copyPixBtn">Copiar</button>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="pay-btn secondary" id="confirmPixBtn" style="margin-top:22px;">
+          <span class="spinner" id="spinnerPix"></span>
+          <span id="confirmPixLabel">Simular pagamento confirmado</span>
+        </button>
+      </div>
+
+      <!-- BOLETO -->
+      <div id="tab-boleto" class="hidden">
+        <div class="barcode-wrap" id="barcodeHolder"></div>
+        <div class="linha-digitavel" id="linhaDigitavel"></div>
+        <div class="copy-row" style="margin-bottom:14px;">
+          <button type="button" class="copy-btn" id="copyBoletoBtn" style="flex:1;">Copiar linha digitável</button>
+        </div>
+        <div class="boleto-meta">
+          <span>Vencimento: <b id="boletoVenc"></b></span>
+          <span>Valor: <b>R$ 41,90</b></span>
+        </div>
+        <button type="button" class="pay-btn secondary" id="confirmBoletoBtn">
+          <span class="spinner" id="spinnerBoleto"></span>
+          <span id="confirmBoletoLabel">Simular compensação do boleto</span>
+        </button>
+      </div>
+
+      <div class="result" id="result">
+        <div class="rtitle" id="resultTitle"></div>
+        <div id="resultBody"></div>
+        <div class="rmeta" id="resultMeta"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="top-note">AMBIENTE DE TESTE — QR Code, código Pix e boleto são fictícios, gerados apenas para fins didáticos</div>
+
+  <footer>
+    Este checkout é 100% simulado no lado do cliente para fins didáticos: não há backend, não há envio de dados a nenhum servidor. Cartão, QR Code, código Pix copia-e-cola e boleto exibidos aqui são fictícios e não devem ser usados para pagamentos reais. A lógica de aprovação/recusa imita o comportamento de gateways reais (ex.: Stripe, PagSeguro, Mercado Pago) para fins de aprendizado.
+  </footer>
+</div>
+
+<script>
+(function(){
+  // ---------- TABS ----------
+  const tabButtons = document.querySelectorAll('.tab-btn');
+  const sections = {
+    card:  { form: document.getElementById('payForm'), summary: document.getElementById('summary-card'), pipeline: document.getElementById('pipeline-card'), visual: document.getElementById('visual-card') },
+    pix:   { form: document.getElementById('tab-pix'),  summary: document.getElementById('summary-pix'),  pipeline: document.getElementById('pipeline-pix'),  visual: document.getElementById('visual-pix') },
+    boleto:{ form: document.getElementById('tab-boleto'), summary: document.getElementById('summary-boleto'), pipeline: document.getElementById('pipeline-boleto'), visual: document.getElementById('visual-boleto') }
+  };
+  let currentTab = 'card';
+
+  function switchTab(tab){
+    currentTab = tab;
+    tabButtons.forEach(b => b.classList.toggle('active', b.dataset.tab === tab));
+    Object.keys(sections).forEach(key => {
+      const on = key === tab;
+      sections[key].form.classList.toggle('hidden', !on);
+      sections[key].summary.classList.toggle('hidden', !on);
+      sections[key].pipeline.classList.toggle('hidden', !on);
+      sections[key].visual.classList.toggle('hidden', !on);
+    });
+    resultBox.classList.remove('show','success','fail');
+    if(tab === 'pix' && !pixInitialized) initPix();
+    if(tab === 'boleto' && !boletoInitialized) initBoleto();
+  }
+  tabButtons.forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.tab)));
+
+  // ---------- CARTAO ----------
+  const numberInput = document.getElementById('number');
+  const holderInput = document.getElementById('holder');
+  const monthInput = document.getElementById('expMonth');
+  const yearInput = document.getElementById('expYear');
+  const cvvInput = document.getElementById('cvv');
+  const brandTag = document.getElementById('brandTag');
+  const form = document.getElementById('payForm');
+  const payBtn = document.getElementById('payBtn');
+  const payBtnLabel = document.getElementById('payBtnLabel');
+  const spinner = document.getElementById('spinner');
+  const resultBox = document.getElementById('result');
+  const resultTitle = document.getElementById('resultTitle');
+  const resultBody = document.getElementById('resultBody');
+  const resultMeta = document.getElementById('resultMeta');
+  const previewNumber = document.getElementById('previewNumber');
+  const previewHolder = document.getElementById('previewHolder');
+  const previewExp = document.getElementById('previewExp');
+  const previewBrand = document.getElementById('previewBrand');
+
+  numberInput.addEventListener('input', () => {
+    let digits = numberInput.value.replace(/\D/g,'').slice(0,16);
+    numberInput.value = digits.replace(/(.{4})/g,'$1 ').trim();
+    detectBrand(digits);
+    previewNumber.textContent = digits ? digits.padEnd(16,'•').replace(/(.{4})/g,'$1 ').trim() : '•••• •••• •••• ••••';
+    clearError('number');
+  });
+  holderInput.addEventListener('input', () => {
+    previewHolder.textContent = holderInput.value.trim() ? holderInput.value.toUpperCase() : 'NOME NO CARTÃO';
+  });
+  monthInput.addEventListener('input', () => { monthInput.value = monthInput.value.replace(/\D/g,'').slice(0,2); updateExp(); });
+  yearInput.addEventListener('input', () => { yearInput.value = yearInput.value.replace(/\D/g,'').slice(0,2); updateExp(); });
+  cvvInput.addEventListener('input', () => { cvvInput.value = cvvInput.value.replace(/\D/g,'').slice(0,4); });
+  function updateExp(){ previewExp.textContent = (monthInput.value || 'MM') + '/' + (yearInput.value || 'AA'); }
+
+  function detectBrand(digits){
+    let brand = null;
+    if(/^4/.test(digits)) brand = 'VISA';
+    else if(/^5[1-5]/.test(digits)) brand = 'MASTERCARD';
+    else if(/^3[47]/.test(digits)) brand = 'AMEX';
+    else if(/^6(?:011|5)/.test(digits)) brand = 'ELO/DISC';
+    if(brand && digits.length >= 2){ brandTag.textContent = brand; brandTag.style.display = 'inline-block'; previewBrand.textContent = brand; }
+    else { brandTag.style.display = 'none'; previewBrand.textContent = ''; }
+  }
+
+  function luhnCheck(num){
+    let sum = 0, alt = false;
+    for(let i = num.length - 1; i >= 0; i--){
+      let n = parseInt(num.charAt(i),10);
+      if(alt){ n *= 2; if(n > 9) n -= 9; }
+      sum += n; alt = !alt;
+    }
+    return sum % 10 === 0;
+  }
+  function setError(field, msg){ document.getElementById('err-'+field).textContent = msg; document.getElementById(field === 'exp' ? 'expMonth' : field).classList.add('invalid'); }
+  function clearError(field){ const e=document.getElementById('err-'+field); if(e) e.textContent=''; const i=document.getElementById(field); if(i) i.classList.remove('invalid'); }
+  function clearAllErrors(){
+    ['holder','number','exp'].forEach(f => { const e=document.getElementById('err-'+f); if(e) e.textContent=''; });
+    [numberInput, monthInput, yearInput, cvvInput, holderInput].forEach(el => el.classList.remove('invalid'));
+  }
+  function genId(prefix){ return prefix + '_' + Math.random().toString(36).slice(2,10).toUpperCase(); }
+
+  function runPipeline(containerId, outcome){
+    const steps = Array.from(document.getElementById(containerId).querySelectorAll('.step'));
+    steps.forEach(s => s.classList.remove('active','done','fail'));
+    return new Promise(resolve => {
+      let i = 0;
+      function next(){
+        if(i > 0) steps[i-1].classList.remove('active');
+        if(i >= steps.length){ resolve(); return; }
+        if(i === 2 && outcome !== 'approved'){
+          steps[i].classList.add('active');
+          setTimeout(() => { steps[i].classList.remove('active'); steps[i].classList.add('fail'); resolve(); }, 650);
+          return;
+        }
+        steps[i].classList.add('active');
+        setTimeout(() => { steps[i].classList.remove('active'); steps[i].classList.add('done'); i++; next(); }, 550);
+      }
+      next();
+    });
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    clearAllErrors();
+    resultBox.classList.remove('show','success','fail');
+
+    const digits = numberInput.value.replace(/\D/g,'');
+    const holder = holderInput.value.trim();
+    const mm = parseInt(monthInput.value, 10);
+    const yy = parseInt(yearInput.value, 10);
+    const cvv = cvvInput.value.trim();
+    let hasError = false;
+
+    if(holder.length < 3){ setError('holder','Informe o nome como impresso no cartão.'); hasError = true; }
+    if(digits.length < 13 || digits.length > 16 || !luhnCheck(digits)){ setError('number','Número de cartão inválido (falhou a validação de Luhn).'); hasError = true; }
+    const now = new Date(); const curYY = now.getFullYear() % 100; const curMM = now.getMonth() + 1;
+    if(!mm || mm < 1 || mm > 12 || !yy || (yy < curYY) || (yy === curYY && mm < curMM)){ setError('exp','Validade inválida ou cartão vencido.'); hasError = true; }
+    if(cvv.length < 3){ setError('exp','CVV deve ter 3 ou 4 dígitos.'); hasError = true; }
+    if(hasError) return;
+
+    let outcome = 'approved', declineReason = '';
+    if(digits === '4000000000000069'){ outcome = 'declined'; declineReason = 'Saldo insuficiente (simulado)'; }
+    else if(digits === '4000000000000119'){ outcome = 'error'; declineReason = 'Erro de comunicação com o emissor (simulado)'; }
+    else if(digits !== '4000000000000002'){ outcome = Math.random() < 0.8 ? 'approved' : 'declined'; declineReason = 'Transação recusada pelo emissor (simulado)'; }
+
+    payBtn.disabled = true; spinner.style.display = 'inline-block'; payBtnLabel.textContent = 'Processando…';
+    await runPipeline('pipeline-card', outcome);
+    spinner.style.display = 'none'; payBtn.disabled = false; payBtnLabel.textContent = 'Pagar R$ 41,30';
+
+    resultBox.classList.add('show');
+    if(outcome === 'approved'){
+      resultBox.classList.add('success');
+      resultTitle.textContent = 'Pagamento aprovado';
+      resultBody.textContent = 'A transação foi autorizada e capturada com sucesso.';
+      resultMeta.textContent = 'id_transacao: ' + genId('txn') + ' · autorizacao: ' + genId('auth');
+    } else {
+      resultBox.classList.add('fail');
+      resultTitle.textContent = outcome === 'error' ? 'Falha no processamento' : 'Pagamento recusado';
+      resultBody.textContent = declineReason;
+      resultMeta.textContent = 'id_tentativa: ' + genId('att');
+    }
+  });
+
+  // ---------- PIX ----------
+  let pixInitialized = false;
+  let pixTimerInterval = null;
+
+  function renderFakeQR(containerId, seedText){
+    const modules = 21, cell = 6, size = modules*cell;
+    let seed = 0; for(let i=0;i<seedText.length;i++) seed = (seed*31 + seedText.charCodeAt(i)) % 100000;
+    function rnd(){ seed = (seed*9301+49297) % 233280; return seed/233280; }
+    let cellsHTML = '';
+    for(let r=0;r<modules;r++){
+      for(let c=0;c<modules;c++){
+        const inFinder = (r<7&&c<7)||(r<7&&c>=modules-7)||(r>=modules-7&&c<7);
+        if(inFinder) continue;
+        if(rnd() > 0.56) cellsHTML += `<rect x="${c*cell}" y="${r*cell}" width="${cell}" height="${cell}" fill="#0B1F45"/>`;
+      }
+    }
+    function finder(x,y){
+      return `<rect x="${x}" y="${y}" width="${7*cell}" height="${7*cell}" fill="#0B1F45"/>
+              <rect x="${x+cell}" y="${y+cell}" width="${5*cell}" height="${5*cell}" fill="#fff"/>
+              <rect x="${x+2*cell}" y="${y+2*cell}" width="${3*cell}" height="${3*cell}" fill="#0B1F45"/>`;
+    }
+    const finders = finder(0,0) + finder((modules-7)*cell,0) + finder(0,(modules-7)*cell);
+    document.getElementById(containerId).innerHTML =
+      `<svg viewBox="0 0 ${size} ${size}" width="130" height="130"><rect width="${size}" height="${size}" fill="#fff"/>${cellsHTML}${finders}</svg>`;
+  }
+
+  function generatePixPayload(){
+    const rand = () => Math.random().toString(36).slice(2,10).toUpperCase();
+    return `00020126850014BR.GOV.BCB.PIX0136${rand()}-${rand()}-${rand()}5204000053039865406037.915802BR5920EQPESTACIO PAY LTDA6009SAO PAULO62070503***6304${rand().slice(0,4)}`;
+  }
+
+  function initPix(){
+    pixInitialized = true;
+    const code = generatePixPayload();
+    document.getElementById('pixCode').textContent = code;
+    renderFakeQR('qrHolder', code);
+
+    let seconds = 15*60;
+    const timerEl = document.getElementById('pixTimer');
+    pixTimerInterval = setInterval(() => {
+      seconds--;
+      if(seconds <= 0){ clearInterval(pixTimerInterval); timerEl.textContent = 'Código expirado — gere um novo pagamento'; return; }
+      const m = String(Math.floor(seconds/60)).padStart(2,'0');
+      const s = String(seconds%60).padStart(2,'0');
+      timerEl.textContent = `Código expira em ${m}:${s}`;
+    }, 1000);
+
+    document.getElementById('copyPixBtn').addEventListener('click', () => {
+      const btn = document.getElementById('copyPixBtn');
+      navigator.clipboard?.writeText(code).catch(() => {});
+      btn.textContent = 'Copiado!'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copiar'; btn.classList.remove('copied'); }, 1800);
+    });
+
+    document.getElementById('confirmPixBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('confirmPixBtn');
+      const label = document.getElementById('confirmPixLabel');
+      const sp = document.getElementById('spinnerPix');
+      btn.disabled = true; sp.style.display = 'inline-block'; label.textContent = 'Confirmando…';
+      resultBox.classList.remove('show','success','fail');
+      await runPipeline('pipeline-pix', 'approved');
+      sp.style.display = 'none'; btn.disabled = false; label.textContent = 'Simular pagamento confirmado';
+      resultBox.classList.add('show','success');
+      resultTitle.textContent = 'Pix recebido';
+      resultBody.textContent = 'O pagamento via Pix foi confirmado e o plano foi liberado.';
+      resultMeta.textContent = 'id_transacao: ' + genId('pix') + ' · e2e: ' + genId('E');
+    });
+  }
+
+  // ---------- BOLETO ----------
+  let boletoInitialized = false;
+
+  function renderFakeBarcode(containerId){
+    const width = 290, height = 50;
+    let bars = '', x = 4;
+    while(x < width - 4){
+      const w = Math.random() > 0.5 ? 2 : 4;
+      if(Math.random() > 0.35) bars += `<rect x="${x}" y="4" width="${w}" height="${height-8}" fill="#0B1F45"/>`;
+      x += w + 2;
+    }
+    document.getElementById(containerId).innerHTML =
+      `<svg viewBox="0 0 ${width} ${height}" width="100%" height="${height}"><rect width="${width}" height="${height}" fill="#fff"/>${bars}</svg>`;
+  }
+
+  function generateBoletoLine(){
+    const rand = (n) => Array.from({length:n},() => Math.floor(Math.random()*10)).join('');
+    return `${rand(5)}.${rand(5)} ${rand(5)}.${rand(6)} ${rand(5)}.${rand(6)} ${rand(1)} ${rand(4)}0000004190`;
+  }
+
+  function initBoleto(){
+    boletoInitialized = true;
+    renderFakeBarcode('barcodeHolder');
+    const linha = generateBoletoLine();
+    document.getElementById('linhaDigitavel').textContent = linha;
+
+    const venc = new Date(); venc.setDate(venc.getDate() + 3);
+    document.getElementById('boletoVenc').textContent = venc.toLocaleDateString('pt-BR');
+
+    document.getElementById('copyBoletoBtn').addEventListener('click', () => {
+      const btn = document.getElementById('copyBoletoBtn');
+      navigator.clipboard?.writeText(linha).catch(() => {});
+      const original = btn.textContent;
+      btn.textContent = 'Copiado!'; btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = original; btn.classList.remove('copied'); }, 1800);
+    });
+
+    document.getElementById('confirmBoletoBtn').addEventListener('click', async () => {
+      const btn = document.getElementById('confirmBoletoBtn');
+      const label = document.getElementById('confirmBoletoLabel');
+      const sp = document.getElementById('spinnerBoleto');
+      btn.disabled = true; sp.style.display = 'inline-block'; label.textContent = 'Compensando…';
+      resultBox.classList.remove('show','success','fail');
+      await runPipeline('pipeline-boleto', 'approved');
+      sp.style.display = 'none'; btn.disabled = false; label.textContent = 'Simular compensação do boleto';
+      resultBox.classList.add('show','success');
+      resultTitle.textContent = 'Boleto compensado';
+      resultBody.textContent = 'O pagamento do boleto foi confirmado pelo banco e o plano foi liberado.';
+      resultMeta.textContent = 'id_transacao: ' + genId('bol') + ' · nosso_numero: ' + genId('N');
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -5,55 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tecnologia - Seu Site de Notícias</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .animate-marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 30s linear infinite;
-        }
-        .animate-marquee:hover { animation-play-state: paused; }
-    </style>
+    <link rel="stylesheet" href="css/tecnologia.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- CABEÇALHO / HEADER -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-             <a href="index.html" class="flex-shrink-0">
-                <img src="img/logo 01.gif" alt="Logo do Site" class="h-24 w-auto rounded">
+            <!-- Logo -->
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
             </a>
-            <button id="mobile-menu-button" class="lg:hidden text-gray-700 hover:text-blue-900 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-            <nav class="hidden lg:flex space-x-6 font-semibold text-gray-700">
-                <a href="esportes.html" class="hover:text-blue-900 transition">ESPORTES</a>
-                <a href="economia.html" class="hover:text-blue-900 transition">ECONOMIA</a>
-                <a href="politica.html" class="hover:text-blue-900 transition">POLÍTICA</a>
-                <a href="brasil.html" class="hover:text-blue-900 transition">BRASIL</a>
-                <a href="mundo.html" class="hover:text-blue-900 transition">MUNDO</a>
-                <a href="saude.html" class="hover:text-blue-900 transition">SAÚDE</a>
-                <a href="tecnologia.html" class="text-blue-900 border-b-2 border-blue-900">TECNOLOGIA</a>
-                <a href="entretenimento.html" class="hover:text-blue-900 transition">ENTRETENIMENTO</a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden lg:flex space-x-3 xl:space-x-5 items-center">
+                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Economia</a>
+                <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Saúde</a>
+                <a href="tecnologia.html" class="text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide border-b-2 border-blue-600">Tecnologia</a>
+                <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Assinatura</a>
+                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Fale Conosco</a>
             </nav>
+
+            <!-- Botão de Menu Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
         </div>
-        <!-- Menu Mobile -->
-        <nav id="mobile-menu" class="hidden lg:hidden bg-gray-100 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
-            <div class="flex flex-col px-4 py-2 space-y-3 font-semibold text-gray-700">
-                <a href="esportes.html" class="block hover:text-blue-900">ESPORTES</a>
-                <a href="economia.html" class="block hover:text-blue-900">ECONOMIA</a>
-                <a href="politica.html" class="block hover:text-blue-900">POLÍTICA</a>
-                <a href="brasil.html" class="block hover:text-blue-900">BRASIL</a>
-                <a href="mundo.html" class="block hover:text-blue-900">MUNDO</a>
-                <a href="saude.html" class="block hover:text-blue-900">SAÚDE</a>
-                <a href="tecnologia.html" class="block text-blue-900">TECNOLOGIA</a>
-                <a href="entretenimento.html" class="block hover:text-blue-900">ENTRETENIMENTO</a>
+
+        <!-- Menu Mobile (Oculto por padrão) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-inner max-h-[70vh] overflow-y-auto">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-blue-700 bg-blue-50 uppercase">Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Entretenimento</a>
+                <a href="gateway-pagamento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Assinatura</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Fale Conosco</a>
             </div>
-        </nav>
+        </div>
     </header>
+
 
     <!-- TICKER TECNOLOGIA -->
     <div class="bg-indigo-900 text-white overflow-hidden py-2 shadow-inner">
@@ -141,10 +143,6 @@
     </footer>
 
     <!-- SCRIPT MENU MOBILE -->
-    <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-    </script>
+    <script src="js/tecnologia.js" defer></script>
 </body>
 </html>

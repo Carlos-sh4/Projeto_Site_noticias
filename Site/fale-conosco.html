@@ -17,16 +17,7 @@
     <!-- Importando Google Fonts (Inter) para tipografia moderna -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- Configuração de estilo customizado base -->
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc; /* Tailwind slate-50 */
-        }
-        /* Efeito suave de transição em links e botões */
-        a, button {
-            transition: all 0.2s ease-in-out;
-        }
-    </style>
+    <link rel="stylesheet" href="css/fale-conosco.css">
 </head>
 <body class="text-gray-800 antialiased flex flex-col min-h-screen">
 
@@ -35,7 +26,7 @@
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <!-- Logo -->
             <a href="index.html" title="Página Inicial" class="flex-shrink-0">
-                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-36 w-auto rounded">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
             </a>
 
             <!-- Navegação Desktop -->
@@ -48,6 +39,7 @@
                 <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Saúde</a>
                 <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Tecnologia</a>
                 <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Assinatura</a>
                 <a href="fale-conosco.html" class="text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide border-b-2 border-blue-600">Fale Conosco</a>
             </nav>
 
@@ -70,10 +62,12 @@
                 <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Saúde</a>
                 <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Tecnologia</a>
                 <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Entretenimento</a>
+                <a href="gateway-pagamento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Assinatura</a>
                 <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-blue-700 bg-blue-50 uppercase">Fale Conosco</a>
             </div>
         </div>
     </header>
+
 
     <!-- CONTEÚDO PRINCIPAL -->
     <main class="flex-grow container mx-auto px-4 py-8 w-full">
@@ -175,36 +169,8 @@
     </footer>
 
     <!-- Lógica de interação Javascript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Menu mobile
-            const btn = document.getElementById('mobile-menu-btn');
-            const menu = document.getElementById('mobile-menu');
-            btn.addEventListener('click', () => {
-                menu.classList.toggle('hidden');
-            });
-
-            // Envio do formulário (front-end apenas; sem backend conectado ainda)
-            const form = document.getElementById('form-contato');
-            const sucesso = document.getElementById('mensagem-sucesso');
-            form.addEventListener('submit', (e) => {
-                e.preventDefault();
-                sucesso.classList.remove('hidden');
-                form.reset();
-                sucesso.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            });
-        });
-    </script>
+    <script src="js/fale-conosco.js" defer></script>
 
     <!-- Registro do service worker: habilita instalação e uso offline -->
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(() => console.log('Service worker registrado.'))
-                    .catch(err => console.error('Falha ao registrar o service worker:', err));
-            });
-        }
-    </script>
 </body>
 </html>

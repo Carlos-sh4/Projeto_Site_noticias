@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esportes - Portal de Notícias</title>
+    <!-- Importando Tailwind CSS para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importando Google Fonts (Inter) para tipografia moderna -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Configuração de estilo customizado base -->
+    <link rel="stylesheet" href="css/esportes.css">
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+
+    <!-- CABEÇALHO / HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
+            </a>
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden lg:flex space-x-3 xl:space-x-5 items-center">
+                <a href="esportes.html" class="text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide border-b-2 border-blue-600">Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Economia</a>
+                <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Saúde</a>
+                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Tecnologia</a>
+                <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Assinatura</a>
+                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide">Fale Conosco</a>
+            </nav>
+
+            <!-- Botão de Menu Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menu Mobile (Oculto por padrão) -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
+            <div class="px-4 pt-2 pb-4 space-y-1 shadow-inner max-h-[70vh] overflow-y-auto">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-blue-700 bg-blue-50 uppercase">Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Entretenimento</a>
+                <a href="gateway-pagamento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Assinatura</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase">Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- TICKER (BARRA DE NOTÍCIAS) QUE SERÁ ATUALIZADA PELA API -->
+    <div class="ticker-wrap py-2 border-b-4 border-green-600">
+        <div class="ticker" id="jogos-ticker">
+            <div class="ticker-item">Carregando placares em tempo real...</div>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main class="flex-grow container mx-auto px-4 py-8 w-full flex flex-col lg:flex-row gap-8">
+        
+        <!-- Área principal de Notícias de Esportes -->
+        <div class="lg:w-2/3 flex flex-col gap-8">
+            
+            <div class="flex items-center gap-3 pb-2 border-b-2 border-gray-200">
+                <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                <h1 class="text-3xl font-bold text-gray-900">Mundo dos Esportes</h1>
+            </div>
+
+            <article class="group cursor-pointer rounded-2xl overflow-hidden bg-white shadow-sm hover:shadow-lg transition-shadow duration-300 border border-gray-100 relative">
+                <div class="w-full relative overflow-hidden h-72 sm:h-96 lg:h-[400px]">
+                    <img src="img/foto 04.jpg" 
+                         alt="Flamengo" 
+                         onerror="this.src='https://placehold.co/800x400/166534/ffffff?text=Futebol'"
+                         class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out">
+                    <span class="absolute top-4 left-4 bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+                        Flamengo
+                    </span>
+                </div>
+                
+                <div class="p-6 sm:p-8 bg-white">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4 group-hover:text-green-600 transition-colors">
+                        Com a vitoria este domingo sobre o Bragantino flamento se isola na liderança, veja os detalhes da partida.
+                    </h2>
+                    <p class="text-gray-600 text-lg mb-6 line-clamp-3">
+                        Com o desfalque de dois titulares cruciais, o comandante aposta em um esquema ofensivo inédito nos treinamentos de hoje, surpreendendo a imprensa internacional e os torcedores.
+                    </p>
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm text-gray-500 font-medium">Há 30 minutos</span>
+                        <a href="#" class="inline-flex items-center text-green-600 font-semibold hover:text-green-800">
+                            Detalhes da Escalada
+                            <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Grid de Notícias Menores -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <article class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400/2563eb/ffffff?text=Champions+League" 
+                             alt="Imagem secundária" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-sm">
+                            Futebol Internacional
+                        </span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <a href="#" class="block group-hover:text-blue-600 transition-colors">
+                            <h3 class="text-xl font-bold text-gray-900 leading-snug mb-3">
+                                Jogão! Real Madrid vira nos acréscimos e vai à semifinal da Champions
+                            </h3>
+                        </a>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">
+                            Em uma noite mágica no Bernabéu, equipe merengue mostra mais uma vez o peso da sua camisa no cenário europeu.
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium mt-auto">Hoje, 17:45</span>
+                    </div>
+                </article>
+
+                <article class="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow border border-gray-100">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://placehold.co/600x400/ea580c/ffffff?text=Basquete" 
+                             alt="Imagem secundária" 
+                             class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500">
+                        <span class="absolute top-3 left-3 bg-orange-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-sm">
+                            Basquete / NBA
+                        </span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow">
+                        <a href="#" class="block group-hover:text-orange-600 transition-colors">
+                            <h3 class="text-xl font-bold text-gray-900 leading-snug mb-3">
+                                Temporada histórica: Armador quebra o recorde de bolas de três em um único jogo
+                            </h3>
+                        </a>
+                        <p class="text-gray-600 text-sm mb-4 flex-grow line-clamp-3">
+                            Fãs de basquete testemunharam história na noite passada. Atleta acertou impressionantes 16 bolas de longa distância.
+                        </p>
+                        <span class="text-xs text-gray-400 font-medium mt-auto">Hoje, 09:12</span>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <aside class="lg:w-1/3 flex flex-col gap-6">
+            
+            <!-- Widget: Raio-X da Seleção -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+                <div class="bg-green-700 text-white p-4">
+                    <h3 class="font-bold text-lg flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                        Raio-X da Seleção
+                    </h3>
+                </div>
+                <div class="p-5">
+                    <h4 class="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4 border-b pb-2">
+                        Média de gols por jogo (Atacantes)
+                    </h4>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <img src="https://placehold.co/40x40/333333/ffffff?text=V" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-gray-100 group-hover:border-green-500 transition-colors">
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm">Vini Jr.</p>
+                                    <p class="text-xs text-gray-500">Real Madrid</p>
+                                </div>
+                            </div>
+                            <div class="bg-green-100 text-green-800 font-bold px-3 py-1 rounded-lg text-sm">0.75</div>
+                        </li>
+                        <li class="flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <img src="https://placehold.co/40x40/333333/ffffff?text=R" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-gray-100 group-hover:border-green-500 transition-colors">
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm">Rodrygo</p>
+                                    <p class="text-xs text-gray-500">Real Madrid</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-100 text-gray-800 font-bold px-3 py-1 rounded-lg text-sm group-hover:bg-green-50 transition-colors">0.62</div>
+                        </li>
+                        <li class="flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <img src="https://placehold.co/40x40/333333/ffffff?text=E" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-gray-100 group-hover:border-green-500 transition-colors">
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm">Endrick</p>
+                                    <p class="text-xs text-gray-500">Real Madrid</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-100 text-gray-800 font-bold px-3 py-1 rounded-lg text-sm group-hover:bg-green-50 transition-colors">0.58</div>
+                        </li>
+                        <li class="flex items-center justify-between group">
+                            <div class="flex items-center gap-3">
+                                <img src="https://placehold.co/40x40/333333/ffffff?text=P" alt="Avatar" class="w-10 h-10 rounded-full border-2 border-gray-100 group-hover:border-green-500 transition-colors">
+                                <div>
+                                    <p class="font-bold text-gray-900 text-sm">Pedro</p>
+                                    <p class="text-xs text-gray-500">Flamengo</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-100 text-gray-800 font-bold px-3 py-1 rounded-lg text-sm group-hover:bg-green-50 transition-colors">0.55</div>
+                        </li>
+                    </ul>
+                    
+                    <a href="#" class="block text-center text-sm font-semibold text-green-700 hover:text-green-900 mt-6 pt-4 border-t border-gray-100">
+                        Ver estatísticas completas &rarr;
+                    </a>
+                </div>
+            </div>
+
+            <!-- Widget: Mais lidas -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-5">
+                <h3 class="font-bold text-lg mb-4 text-gray-900 border-l-4 border-blue-600 pl-3">Mais Lidas: Esportes</h3>
+                <ol class="list-decimal list-inside space-y-4 text-sm">
+                    <li class="text-gray-600 hover:text-blue-600 cursor-pointer transition-colors border-b border-gray-50 pb-2">Mercado da bola: As últimas transferências.</li>
+                    <li class="text-gray-600 hover:text-blue-600 cursor-pointer transition-colors border-b border-gray-50 pb-2">Entenda a polêmica com o VAR no clássico.</li>
+                    <li class="text-gray-600 hover:text-blue-600 cursor-pointer transition-colors border-b border-gray-50 pb-2">Guia completo para as Olimpíadas de 2028.</li>
+                    <li class="text-gray-600 hover:text-blue-600 cursor-pointer transition-colors">Nova arena recebe certificação internacional.</li>
+                </ol>
+            </div>
+        </aside>
+
+    </main>
+
+    <!-- RODAPÉ / FOOTER -->
+   <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <a href="index.html" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre o Brasil e o mundo.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="termo de uso.html" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Assine nossa Newsletter</h4>
+                <div class="flex">
+                    <a href="assinatura.html" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-6 py-3 w-full rounded-md font-semibold transition-colors shadow-md block">
+                        Assinar Newsletter
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+            <h6>Em desenvolvimento por alunos do turma de Banco de Dados</h6>
+        </div>
+    </footer>
+
+    <!-- SCRIPT DE NAVEGAÇÃO E API DE ESPORTES -->
+    <script src="js/esportes.js" defer></script>
+</body>
+</html>
