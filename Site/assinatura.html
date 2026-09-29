@@ -6,225 +6,12 @@
 <title>EqpEstacio Pay — Checkout</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --navy:#0B1F45;
-    --navy-soft:#16305C;
-    --navy-line:#2A4576;
-    --white:#FFFFFF;
-    --paper:#F6F7F9;
-    --red:#E4141C;
-    --red-dark:#B10E15;
-    --red-soft:#FDE9EA;
-    --gray-900:#16181D;
-    --gray-600:#5C6270;
-    --gray-400:#98A0AF;
-    --line:#E2E5EA;
-    --sans:'Inter', sans-serif;
-    --display:'Space Grotesk', sans-serif;
-    --mono:'IBM Plex Mono', monospace;
-  }
-  *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
-  body{background:var(--paper); color:var(--gray-900); font-family:var(--sans); min-height:100vh;}
-  .hidden{display:none !important;}
-
-  .topbar{
-    background:var(--navy);
-    color:var(--white);
-    padding:14px 28px;
-    display:flex; align-items:center; justify-content:space-between;
-  }
-  .brand{font-family:var(--display); font-weight:700; font-size:18px; letter-spacing:-0.01em;}
-  .brand span{color:var(--red);}
-  .secure-tag{display:flex; align-items:center; gap:6px; font-size:12px; color:#C7D0E4; font-family:var(--mono);}
-  .secure-tag svg{width:12px;height:12px;fill:#C7D0E4;}
-
-  .btn-voltar{
-    display:flex; align-items:center; gap:5px;
-    background:transparent;
-    border:1px solid var(--navy-line);
-    color:#C7D0E4;
-    font-family:var(--sans);
-    font-size:11.5px;
-    font-weight:500;
-    padding:5px 10px;
-    border-radius:7px;
-    cursor:pointer;
-    transition:background .2s ease, color .2s ease;
-  }
-  .btn-voltar:hover{background:var(--navy-soft); color:var(--white);}
-  .btn-voltar svg{width:12px;height:12px;fill:currentColor;}
-
-  .page{max-width:1020px; margin:0 auto; padding:40px 20px 80px;}
-
-  .checkout{
-    display:grid;
-    grid-template-columns: 0.95fr 1.2fr;
-    border-radius:14px;
-    overflow:hidden;
-    box-shadow:0 20px 50px rgba(11,31,69,0.14);
-  }
-  @media (max-width:760px){ .checkout{grid-template-columns:1fr;} }
-
-  /* PAINEL ESQUERDO */
-  .panel-left{background:var(--navy); color:var(--white); padding:34px 30px;}
-  .panel-left h2{font-family:var(--display); font-size:15px; font-weight:600; color:#AEBBDA; margin:0 0 20px;}
-
-  .visual-box{
-    background:linear-gradient(135deg, var(--navy-soft) 0%, #081633 100%);
-    border:1px solid var(--navy-line);
-    border-radius:14px;
-    padding:22px;
-    min-height:170px;
-    position:relative;
-    margin-bottom:28px;
-    overflow:hidden;
-  }
-  .visual-box::after{
-    content:"";
-    position:absolute; right:-40px; top:-60px;
-    width:180px; height:180px;
-    background:var(--red); opacity:0.20; border-radius:50%; filter:blur(14px);
-  }
-
-  /* cartao */
-  #visual-card{display:flex; flex-direction:column; justify-content:space-between; height:170px;}
-  .chip{width:38px; height:28px; border-radius:5px; background:linear-gradient(135deg,#D7D7D7,#A9A9A9); z-index:2; position:relative;}
-  .card-number-preview{font-family:var(--mono); font-size:19px; letter-spacing:0.06em; color:var(--white); z-index:2; position:relative;}
-  .card-meta-preview{display:flex; justify-content:space-between; font-family:var(--mono); font-size:11px; color:#C7D0E4; text-transform:uppercase; letter-spacing:0.03em; z-index:2; position:relative;}
-  .card-brand-mark{position:absolute; right:20px; bottom:20px; font-family:var(--display); font-weight:700; font-size:13px; color:var(--red); z-index:2;}
-
-  /* pix / boleto visual */
-  .method-visual{position:relative; z-index:2; display:flex; flex-direction:column; gap:8px; justify-content:center; height:126px;}
-  .method-visual .icon{width:34px; height:34px; fill:var(--red);}
-  .method-visual .mtitle{font-family:var(--display); font-weight:700; font-size:16px;}
-  .method-visual .msub{font-size:12.5px; color:#C7D0E4; line-height:1.5;}
-
-  .line-item{display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px solid var(--navy-line); font-size:14px;}
-  .line-item .desc{color:var(--white);}
-  .line-item .desc small{display:block; color:#8FA0C8; font-size:11.5px; margin-top:2px;}
-  .line-item .val{font-family:var(--mono); color:#E4E9F5;}
-  .total-row{display:flex; justify-content:space-between; padding-top:16px; margin-top:4px; font-size:16px; font-weight:600; color:var(--white);}
-  .total-row .val{font-family:var(--mono); color:var(--red);}
-  .discount-note{font-size:11.5px; color:#8FA0C8; margin-top:6px;}
-
-  .pipeline{margin-top:30px;}
-  .pipeline h3{font-size:11px; color:#8FA0C8; font-family:var(--mono); letter-spacing:0.04em; margin:0 0 12px;}
-  .step{display:flex; gap:12px; padding:8px 0; font-size:13px; color:#8FA0C8; align-items:flex-start; transition:color .25s ease;}
-  .step .dot{width:8px; height:8px; border-radius:50%; background:var(--navy-line); margin-top:5px; flex-shrink:0; transition:background .25s ease, box-shadow .25s ease;}
-  .step.active{color:var(--white);}
-  .step.active .dot{background:var(--red); box-shadow:0 0 0 4px rgba(228,20,28,0.25);}
-  .step.done{color:var(--white);}
-  .step.done .dot{background:#F2F2F2;}
-  .step.fail .dot{background:var(--red);}
-  .step b{font-weight:600;}
-  .step span.explain{display:block; color:#7385AC; font-size:11.5px; margin-top:2px; line-height:1.4;}
-  .step.active span.explain, .step.done span.explain{color:#AEBBDA;}
-
-  /* PAINEL DIREITO */
-  .panel-right{background:var(--white); padding:30px 32px;}
-
-  .tabs{display:flex; gap:6px; margin-bottom:24px; background:var(--paper); padding:5px; border-radius:9px;}
-  .tab-btn{
-    flex:1; padding:10px 8px; border:none; background:transparent; border-radius:6px;
-    font-family:var(--sans); font-weight:600; font-size:13.5px; color:var(--gray-600);
-    cursor:pointer; transition:background .15s ease, color .15s ease;
-  }
-  .tab-btn.active{background:var(--navy); color:var(--white);}
-
-  form{display:flex; flex-direction:column; gap:16px;}
-  .field label{display:block; font-size:12.5px; font-weight:600; margin-bottom:6px; color:var(--gray-900);}
-  .field input{
-    width:100%; font-family:var(--mono); font-size:14.5px; padding:12px 13px;
-    border:1.5px solid var(--line); border-radius:8px; background:var(--white); color:var(--gray-900);
-    outline:none; transition:border-color .15s ease, box-shadow .15s ease;
-  }
-  .field input#holder{font-family:var(--sans); text-transform:uppercase; font-weight:500;}
-  .field input:focus{border-color:var(--navy); box-shadow:0 0 0 3px rgba(11,31,69,0.08);}
-  .field input.invalid{border-color:var(--red); box-shadow:0 0 0 3px var(--red-soft);}
-  .field .err{font-size:12px; color:var(--red-dark); margin-top:5px; min-height:14px; font-weight:500;}
-  .row3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:14px;}
-
-  .card-number-wrap{position:relative;}
-  .brand-tag{
-    position:absolute; right:12px; top:50%; transform:translateY(-50%);
-    font-family:var(--sans); font-size:10.5px; font-weight:700; padding:3px 8px; border-radius:4px;
-    background:var(--navy); color:var(--white); letter-spacing:0.03em;
-  }
-
-  .test-cards{
-    font-size:11.5px; color:var(--gray-600); background:var(--paper);
-    border:1px dashed var(--line); border-radius:8px; padding:12px 14px; line-height:1.7;
-  }
-  .test-cards b{color:var(--gray-900); font-family:var(--mono); font-weight:600;}
-
-  .pay-btn{
-    margin-top:6px; padding:15px 18px; border:none; border-radius:8px;
-    background:var(--red); color:var(--white); font-size:15px; font-family:var(--display); font-weight:600;
-    cursor:pointer; display:flex; align-items:center; justify-content:center; gap:10px;
-    transition:background .15s ease, transform .1s ease; width:100%;
-  }
-  .pay-btn:hover{background:var(--red-dark);}
-  .pay-btn:active{transform:scale(0.99);}
-  .pay-btn:disabled{opacity:0.55; cursor:not-allowed;}
-  .pay-btn .lock{width:13px; height:13px; fill:var(--white);}
-  .pay-btn.secondary{background:var(--navy);}
-  .pay-btn.secondary:hover{background:#0E2C5E;}
-
-  .spinner{width:15px; height:15px; border-radius:50%; border:2px solid rgba(255,255,255,0.4); border-top-color:var(--white); animation:spin .7s linear infinite; display:none;}
-  @keyframes spin{to{transform:rotate(360deg);}}
-
-  .result{margin-top:10px; border-radius:9px; padding:16px 18px; display:none; font-size:14px;}
-  .result.show{display:block;}
-  .result.success{background:var(--navy); border:1px solid var(--navy); color:var(--white);}
-  .result.success .rtitle{color:var(--white);}
-  .result.success .rtitle::before{content:"✓  "; color:var(--red);}
-  .result.fail{background:var(--red-soft); border:1px solid #F5C4C6; color:var(--red-dark);}
-  .result .rtitle{font-weight:700; font-size:15px; margin-bottom:4px; font-family:var(--display);}
-  .result .rmeta{font-family:var(--mono); font-size:11.5px; opacity:0.75; margin-top:8px;}
-
-  /* PIX */
-  .pix-box{display:flex; gap:22px; align-items:flex-start; flex-wrap:wrap;}
-  .qr-wrap{
-    background:var(--white); border:1.5px solid var(--line); border-radius:10px; padding:10px;
-    width:150px; height:150px; display:flex; align-items:center; justify-content:center; flex-shrink:0;
-  }
-  .pix-info{flex:1; min-width:180px;}
-  .pix-timer{font-family:var(--mono); font-size:12.5px; color:var(--navy); font-weight:600; margin-bottom:10px;}
-  .copy-row{display:flex; gap:8px; margin-top:6px;}
-  .copy-input{
-    flex:1; font-family:var(--mono); font-size:11.5px; padding:10px 11px; border:1.5px solid var(--line);
-    border-radius:7px; background:var(--paper); color:var(--gray-600); overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
-  }
-  .copy-btn{
-    padding:0 16px; border:none; border-radius:7px; background:var(--navy); color:var(--white);
-    font-family:var(--sans); font-weight:600; font-size:12.5px; cursor:pointer; white-space:nowrap;
-  }
-  .copy-btn:hover{background:#0E2C5E;}
-  .copy-btn.copied{background:var(--red);}
-
-  /* BOLETO */
-  .barcode-wrap{background:var(--white); border:1.5px solid var(--line); border-radius:10px; padding:14px; margin-bottom:14px;}
-  .linha-digitavel{
-    font-family:var(--mono); font-size:13px; letter-spacing:0.02em; color:var(--gray-900);
-    background:var(--paper); border:1px dashed var(--line); border-radius:7px; padding:11px 12px; margin-bottom:12px; word-break:break-all;
-  }
-  .boleto-meta{display:flex; justify-content:space-between; font-size:12.5px; color:var(--gray-600); margin-bottom:16px;}
-  .boleto-meta b{color:var(--gray-900);}
-
-  .top-note{font-family:var(--mono); font-size:11.5px; color:var(--gray-600); text-align:center; margin:16px auto 0; max-width:600px;}
-
-  footer{
-    max-width:1020px; margin:44px auto 0; font-size:12px; color:var(--gray-600);
-    border-top:1px solid var(--line); padding:16px 20px 0; line-height:1.6;
-  }
-</style>
+<link rel="stylesheet" href="css/assinatura.css">
 </head>
 <body>
 
 <div class="topbar">
-  <div style="display:flex; align-items:center; gap:16px;">
+  <div class="topbar-left">
     <button class="btn-voltar" onclick="window.history.back()">
       <svg viewBox="0 0 24 24"><path d="M20 11H7.83l4.88-4.88a1 1 0 0 0-1.42-1.41l-6.58 6.58a1 1 0 0 0 0 1.42l6.58 6.58a1 1 0 0 0 1.42-1.41L7.83 13H20a1 1 0 0 0 0-2z"/></svg>
       Voltar
@@ -330,7 +117,7 @@
           <label for="number">Número do cartão</label>
           <div class="card-number-wrap">
             <input type="text" id="number" inputmode="numeric" placeholder="0000 0000 0000 0000" autocomplete="cc-number" maxlength="19">
-            <span class="brand-tag" id="brandTag" style="display:none;"></span>
+            <span class="brand-tag hidden" id="brandTag"></span>
           </div>
           <div class="err" id="err-number"></div>
         </div>
@@ -354,14 +141,14 @@
           <div class="qr-wrap" id="qrHolder"></div>
           <div class="pix-info">
             <div class="pix-timer" id="pixTimer">Código expira em 15:00</div>
-            <div style="font-size:12.5px; color:var(--gray-600); line-height:1.5;">Abra o app do seu banco, escolha Pix → Ler QR Code, ou copie o código abaixo e cole na opção Pix Copia e Cola.</div>
+            <div class="pix-instructions">Abra o app do seu banco, escolha Pix → Ler QR Code, ou copie o código abaixo e cole na opção Pix Copia e Cola.</div>
             <div class="copy-row">
               <div class="copy-input" id="pixCode"></div>
               <button type="button" class="copy-btn" id="copyPixBtn">Copiar</button>
             </div>
           </div>
         </div>
-        <button type="button" class="pay-btn secondary" id="confirmPixBtn" style="margin-top:22px;">
+        <button type="button" class="pay-btn secondary confirm-pix-btn" id="confirmPixBtn">
           <span class="spinner" id="spinnerPix"></span>
           <span id="confirmPixLabel">Simular pagamento confirmado</span>
         </button>
@@ -371,8 +158,8 @@
       <div id="tab-boleto" class="hidden">
         <div class="barcode-wrap" id="barcodeHolder"></div>
         <div class="linha-digitavel" id="linhaDigitavel"></div>
-        <div class="copy-row" style="margin-bottom:14px;">
-          <button type="button" class="copy-btn" id="copyBoletoBtn" style="flex:1;">Copiar linha digitável</button>
+        <div class="copy-row copy-row-boleto">
+          <button type="button" class="copy-btn copy-btn-full" id="copyBoletoBtn">Copiar linha digitável</button>
         </div>
         <div class="boleto-meta">
           <span>Vencimento: <b id="boletoVenc"></b></span>
@@ -468,8 +255,8 @@
     else if(/^5[1-5]/.test(digits)) brand = 'MASTERCARD';
     else if(/^3[47]/.test(digits)) brand = 'AMEX';
     else if(/^6(?:011|5)/.test(digits)) brand = 'ELO/DISC';
-    if(brand && digits.length >= 2){ brandTag.textContent = brand; brandTag.style.display = 'inline-block'; previewBrand.textContent = brand; }
-    else { brandTag.style.display = 'none'; previewBrand.textContent = ''; }
+    if(brand && digits.length >= 2){ brandTag.textContent = brand; brandTag.classList.remove('hidden'); previewBrand.textContent = brand; }
+    else { brandTag.classList.add('hidden'); previewBrand.textContent = ''; }
   }
 
   function luhnCheck(num){
