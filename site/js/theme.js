@@ -1,5 +1,13 @@
 // Alterna entre modo claro e escuro, com o ícone (sol/lua) refletindo o
 // modo atual e a preferência salva no localStorage entre visitas.
+//
+// Importante: o Font Awesome (via Kit) troca automaticamente cada <i> por um
+// <svg> depois que a página carrega. Depois dessa troca, mudar a classe do
+// elemento (ex: de "fa-sun" para "fa-moon") não atualiza mais o desenho do
+// ícone na tela — por isso o ícone antes só "mudava" ao atualizar a página
+// (quando o <i> ainda não tinha virado <svg>). A correção usa DOIS ícones
+// (sol e lua) e apenas mostra/esconde cada um, o que funciona mesmo depois
+// da troca do Font Awesome.
 (function () {
     var STORAGE_KEY = 'site-theme';
 
@@ -22,9 +30,16 @@
     function applyTheme(theme) {
         document.documentElement.setAttribute('data-theme', theme);
 
-        var icon = document.getElementById('theme-toggle-icon');
-        if (icon) {
-            icon.className = theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+        var sol = document.getElementById('theme-icon-sun');
+        var lua = document.getElementById('theme-icon-moon');
+        if (sol && lua) {
+            if (theme === 'dark') {
+                sol.classList.add('hidden');
+                lua.classList.remove('hidden');
+            } else {
+                lua.classList.add('hidden');
+                sol.classList.remove('hidden');
+            }
         }
 
         var btn = document.getElementById('theme-toggle-btn');

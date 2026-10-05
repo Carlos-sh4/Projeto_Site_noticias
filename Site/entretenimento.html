@@ -31,22 +31,27 @@
             <div class="flex items-center gap-3">
 
             <!-- Navegação Desktop -->
-            <nav class="hidden lg:flex space-x-3 xl:space-x-5 items-center">
-                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-regular fa-futbol"></i> Esportes</a>
-                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-coins"></i> Economia</a>
-                <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-scale-balanced"></i> Política</a>
-                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-regular fa-flag"></i> Brasil</a>
-                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-earth-americas"></i> Mundo</a>
-                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i>Saúde</a>
-                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
-                <a href="entretenimento.html" class="text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide border-b-2 border-blue-600"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
-                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
-                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
+            <nav class="hidden lg:flex space-x-2 xl:space-x-3 items-center">
+                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-futbol"></i> Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-coins"></i> Economia</a>
+                <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-scale-balanced"></i> Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-flag"></i> Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-earth-americas"></i> Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i>Saúde</a>
+                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide border-b-2 border-blue-600"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
             </nav>
 
                 <button id="theme-toggle-btn" type="button" aria-label="Mudar para o modo escuro">
-                    <i id="theme-toggle-icon" class="fa-solid fa-sun"></i>
+                    <i id="theme-icon-sun" class="fa-solid fa-sun"></i>
+                    <i id="theme-icon-moon" class="fa-solid fa-moon hidden"></i>
                 </button>
+
+                <a id="auth-nav-btn" href="login.html" class="relative text-gray-600 hover:text-blue-600 p-2" aria-label="Entrar ou cadastrar-se" title="Entrar ou cadastrar-se">
+                    <i id="auth-nav-icon" class="fa-regular fa-user text-lg"></i>
+                </a>
 
             <!-- Botão de Menu Mobile -->
             <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
@@ -57,9 +62,18 @@
             </div>
         </div>
 
-        <!-- Menu Mobile (Oculto por padrão) -->
-        <div id="mobile-menu" class="hidden lg:hidden bg-white border-t">
-            <div class="px-4 pt-2 pb-4 space-y-1 shadow-inner max-h-[70vh] overflow-y-auto">
+        <!-- Camada escura atrás do menu lateral -->
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+
+        <!-- Menu Mobile: painel lateral à direita -->
+        <div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80%] bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+            <div class="flex items-center justify-between px-4 py-4 border-b">
+                <span class="font-bold text-gray-700 uppercase text-sm tracking-wide">Menu</span>
+                <button id="mobile-menu-close" aria-label="Fechar menu" class="text-gray-600 hover:text-blue-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="px-4 pt-3 pb-4 space-y-1">
                 <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-futbol w-5 text-center mr-1"></i> Esportes</a>
                 <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-coins w-5 text-center mr-1"></i> Economia</a>
                 <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-scale-balanced w-5 text-center mr-1"></i> Política</a>
@@ -162,6 +176,8 @@
 
     <!-- SCRIPT MENU MOBILE -->
     <script src="js/theme.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/nav.js" defer></script>
     <script src="js/entretenimento.js" defer></script>
 </body>
 </html>

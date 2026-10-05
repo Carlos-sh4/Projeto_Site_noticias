@@ -1,12 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Menu mobile
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-    });
-
     // Envio do formulário (front-end apenas; sem backend conectado ainda)
+    // (o menu mobile agora é controlado por js/nav.js)
     const form = document.getElementById('form-contato');
     const sucesso = document.getElementById('mensagem-sucesso');
     form.addEventListener('submit', (e) => {

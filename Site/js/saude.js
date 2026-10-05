@@ -1,3 +1,1 @@
-document.getElementById('mobile-menu-btn').addEventListener('click', () => {
-    document.getElementById('mobile-menu').classList.toggle('hidden');
-});
+// O menu mobile agora é controlado por js/nav.js (painel lateral à direita).

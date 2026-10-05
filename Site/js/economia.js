@@ -1,11 +1,5 @@
-// --- 1. LÓGICA DO MENU MOBILE ---
-const btn = document.getElementById('mobile-menu-btn');
-const menu = document.getElementById('mobile-menu');
-btn.addEventListener('click', () => {
-    menu.classList.toggle('hidden');
-});
-
-// --- 2. LÓGICA DA API FINANCEIRA (AWESOME API) E CALCULADORA ---
+// --- LÓGICA DA API FINANCEIRA (AWESOME API) E CALCULADORA ---
+// (o menu mobile agora é controlado por js/nav.js)
 const amountInput = document.getElementById('amount');
 const currencySelect = document.getElementById('currency');
 const resultDiv = document.getElementById('conversion-result');

@@ -1,16 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     // ----------------------------------------------------
-    // 1. CÓDIGO DO MENU MOBILE (MANTIDO)
-    // ----------------------------------------------------
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-
-    btn.addEventListener('click', () => {
-        menu.classList.toggle('hidden');
-    });
-
-    // ----------------------------------------------------
-    // 2. CÓDIGO DE INTEGRAÇÃO COM API DE ESPORTES
+    // CÓDIGO DE INTEGRAÇÃO COM API DE ESPORTES
+    // (o menu mobile agora é controlado por js/nav.js)
     // Utilizamos a API Pública da ESPN para placares do Brasileirão
     // ----------------------------------------------------
     const tickerContainer = document.getElementById('jogos-ticker');

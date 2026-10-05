@@ -1,12 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-
-    btn.addEventListener('click', () => {
-        // Alterna a visibilidade do menu (removendo ou adicionando a classe "hidden")
-        menu.classList.toggle('hidden');
-    });
-});
+// O menu mobile agora é controlado por js/nav.js (painel lateral à direita).
 
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
