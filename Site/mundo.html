@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('site-theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mundo - Seu Site de Notícias</title>
     <!-- Configuração de Ícones-->
     <script src="https://kit.fontawesome.com/7c95230d43.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/mundo.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
@@ -18,6 +27,8 @@
             <a href="index.html" title="Página Inicial" class="flex-shrink-0">
                 <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
             </a>
+
+            <div class="flex items-center gap-3">
 
             <!-- Navegação Desktop -->
             <nav class="hidden lg:flex space-x-3 xl:space-x-5 items-center">
@@ -33,12 +44,17 @@
                 <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-2 text-sm uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
             </nav>
 
+                <button id="theme-toggle-btn" type="button" aria-label="Mudar para o modo escuro">
+                    <i id="theme-toggle-icon" class="fa-solid fa-sun"></i>
+                </button>
+
             <!-- Botão de Menu Mobile -->
             <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
                 <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
                 </svg>
             </button>
+            </div>
         </div>
 
         <!-- Menu Mobile (Oculto por padrão) -->
@@ -146,6 +162,7 @@
     </footer>
 
     <!-- SCRIPT MENU MOBILE -->
+    <script src="js/theme.js" defer></script>
     <script src="js/mundo.js" defer></script>
 </body>
 </html>
