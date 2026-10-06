@@ -1,0 +1,46 @@
+USE LISIMETRO -- Altere para o banco de dados oficial
+GO
+
+
+CREATE TABLE Usuario (
+ID_Usuario INT IDENTITY(1,1) PRIMARY KEY
+, NomeUsuario VARCHAR(100) NOT NULL UNIQUE
+, Email VARCHAR(255) NOT NULL UNIQUE
+, TipoUsuario VARCHAR(20) NOT NULL CHECK (TipoUsuario IN ('Leitor', 'Moderador', 'Admin'))
+, SenhaHash VARBINARY(64) NOT NULL -- nunca a senha em texto puro
+, DataCadastro DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+, Ativo BIT NOT NULL DEFAULT 1 -- desativa em vez de apagar
+);
+
+CREATE TABLE Categorias (
+ID_Categoria INT IDENTITY(1,1) PRIMARY KEY
+, NomeCategoria VARCHAR(50) NOT NULL UNIQUE
+, DescricaoCategoria VARCHAR(255) NULL
+);
+
+CREATE TABLE Posts (
+ID_Post INT IDENTITY(1,1) PRIMARY KEY
+, Titulo_Post VARCHAR(255) NOT NULL
+, Resumo VARCHAR(1000) NULL
+, URL_Post VARCHAR(850) NOT NULL UNIQUE -- evita gravar a mesma noticia duas vezes
+, URL_Imagem VARCHAR(850) NULL
+, Fonte VARCHAR(100) NULL
+, ID_Categoria INT NOT NULL REFERENCES Categorias (ID_Categoria)
+, ID_Autor INT NULL REFERENCES Usuario (ID_Usuario)
+, DataPublicacao DATETIME2 NOT NULL
+, DataColeta DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+);
+
+CREATE TABLE Comentarios (
+ID_Comentario INT IDENTITY(1,1) PRIMARY KEY
+, ID_Post INT NOT NULL REFERENCES Posts (ID_Post)
+, ID_Autor INT NOT NULL REFERENCES Usuario (ID_Usuario)
+, Texto VARCHAR(MAX) NOT NULL
+, DataComentario DATETIME2 NOT NULL DEFAULT SYSDATETIME()
+, Status_Moderacao VARCHAR(20) NOT NULL DEFAULT 'Pendente' CHECK (Status_Moderacao IN ('Pendente', 'Aprovado', 'Rejeitado'))
+, ID_Moderador INT NULL REFERENCES Usuario (ID_Usuario)
+, DataModeracao DATETIME2 NULL
+);
+
+CREATE INDEX IX_Posts_Categoria_Data ON Posts (ID_Categoria, DataPublicacao DESC);
+CREATE INDEX IX_Comentarios_Post ON Comentarios (ID_Post, Status_Moderacao);
