@@ -1,59 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=uACAkhCy8I4dwLxPMCK-QRb2lJXTKCzaZJG4y5WabR8JkDhPfnRF0eDWrtY6kD95J7Zcq0BvB3didrfHNpeDX04TpsJLheWWzr0Ioql4wmRjUP_U6Qewa8DtPLPQOV9W" charset="UTF-8"></script><script>
+        (function () {
+            try {
+                var t = localStorage.getItem('site-theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Política - Seu Site de Notícias</title>
+    <!-- Configuração de Ícones-->
+    <script src="https://kit.fontawesome.com/7c95230d43.js" crossorigin="anonymous"></script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes marquee {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
-        }
-        .animate-marquee {
-            display: inline-block;
-            white-space: nowrap;
-            animation: marquee 30s linear infinite;
-        }
-        .animate-marquee:hover { animation-play-state: paused; }
-    </style>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/politica.css">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
 
     <!-- CABEÇALHO / HEADER -->
     <header class="bg-white shadow-md sticky top-0 z-50">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-             <a href="index.html" class="flex-shrink-0">
-                <img src="img/logo 01.gif" alt="Logo do Site" class="h-24 w-auto rounded">
+            <!-- Logo -->
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
             </a>
-            <button id="mobile-menu-button" class="lg:hidden text-gray-700 hover:text-blue-900 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
-            <nav class="hidden lg:flex space-x-6 font-semibold text-gray-700">
-                <a href="esportes.html" class="hover:text-blue-900 transition">ESPORTES</a>
-                <a href="economia.html" class="hover:text-blue-900 transition">ECONOMIA</a>
-                <a href="politica.html" class="text-blue-900 border-b-2 border-blue-900">POLÍTICA</a>
-                <a href="brasil.html" class="hover:text-blue-900 transition">BRASIL</a>
-                <a href="mundo.html" class="hover:text-blue-900 transition">MUNDO</a>
-                <a href="saude.html" class="hover:text-blue-900 transition">SAÚDE</a>
-                <a href="tecnologia.html" class="hover:text-blue-900 transition">TECNOLOGIA</a>
-                <a href="entretenimento.html" class="hover:text-blue-900 transition">ENTRETENIMENTO</a>
+
+            <div class="flex items-center gap-3">
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden lg:flex space-x-2 xl:space-x-3 items-center">
+                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-futbol"></i> Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-coins"></i> Economia</a>
+                <a href="politica.html" class="text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide border-b-2 border-blue-600"><i class="fa-solid fa-scale-balanced"></i> Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-flag"></i> Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-earth-americas"></i> Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i> Saúde</a>
+                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
             </nav>
-        </div>
-        <!-- Menu Mobile -->
-        <nav id="mobile-menu" class="hidden lg:hidden bg-gray-100 border-t border-gray-200 max-h-[70vh] overflow-y-auto">
-            <div class="flex flex-col px-4 py-2 space-y-3 font-semibold text-gray-700">
-                <a href="esportes.html" class="block hover:text-blue-900">ESPORTES</a>
-                <a href="economia.html" class="block hover:text-blue-900">ECONOMIA</a>
-                <a href="politica.html" class="block text-blue-900">POLÍTICA</a>
-                <a href="brasil.html" class="block hover:text-blue-900">BRASIL</a>
-                <a href="mundo.html" class="block hover:text-blue-900">MUNDO</a>
-                <a href="saude.html" class="block hover:text-blue-900">SAÚDE</a>
-                <a href="tecnologia.html" class="block hover:text-blue-900">TECNOLOGIA</a>
-                <a href="entretenimento.html" class="block hover:text-blue-900">ENTRETENIMENTO</a>
+
+                <button id="theme-toggle-btn" type="button" aria-label="Mudar para o modo escuro">
+                    <i id="theme-icon-sun" class="fa-solid fa-sun"></i>
+                    <i id="theme-icon-moon" class="fa-solid fa-moon hidden"></i>
+                </button>
+
+                <a id="auth-nav-btn" href="login.html" class="relative text-gray-600 hover:text-blue-600 p-2" aria-label="Entrar ou cadastrar-se" title="Entrar ou cadastrar-se">
+                    <i id="auth-nav-icon" class="fa-regular fa-user text-lg"></i>
+                </a>
+
+            <!-- Botão de Menu Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
             </div>
-        </nav>
+        </div>
+
+        <!-- Camada escura atrás do menu lateral -->
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+
+        <!-- Menu Mobile: painel lateral à direita -->
+        <div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80%] bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+            <div class="flex items-center justify-between px-4 py-4 border-b">
+                <span class="font-bold text-gray-700 uppercase text-sm tracking-wide">Menu</span>
+                <button id="mobile-menu-close" aria-label="Fechar menu" class="text-gray-600 hover:text-blue-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="px-4 pt-3 pb-4 space-y-1">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-futbol w-5 text-center mr-1"></i> Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-coins w-5 text-center mr-1"></i> Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-blue-700 bg-blue-50 uppercase"><i class="fa-solid fa-scale-balanced w-5 text-center mr-1"></i> Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-flag w-5 text-center mr-1"></i> Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-earth-americas w-5 text-center mr-1"></i> Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-hand-holding-medical w-5 text-center mr-1"></i> Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-robot w-5 text-center mr-1"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-masks-theater w-5 text-center mr-1"></i> Entretenimento</a>
+                <a href="assinatura.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-credit-card w-5 text-center mr-1"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-headset w-5 text-center mr-1"></i> Fale Conosco</a>
+            </div>
+        </div>
     </header>
+
 
     <!-- TICKER POLÍTICA -->
     <div class="bg-gray-800 text-white overflow-hidden py-2 shadow-inner">
@@ -65,7 +99,7 @@
     </div>
 
     <!-- CONTEÚDO PRINCIPAL: POLÍTICA -->
-   <main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
+     <main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
         <section class="lg:w-2/3 flex flex-col gap-8">
             <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
                 <a href="satira.html" class="block">
@@ -131,7 +165,7 @@
     </main>
 
     <!-- RODAPÉ / FOOTER -->
-   <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+    <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
                 <!-- Logo no Rodapé -->
@@ -145,18 +179,17 @@
             <div>
                 <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
                 <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="#" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="sobre_nos.html" class="hover:text-white transition-colors">Sobre nós</a></li>
                     <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
-                    <li><a href="termo de uso.html" class="hover:text-white transition-colors">Termos de Uso</a></li>
-                    <li><a href="#" class="hover:text-white transition-colors">Contato</a></li>
+                    <li><a href="termo_de_uso.html" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="fale-conosco.html" class="hover:text-white transition-colors">Contato</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-lg font-bold mb-4">Assine nossa Newsletter</h4>
                 <div class="flex">
-                    <a href="assinatura.html" class="bg-blue-600 hover:bg-blue-700 text-white text-center px-6 py-3 w-full rounded-md font-semibold transition-colors shadow-md block">
-                        Assinar Newsletter
-                    </a>
+                    <input type="email" placeholder="Seu e-mail" class="px-4 py-2 w-full rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md font-semibold transition-colors">Assinar</button>
                 </div>
             </div>
         </div>
@@ -167,10 +200,9 @@
     </footer>
 
     <!-- SCRIPT MENU MOBILE -->
-    <script>
-        document.getElementById('mobile-menu-button').addEventListener('click', () => {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-    </script>
+    <script src="js/theme.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/politica.js" defer></script>
 </body>
 </html>                    
