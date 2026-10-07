@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Praias de Pajuçara em Maceió batem recorde de turistas na alta temporada.">
+    <title>Praias de Pajuçara em Maceió batem recorde de turistas | Portal de Notícias Hoje</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        .animate-marquee {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 30s linear infinite;
+        }
+        .animate-marquee:hover { animation-play-state: paused; }
+        .article-content p {
+            margin-bottom: 1.25rem;
+            line-height: 1.85;
+        }
+        .article-content h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem;
+            color: #111827;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- CABEÇALHO -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logo do Site" class="h-24 w-auto rounded">
+            </a>
+
+            <button id="mobile-menu-button"
+                    class="lg:hidden text-gray-700 hover:text-blue-900 focus:outline-none"
+                    aria-label="Abrir menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+
+            <nav class="hidden lg:flex space-x-6 font-semibold text-gray-700">
+                <a href="esportes.html" class="hover:text-blue-900 transition">ESPORTES</a>
+                <a href="economia.html" class="hover:text-blue-900 transition">ECONOMIA</a>
+                <a href="politica.html" class="hover:text-blue-900 transition">POLÍTICA</a>
+                <a href="brasil.html" class="text-blue-900 border-b-2 border-blue-900">BRASIL</a>
+                <a href="mundo.html" class="hover:text-blue-900 transition">MUNDO</a>
+                <a href="saude.html" class="hover:text-blue-900 transition">SAÚDE</a>
+                <a href="tecnologia.html" class="hover:text-blue-900 transition">TECNOLOGIA</a>
+                <a href="entretenimento.html" class="hover:text-blue-900 transition">ENTRETENIMENTO</a>
+            </nav>
+        </div>
+
+        <!-- MENU MOBILE -->
+        <nav id="mobile-menu" class="hidden lg:hidden bg-gray-100 border-t border-gray-200">
+            <div class="flex flex-col px-4 py-3 space-y-3 font-semibold text-gray-700">
+                <a href="esportes.html" class="hover:text-blue-900">ESPORTES</a>
+                <a href="economia.html" class="hover:text-blue-900">ECONOMIA</a>
+                <a href="politica.html" class="hover:text-blue-900">POLÍTICA</a>
+                <a href="brasil.html" class="text-blue-900">BRASIL</a>
+                <a href="mundo.html" class="hover:text-blue-900">MUNDO</a>
+                <a href="saude.html" class="hover:text-blue-900">SAÚDE</a>
+                <a href="tecnologia.html" class="hover:text-blue-900">TECNOLOGIA</a>
+                <a href="entretenimento.html" class="hover:text-blue-900">ENTRETENIMENTO</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- TICKER -->
+    <div class="bg-green-800 text-white overflow-hidden py-2 shadow-inner">
+        <div class="container mx-auto">
+            <div class="animate-marquee text-sm font-semibold tracking-wide">
+                URGENTE: Nova rodovia aprovada no Nordeste &bull;
+                CLIMA: Frente fria avança pelo Sul e Sudeste &bull;
+                TURISMO: Alta temporada promete aquecer economia local
+            </div>
+        </div>
+    </div>
+
+    <!-- ARTIGO -->
+    <main class="container mx-auto px-4 py-8">
+
+        <div class="max-w-5xl mx-auto">
+
+            <!-- Breadcrumb -->
+            <div class="text-sm text-gray-500 mb-5">
+                <a href="index.html" class="hover:text-green-700">Início</a>
+                <span class="mx-2">›</span>
+                <a href="brasil.html" class="hover:text-green-700">Brasil</a>
+                <span class="mx-2">›</span>
+                <span>Turismo</span>
+            </div>
+
+            <!-- Cabeçalho da matéria -->
+            <article class="bg-white rounded-xl shadow-md overflow-hidden">
+
+                <div class="p-6 md:p-10">
+                    <span class="bg-green-600 text-white text-xs md:text-sm font-bold uppercase
+                                 px-3 py-1.5 rounded inline-block mb-4">
+                        Turismo
+                    </span>
+
+                    <h1 class="text-3xl md:text-5xl font-extrabold text-gray-900 leading-tight">
+                        Praias de Pajuçara em Maceió batem recorde de turistas na alta temporada
+                    </h1>
+
+                    <p class="text-lg md:text-xl text-gray-600 mt-5 leading-relaxed">
+                        Bairro litorâneo atrai visitantes com passeios às piscinas naturais
+                        e infraestrutura revitalizada na orla.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between
+                                gap-3 mt-7 pt-5 border-t border-gray-200 text-sm text-gray-500">
+                        <div>
+                            <strong class="text-gray-700">Portal de Notícias Hoje</strong>
+                            <span class="mx-1">•</span>
+                            Turismo
+                        </div>
+                        <div>Brasil</div>
+                    </div>
+                </div>
+
+                <!-- Imagem principal -->
+                <figure>
+                    <img
+                        src="https://placehold.co/1200x650/eeeeee/333333?text=Praias+de+Pajucara+-+Maceio"
+                        alt="Praias de Pajuçara em Maceió"
+                        class="w-full h-auto object-cover"
+                    >
+                    <figcaption class="px-6 md:px-10 py-3 text-sm text-gray-500 bg-gray-50">
+                        Praias de Pajuçara são destaque entre os atrativos turísticos de Maceió.
+                    </figcaption>
+                </figure>
+
+                <!-- Corpo -->
+                <div class="p-6 md:p-10">
+                    <div class="article-content max-w-3xl mx-auto text-lg text-gray-700">
+
+                        <p>
+                            As praias de Pajuçara, em Maceió, estão entre os principais destaques
+                            turísticos durante a alta temporada. O movimento de visitantes ganha
+                            força com a procura pelos passeios às piscinas naturais e pela estrutura
+                            disponível na orla.
+                        </p>
+
+                        <p>
+                            O bairro litorâneo reúne alguns dos principais atrativos procurados por
+                            quem visita a capital alagoana. Entre eles estão os passeios marítimos,
+                            a paisagem da orla e a possibilidade de conhecer as piscinas naturais
+                            em períodos favoráveis para a atividade.
+                        </p>
+
+                        <h2>Turismo movimenta a região</h2>
+
+                        <p>
+                            O aumento do fluxo turístico contribui para movimentar diferentes
+                            setores ligados à economia local, especialmente estabelecimentos
+                            comerciais, serviços, gastronomia, transporte e atividades voltadas
+                            aos visitantes.
+                        </p>
+
+                        <p>
+                            A infraestrutura revitalizada da orla também aparece como um dos
+                            fatores que ajudam a tornar a região mais atrativa para moradores
+                            e turistas.
+                        </p>
+
+                        <h2>Piscinas naturais são um dos principais atrativos</h2>
+
+                        <p>
+                            Os passeios às piscinas naturais estão entre as experiências mais
+                            procuradas por quem chega à região. As águas e a paisagem marítima
+                            ajudam a colocar Pajuçara em evidência no roteiro turístico de
+                            Maceió.
+                        </p>
+
+                        <p>
+                            Com a alta temporada, a expectativa é de que o movimento continue
+                            favorecendo a atividade turística e os negócios que dependem do
+                            fluxo de visitantes.
+                        </p>
+
+                        <!-- Aviso editorial -->
+                        <div class="mt-8 p-5 rounded-lg bg-green-50 border-l-4 border-green-600">
+                            <p class="!mb-0 text-sm text-green-900">
+                                <strong>Nota editorial:</strong> esta página foi estruturada a partir
+                                da notícia principal apresentada na página da categoria Brasil.
+                                Informações como números oficiais de visitantes, datas, fontes
+                                estatísticas e declarações de autoridades devem ser inseridas pela
+                                redação antes da publicação definitiva.
+                            </p>
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+
+            <!-- Voltar -->
+            <div class="mt-8">
+                <a href="brasil.html"
+                   class="inline-flex items-center gap-2 text-green-700 font-bold hover:text-green-900">
+                    ← Voltar para Brasil
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+
+            <div>
+                <a href="index.html" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="img/logo 01.gif"
+                         alt="Logotipo do Site"
+                         class="h-24 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre
+                    o Brasil e o mundo.
+                </p>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="#" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="termo de uso.html" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-4">Assine nossa Newsletter</h4>
+                <a href="assinatura.html"
+                   class="bg-blue-600 hover:bg-blue-700 text-white text-center px-6 py-3
+                          w-full rounded-md font-semibold transition-colors shadow-md block">
+                    Assinar Newsletter
+                </a>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center
+                    text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+            <h6>Em desenvolvimento por alunos do turma de Banco de Dados</h6>
+        </div>
+    </footer>
+
+    <script>
+        // Menu mobile
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+catch (erro) {
+                mensagem.textContent = "Não foi possível copiar automaticamente o link.";
+                mensagem.classList.remove('hidden');
+            }
+        }
+    </script>
+
+</body>
+</html>
