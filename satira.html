@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('site-theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sátira: Renan Santoro e o sonho do poder | Não Clique Aqui</title>
+    <!-- Configuração de Ícones-->
+    <script src="https://kit.fontawesome.com/7c95230d43.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/politica.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <!-- CABEÇALHO / HEADER -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
+            </a>
+
+            <div class="flex items-center gap-3">
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden lg:flex space-x-2 xl:space-x-3 items-center">
+                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-futbol"></i> Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-coins"></i> Economia</a>
+                <a href="politica.html" class="text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide border-b-2 border-blue-600"><i class="fa-solid fa-scale-balanced"></i> Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-flag"></i> Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-earth-americas"></i> Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i> Saúde</a>
+                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
+            </nav>
+
+                <button id="theme-toggle-btn" type="button" aria-label="Mudar para o modo escuro">
+                    <i id="theme-icon-sun" class="fa-solid fa-sun"></i>
+                    <i id="theme-icon-moon" class="fa-solid fa-moon hidden"></i>
+                </button>
+
+                <a id="auth-nav-btn" href="login.html" class="relative text-gray-600 hover:text-blue-600 p-2" aria-label="Entrar ou cadastrar-se" title="Entrar ou cadastrar-se">
+                    <i id="auth-nav-icon" class="fa-regular fa-user text-lg"></i>
+                </a>
+
+            <!-- Botão de Menu Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            </div>
+        </div>
+
+        <!-- Camada escura atrás do menu lateral -->
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+
+        <!-- Menu Mobile: painel lateral à direita -->
+        <div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80%] bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+            <div class="flex items-center justify-between px-4 py-4 border-b">
+                <span class="font-bold text-gray-700 uppercase text-sm tracking-wide">Menu</span>
+                <button id="mobile-menu-close" aria-label="Fechar menu" class="text-gray-600 hover:text-blue-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="px-4 pt-3 pb-4 space-y-1">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-futbol w-5 text-center mr-1"></i> Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-coins w-5 text-center mr-1"></i> Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-blue-700 bg-blue-50 uppercase"><i class="fa-solid fa-scale-balanced w-5 text-center mr-1"></i> Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-flag w-5 text-center mr-1"></i> Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-earth-americas w-5 text-center mr-1"></i> Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-hand-holding-medical w-5 text-center mr-1"></i> Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-robot w-5 text-center mr-1"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-masks-theater w-5 text-center mr-1"></i> Entretenimento</a>
+                <a href="assinatura.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-credit-card w-5 text-center mr-1"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-headset w-5 text-center mr-1"></i> Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- TICKER POLÍTICA -->
+    <div class="bg-gray-800 text-white overflow-hidden py-2 shadow-inner">
+        <div class="container mx-auto">
+            <div class="animate-marquee text-sm font-semibold tracking-wide">
+                CONGRESSO: Votação da nova LDO adiada para terça-feira &bull; STF: Sessão plenária retoma julgamento de marco temporal &bull; ELEIÇÕES: TSE lança nova campanha
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTEÚDO PRINCIPAL: POLÍTICA -->
+    <main><article style="max-width:1000px;margin:auto;padding:24px;line-height:1.8"><p style="background:#0b1a31;color:white;padding:12px;font-weight:bold">SÁTIRA — FICÇÃO · Personagens e acontecimentos inventados</p><h1 style="font-size:clamp(26px,4vw,42px);font-weight:800;line-height:1.2;margin:24px 0">Renan Santoro assume Confusópolis após Lulo e Flávio Bolsonário saírem de férias</h1><p>6 de outubro de 2026 · Humor político</p><figure style="margin:24px 0"><a href="img/charge-renan-santoro.png"><img src="img/charge-renan-santoro.png" alt="Charge fictícia em quatro quadros: Renan Santoro sonha que Lulo e Flávio Bolsonário saem de férias e lhe entregam o governo. Sobrecarregado com tarefas, ele acorda e encontra boletos no celular." style="display:block;width:100%;height:auto"></a><figcaption>Sátira fictícia. Toque na charge para ampliar.</figcaption></figure><p>CONFUSÓPOLIS — Em um sonho que surpreendeu até o próprio protagonista, Renan Santoro assumiu a presidência depois que Lulo e Flávio Bolsonário decidiram abandonar temporariamente as discussões políticas e tirar férias.</p><p>“O governo fica com você!”, anunciaram os dois, já de malas prontas.</p><p>Santoro vestiu a faixa presidencial e prometeu resolver tudo. O entusiasmo durou até chegar à mesa: orçamento, saúde, educação e um telefone que não parava de tocar.</p><p>“Governar vinha com manual?”, perguntou, procurando instruções entre as pilhas de documentos.</p><p>Antes de anunciar seu primeiro decreto, acordou no sofá. No celular, 99 notificações e uma coleção de contas aguardavam sua atenção.</p><p>“Era sonho… mas os boletos são reais!”</p><p><strong>Esta sátira não relata fatos reais nem descreve a sucessão presidencial brasileira.</strong></p><p><a href="politica.html">Voltar à editoria Política</a></p></article></main>
+
+    <!-- RODAPÉ / FOOTER -->
+    <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <!-- Logo no Rodapé -->
+                <a href="index.html" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre o Brasil e o mundo.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="sobre_nos.html" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="politica_de_privacidade.html" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="termo_de_uso.html" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="fale-conosco.html" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Assine nossa Newsletter</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail" class="px-4 py-2 w-full rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md font-semibold transition-colors">Assinar</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+            <h6>Em desenvolvimento por alunos do turma de Banco de Dados</h6>
+        </div>
+    </footer>
+
+    <!-- SCRIPT MENU MOBILE -->
+    <script src="js/theme.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/politica.js" defer></script>
+</body>
+</html>                    
