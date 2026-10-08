@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <script>
+        (function () {
+            try {
+                var t = localStorage.getItem('site-theme') || 'light';
+                document.documentElement.setAttribute('data-theme', t);
+            } catch (e) {}
+        })();
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estácio Arapiraca - Portal de Notícias Hoje</title>
+    <meta name="description" content="Alunos da turma de Banco de Dados da Faculdade Estácio desenvolvem projeto em Arapiraca.">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Notícias">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7c95230d43.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body class="text-gray-800 antialiased flex flex-col min-h-screen">
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Portal de Notícias" class="h-24 w-auto rounded">
+            </a>
+            <div class="flex items-center gap-3">
+                <nav class="hidden lg:flex space-x-2 xl:space-x-3 items-center">
+                    <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-futbol"></i> Esportes</a>
+                    <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-coins"></i> Economia</a>
+                    <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-scale-balanced"></i> Política</a>
+                    <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-flag"></i> Brasil</a>
+                    <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-earth-americas"></i> Mundo</a>
+                    <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i> Saúde</a>
+                    <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
+                    <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
+                    <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
+                    <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
+                </nav>
+                <button id="theme-toggle-btn" type="button" aria-label="Mudar para o modo escuro">
+                    <i id="theme-icon-sun" class="fa-solid fa-sun"></i>
+                    <i id="theme-icon-moon" class="fa-solid fa-moon hidden"></i>
+                </button>
+                <a id="auth-nav-btn" href="login.html" class="relative text-gray-600 hover:text-blue-600 p-2" aria-label="Entrar ou cadastrar-se" title="Entrar ou cadastrar-se">
+                    <i id="auth-nav-icon" class="fa-regular fa-user text-lg"></i>
+                </a>
+                <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2" aria-label="Abrir menu">
+                    <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+        <div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80%] bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+            <div class="flex items-center justify-between px-4 py-4 border-b">
+                <span class="font-bold text-gray-700 uppercase text-sm tracking-wide">Menu</span>
+                <button id="mobile-menu-close" aria-label="Fechar menu" class="text-gray-600 hover:text-blue-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="px-4 pt-3 pb-4 space-y-1">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-futbol w-5 text-center mr-1"></i> Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-coins w-5 text-center mr-1"></i> Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-scale-balanced w-5 text-center mr-1"></i> Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-flag w-5 text-center mr-1"></i> Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-earth-americas w-5 text-center mr-1"></i> Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-hand-holding-medical w-5 text-center mr-1"></i> Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-robot w-5 text-center mr-1"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-masks-theater w-5 text-center mr-1"></i> Entretenimento</a>
+                <a href="assinatura.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-credit-card w-5 text-center mr-1"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-headset w-5 text-center mr-1"></i> Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+    <main class="flex-grow container mx-auto px-4 py-8 w-full">
+        <div class="mb-8">
+            <a href="index.html" class="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold">
+                <i class="fa-solid fa-arrow-left"></i>
+                Voltar para a página inicial
+            </a>
+        </div>
+        <article class="max-w-5xl mx-auto">
+            <div class="mb-4">
+                <span class="inline-flex items-center bg-blue-600 text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wider">
+                    <i class="fa-solid fa-robot mr-2"></i>
+                    Tecnologia
+                </span>
+            </div>
+            <header class="mb-8">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
+                    Estácio Arapiraca
+                </h1>
+                <p class="text-xl sm:text-2xl text-gray-600 leading-relaxed">
+                    Alunos da turma de Banco de Dados da Faculdade Estácio estão desenvolvendo um projeto muito interessante.
+                </p>
+                <div class="flex flex-wrap items-center gap-x-6 gap-y-2 mt-6 text-sm text-gray-500 border-b border-gray-200 pb-6">
+                    <span class="flex items-center gap-2">
+                        <i class="fa-regular fa-clock"></i>
+                        Há 2 horas
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <i class="fa-solid fa-user"></i>
+                        Portal de Notícias Hoje
+                    </span>
+                </div>
+            </header>
+            <figure class="mb-8">
+                <img src="img/foto 01.jpeg" alt="Projeto desenvolvido por alunos da turma de Banco de Dados da Faculdade Estácio" class="w-full max-h-[650px] object-cover rounded-2xl shadow-lg">
+                <figcaption class="text-sm text-gray-500 mt-3 text-center">
+                    Projeto desenvolvido por alunos da turma de Banco de Dados da Faculdade Estácio.
+                </figcaption>
+            </figure>
+            <div class="max-w-4xl mx-auto">
+                <div class="prose prose-lg max-w-none">
+                    <p class="text-lg sm:text-xl text-gray-700 leading-8 mb-6">
+                        Alunos da turma de Banco de Dados da Faculdade Estácio, em Arapiraca, estão desenvolvendo um projeto que chama a atenção pela aplicação dos conhecimentos adquiridos durante a formação.
+                    </p>
+                    <p class="text-lg sm:text-xl text-gray-700 leading-8 mb-6">
+                        O trabalho reúne conhecimentos relacionados à área de tecnologia e ao desenvolvimento de soluções utilizando conceitos de banco de dados.
+                    </p>
+                    <p class="text-lg sm:text-xl text-gray-700 leading-8 mb-6">
+                        A iniciativa demonstra, na prática, como os conhecimentos estudados em sala de aula podem ser utilizados no desenvolvimento de projetos e soluções tecnológicas.
+                    </p>
+                    <p class="text-lg sm:text-xl text-gray-700 leading-8 mb-6">
+                        O projeto está sendo desenvolvido pelos estudantes da turma e representa uma oportunidade de colocar em prática os conteúdos trabalhados ao longo da disciplina.
+                    </p>
+                </div>
+                <div class="mt-10 p-5 bg-gray-50 border-l-4 border-blue-600 rounded-r-lg">
+                    <p class="text-sm text-gray-600">
+                        <strong>Nota:</strong> Esta matéria apresenta as informações disponíveis na publicação original do Portal de Notícias Hoje. Novas informações poderão ser acrescentadas posteriormente.
+                    </p>
+                </div>
+            </div>
+        </article>
+        <section class="max-w-6xl mx-auto mt-16 pt-10 border-t border-gray-200">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900">
+                    Mais notícias
+                </h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="tecnologia.html" class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                            Tecnologia
+                        </span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2 group-hover:text-blue-600 transition-colors">
+                            Confira outras notícias de tecnologia
+                        </h3>
+                        <p class="text-gray-600 text-sm mt-3">
+                            Acesse a seção de Tecnologia do portal.
+                        </p>
+                    </div>
+                </a>
+                <a href="economia.html" class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">
+                            Economia
+                        </span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2 group-hover:text-blue-600 transition-colors">
+                            Notícias sobre economia
+                        </h3>
+                        <p class="text-gray-600 text-sm mt-3">
+                            Informações e notícias sobre economia.
+                        </p>
+                    </div>
+                </a>
+                <a href="esportes.html" class="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow border border-gray-100">
+                    <div class="p-6">
+                        <span class="text-xs font-bold text-orange-600 uppercase tracking-wider">
+                            Esportes
+                        </span>
+                        <h3 class="text-xl font-bold text-gray-900 mt-2 group-hover:text-blue-600 transition-colors">
+                            Confira as notícias esportivas
+                        </h3>
+                        <p class="text-gray-600 text-sm mt-3">
+                            Acompanhe as principais notícias do mundo dos esportes.
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <a href="index.html" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="img/logo 01.gif" alt="Logotipo do Portal de Notícias" class="h-24 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre o Brasil e o mundo.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">
+                    Links Rápidos
+                </h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li>
+                        <a href="sobre_nos.html" class="hover:text-white transition-colors">
+                            Sobre nós
+                        </a>
+                    </li>
+                    <li>
+                        <a href="privacidade.html" class="hover:text-white transition-colors">
+                            Política de Privacidade
+                        </a>
+                    </li>
+                    <li>
+                        <a href="termo_de_uso.html" class="hover:text-white transition-colors">
+                            Termos de Uso
+                        </a>
+                    </li>
+                    <li>
+                        <a href="fale-conosco.html" class="hover:text-white transition-colors">
+                            Contato
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">
+                    Assine nossa Newsletter
+                </h4>
+                <div class="flex">
+                    <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 w-full rounded-md font-semibold transition-colors shadow-md">
+                        Assinar Newsletter
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+            <h6 class="mt-1">
+                Em desenvolvimento por alunos do turma de Banco de Dados
+            </h6>
+        </div>
+    </footer>
+    <script src="js/theme.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/nav.js" defer></script>
+</body>
+</html>
