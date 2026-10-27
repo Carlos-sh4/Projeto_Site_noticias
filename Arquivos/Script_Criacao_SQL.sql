@@ -1,4 +1,4 @@
-USE LISIMETRO -- Altere para o banco de dados oficial
+USE SiteNoticias -- Altere para o banco de dados oficial
 GO
 
 

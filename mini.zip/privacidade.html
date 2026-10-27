@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Política de Privacidade do portal Não Clique Aqui.">
+  <meta name="theme-color" content="#0B1A31">
+  <title>Política de Privacidade | Não Clique Aqui</title>
+  <script>
+    (function () {
+        try {
+            var t = localStorage.getItem('site-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+    })();
+  </script>
+  <script src="https://kit.fontawesome.com/7c95230d43.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/theme.css">
+
+  <style>
+    :root{
+      --navy:#0B1A31;
+      --navy-2:#07111F;
+      --navy-3:#122A4A;
+      --red:#F00B0C;
+      --red-dark:#D00306;
+      --white:#FFFFFF;
+      --offwhite:#F7F8FA;
+      --text:#172033;
+      --muted:#58626F;
+      --line:#DDE2E9;
+      --soft-blue:#EDF3FA;
+      --soft-red:#FFF1F1;
+      --shadow:0 16px 44px rgba(11,26,49,.10);
+      --radius:20px;
+      --font-scale:1;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;font-size:calc(16px * var(--font-scale))}
+    body{
+      margin:0;
+      background:var(--offwhite);
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+    button{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+
+    .skip-link{
+      position:fixed;
+      left:16px;
+      top:-100px;
+      z-index:3000;
+      padding:12px 16px;
+      border-radius:10px;
+      background:#fff;
+      color:var(--navy);
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+    .skip-link:focus{top:16px}
+
+    .topbar{
+      background:var(--navy-2);
+      color:#DCE5EF;
+      font-size:.82rem;
+    }
+    .topbar-inner{
+      min-height:38px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .topbar a{font-weight:700;text-decoration:none}
+    .topbar a:hover{text-decoration:underline}
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 8px 24px rgba(11,26,49,.06);
+      backdrop-filter:blur(12px);
+    }
+    .header-inner{
+      min-height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+    .brand-mark{
+      width:48px;
+      height:48px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:var(--red);
+      color:#fff;
+      font-weight:1000;
+      font-size:1.25rem;
+      box-shadow:0 8px 18px rgba(240,11,12,.25);
+    }
+    .brand-text{display:grid;line-height:1.05}
+    .brand-text strong{color:var(--navy);font-size:1.08rem;letter-spacing:.02em}
+    .brand-text span{margin-top:6px;color:var(--muted);font-size:.72rem;font-weight:750}
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--navy);
+      font-weight:850;
+      text-decoration:none;
+    }
+    .back-link:hover{border-color:var(--red);color:var(--red)}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 86% 16%,rgba(240,11,12,.20),transparent 25%),
+        linear-gradient(145deg,var(--navy-3),var(--navy-2));
+      color:#fff;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:330px;
+      height:330px;
+      right:-120px;
+      bottom:-220px;
+      border:42px solid rgba(255,255,255,.05);
+      border-radius:50%;
+    }
+    .hero-inner{position:relative;z-index:1;padding:64px 0 58px}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 0 14px;
+      color:#FFD7D7;
+      font-size:.78rem;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .eyebrow::before{content:"";width:28px;height:4px;border-radius:6px;background:var(--red)}
+    h1{max-width:760px;margin:0;font-size:clamp(2.25rem,6vw,4.25rem);line-height:1.03;letter-spacing:-.045em}
+    .hero p{max-width:760px;margin:20px 0 0;color:#D8E2EF;font-size:1.04rem}
+    .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .meta-pill{
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      color:#F2F6FA;
+      font-size:.82rem;
+      font-weight:750;
+    }
+
+    .draft-note{
+      margin:26px auto 0;
+      padding:18px 20px;
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      border:1px solid #FFD0D0;
+      border-left:6px solid var(--red);
+      border-radius:14px;
+      background:var(--soft-red);
+      color:#521113;
+      box-shadow:0 8px 20px rgba(11,26,49,.04);
+    }
+    .draft-note strong{display:block;margin-bottom:2px;color:#300809}
+    .draft-note span[aria-hidden="true"]{font-size:1.35rem;line-height:1.4}
+
+    .page-grid{
+      display:grid;
+      grid-template-columns:280px minmax(0,1fr);
+      gap:34px;
+      align-items:start;
+      padding:34px 0 64px;
+    }
+
+    .toc{
+      position:sticky;
+      top:112px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      box-shadow:0 10px 28px rgba(11,26,49,.06);
+    }
+    .toc h2{margin:0;padding:18px 20px;background:var(--navy);color:#fff;font-size:.95rem}
+    .toc nav{display:grid;max-height:calc(100vh - 190px);overflow:auto;padding:10px}
+    .toc a{
+      padding:8px 10px;
+      border-radius:8px;
+      color:#465264;
+      font-size:.78rem;
+      font-weight:740;
+      line-height:1.25;
+      text-decoration:none;
+    }
+    .toc a:hover,.toc a:focus-visible{background:var(--soft-blue);color:var(--navy)}
+
+    .document{
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .summary{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      padding:24px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#fff,var(--soft-blue));
+    }
+    .summary-card{
+      padding:15px;
+      border:1px solid #D9E4F1;
+      border-radius:13px;
+      background:#fff;
+    }
+    .summary-card strong{display:block;color:var(--navy);font-size:.84rem}
+    .summary-card span{display:block;margin-top:4px;color:var(--muted);font-size:.76rem;line-height:1.45}
+
+    .terms-section{padding:30px 34px;border-bottom:1px solid var(--line);scroll-margin-top:110px}
+    .terms-section:last-child{border-bottom:0}
+    .terms-section h2{
+      display:flex;
+      align-items:flex-start;
+      gap:13px;
+      margin:0 0 14px;
+      color:var(--navy);
+      font-size:1.32rem;
+      line-height:1.25;
+      letter-spacing:-.015em;
+    }
+    .section-num{
+      flex:0 0 34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:var(--red);
+      color:#fff;
+      font-size:.78rem;
+      font-weight:950;
+    }
+    .terms-section p{margin:10px 0;color:#303A4A}
+    .terms-section ul{margin:12px 0 0;padding-left:1.35rem}
+    .terms-section li{margin:7px 0;color:#303A4A}
+    .terms-section strong{color:#101827}
+    .terms-section a{color:#0A5B9C;font-weight:800}
+    .terms-section a:hover{color:var(--red)}
+
+    .identity-card{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+    .identity-item{
+      padding:14px 16px;
+      border:1px dashed #AAB5C4;
+      border-radius:12px;
+      background:#FAFBFC;
+    }
+    .identity-item small{display:block;color:var(--muted);font-size:.72rem;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+    .identity-item strong{display:block;margin-top:4px;overflow-wrap:anywhere;color:var(--navy)}
+    .identity-item .placeholder{color:#A00608}
+
+    .callout{
+      margin-top:16px;
+      padding:16px 18px;
+      border-left:5px solid var(--red);
+      border-radius:0 12px 12px 0;
+      background:var(--soft-red);
+      color:#461113;
+    }
+    .callout strong{color:#2F0809}
+
+    .legal-links{
+      display:grid;
+      gap:8px;
+      margin-top:16px;
+      padding:16px;
+      border-radius:12px;
+      background:var(--soft-blue);
+    }
+    .legal-links a{overflow-wrap:anywhere;font-size:.86rem}
+
+    .site-footer{background:var(--navy-2);color:#D4DDEA}
+    .footer-inner{
+      min-height:116px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:28px 0;
+    }
+    .footer-brand strong{display:block;color:#fff;font-size:1.05rem}
+    .footer-brand span{display:block;margin-top:5px;font-size:.82rem}
+    .footer-links{display:flex;flex-wrap:wrap;gap:16px}
+    .footer-links a{font-size:.8rem;font-weight:750;text-decoration:none}
+    .footer-links a:hover{text-decoration:underline;color:#fff}
+
+    .accessibility-dock{
+      position:fixed;
+      left:14px;
+      top:50%;
+      z-index:2000;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:7px;
+      transform:translateY(-50%);
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.97);
+      box-shadow:0 12px 32px rgba(11,26,49,.18);
+    }
+    .accessibility-dock button{
+      width:46px;
+      min-height:46px;
+      border:2px solid var(--navy);
+      border-radius:10px;
+      background:#fff;
+      color:var(--navy);
+      font-weight:950;
+      cursor:pointer;
+    }
+    .accessibility-dock button:hover{background:var(--navy);color:#fff}
+    .accessibility-dock button[aria-pressed="true"]{background:#000;color:#fff}
+
+    .toast{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:2500;
+      max-width:320px;
+      padding:12px 15px;
+      border-radius:12px;
+      background:var(--navy);
+      color:#fff;
+      font-weight:750;
+      box-shadow:var(--shadow);
+      opacity:0;
+      transform:translateY(16px);
+      pointer-events:none;
+      transition:.2s ease;
+    }
+    .toast.show{opacity:1;transform:translateY(0)}
+
+    a:focus-visible,button:focus-visible{
+      outline:4px solid var(--red);
+      outline-offset:3px;
+    }
+
+    body.high-contrast{
+      --offwhite:#000;
+      --white:#000;
+      --text:#fff;
+      --muted:#fff;
+      --line:#fff;
+      --soft-blue:#000;
+      --soft-red:#000;
+      background:#000;
+      color:#fff;
+    }
+    body.high-contrast .site-header,
+    body.high-contrast .document,
+    body.high-contrast .toc,
+    body.high-contrast .summary,
+    body.high-contrast .summary-card,
+    body.high-contrast .identity-item,
+    body.high-contrast .draft-note,
+    body.high-contrast .callout,
+    body.high-contrast .legal-links,
+    body.high-contrast .accessibility-dock{background:#000;color:#fff;border-color:#fff}
+    body.high-contrast h1,
+    body.high-contrast h2,
+    body.high-contrast p,
+    body.high-contrast li,
+    body.high-contrast strong,
+    body.high-contrast small,
+    body.high-contrast span,
+    body.high-contrast a{color:#fff}
+    body.high-contrast .section-num,
+    body.high-contrast .brand-mark{background:#FFFF00;color:#000}
+    body.high-contrast a:focus-visible,
+    body.high-contrast button:focus-visible{outline-color:#FFFF00}
+
+    @media(max-width:940px){
+      .page-grid{grid-template-columns:1fr}
+      .toc{position:static}
+      .toc nav{max-height:none;grid-template-columns:repeat(2,1fr)}
+      .summary{grid-template-columns:1fr}
+    }
+
+    @media(max-width:680px){
+      .container{width:min(100% - 24px,1160px)}
+      .topbar-inner{justify-content:center}
+      .topbar-inner span:last-child{display:none}
+      .header-inner{min-height:72px}
+      .brand-mark{width:42px;height:42px}
+      .brand-text span{display:none}
+      .back-link span{display:none}
+      .hero-inner{padding:48px 0 44px}
+      .draft-note{margin-top:16px}
+      .page-grid{padding-top:20px;gap:20px}
+      .toc nav{grid-template-columns:1fr}
+      .terms-section{padding:24px 20px}
+      .identity-card{grid-template-columns:1fr}
+      .footer-inner{align-items:flex-start;flex-direction:column}
+      .accessibility-dock{
+        left:50%;
+        top:auto;
+        bottom:8px;
+        flex-direction:row;
+        transform:translateX(-50%);
+      }
+      .accessibility-dock button{width:43px;min-height:43px}
+      body{padding-bottom:64px}
+      .toast{right:12px;bottom:70px;left:12px;max-width:none}
+    }
+
+    @media print{
+      body{background:#fff;padding:0}
+      .topbar,.site-header,.accessibility-dock,.toc,.draft-note,.site-footer,.toast{display:none!important}
+      .hero{background:#fff;color:#000}
+      .hero-inner{padding:0 0 18px}
+      .hero p,.meta-pill{color:#333}
+      .meta-pill{border-color:#bbb;background:#fff}
+      .page-grid{display:block;padding:0}
+      .document{border:0;box-shadow:none}
+      .terms-section{break-inside:avoid;padding:18px 0}
+      .summary{padding:0 0 20px;background:#fff}
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
+
+  <aside class="accessibility-dock" aria-label="Ferramentas de acessibilidade">
+    <button id="fontDown" type="button" aria-label="Diminuir tamanho do texto" title="Diminuir texto">A−</button>
+    <button id="fontUp" type="button" aria-label="Aumentar tamanho do texto" title="Aumentar texto">A+</button>
+    <button id="contrast" type="button" aria-label="Ativar alto contraste" aria-pressed="false" title="Alto contraste">◐</button>
+    <button id="resetAccess" type="button" aria-label="Restaurar configurações de acessibilidade" title="Restaurar">↺</button>
+  </aside>
+
+  <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
+            </a>
+
+            <div class="flex items-center gap-3">
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden lg:flex space-x-2 xl:space-x-3 items-center">
+                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-futbol"></i> Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-coins"></i> Economia</a>
+                <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-scale-balanced"></i> Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-flag"></i> Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-earth-americas"></i> Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i> Saúde</a>
+                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
+            </nav>
+
+                <button id="theme-toggle-btn" type="button" aria-label="Mudar para o modo escuro">
+                    <i id="theme-icon-sun" class="fa-solid fa-sun"></i>
+                    <i id="theme-icon-moon" class="fa-solid fa-moon hidden"></i>
+                </button>
+
+                <a id="auth-nav-btn" href="login.html" class="relative text-gray-600 hover:text-blue-600 p-2" aria-label="Entrar ou cadastrar-se" title="Entrar ou cadastrar-se">
+                    <i id="auth-nav-icon" class="fa-regular fa-user text-lg"></i>
+                </a>
+
+            <!-- Botão de Menu Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            </div>
+        </div>
+
+        <!-- Camada escura atrás do menu lateral -->
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+
+        <!-- Menu Mobile: painel lateral à direita -->
+        <div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80%] bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+            <div class="flex items-center justify-between px-4 py-4 border-b">
+                <span class="font-bold text-gray-700 uppercase text-sm tracking-wide">Menu</span>
+                <button id="mobile-menu-close" aria-label="Fechar menu" class="text-gray-600 hover:text-blue-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="px-4 pt-3 pb-4 space-y-1">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-futbol w-5 text-center mr-1"></i> Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-coins w-5 text-center mr-1"></i> Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-scale-balanced w-5 text-center mr-1"></i> Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-flag w-5 text-center mr-1"></i> Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-earth-americas w-5 text-center mr-1"></i> Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-hand-holding-medical w-5 text-center mr-1"></i> Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-robot w-5 text-center mr-1"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-masks-theater w-5 text-center mr-1"></i> Entretenimento</a>
+                <a href="assinatura.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-credit-card w-5 text-center mr-1"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-headset w-5 text-center mr-1"></i> Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container hero-inner">
+      <p class="eyebrow">Documento institucional</p>
+      <h1 id="page-title">Política de Privacidade</h1>
+      <p>Saiba como dados pessoais e preferências de navegação se relacionam com o portal e conheça seus direitos.</p>
+      <div class="meta-row" aria-label="Informações do documento">
+        <span class="meta-pill">Versão 1.0</span>
+        <span class="meta-pill">Última atualização: 6 de outubro de 2026</span>
+        <span class="meta-pill">Legislação brasileira</span>
+      </div>
+    </div>
+  </section>
+
+
+
+<main id="conteudo" class="container page-grid"><aside class="toc" aria-label="Índice da Política de Privacidade"><h2>Neste documento</h2><nav><a href="#alcance">1. Sobre esta política</a><a href="#dados">2. Quais dados podem ser tratados</a><a href="#finalidades">3. Finalidades e bases legais</a><a href="#armazenamento">4. Cookies e armazenamento no navegador</a><a href="#terceiros">5. Serviços externos e compartilhamento</a><a href="#retencao">6. Conservação e segurança</a><a href="#direitos">7. Seus direitos</a><a href="#menores">8. Crianças e adolescentes</a><a href="#contato">9. Contato sobre privacidade</a><a href="#alteracoes">10. Atualizações e referências</a></nav></aside><article class="document" aria-label="Política de Privacidade"><section id="alcance" class="terms-section"><h2><span class="section-num">1</span> Sobre esta política</h2><p>Esta Política de Privacidade explica o tratamento de dados pessoais relacionado ao portal <strong>Não Clique Aqui</strong>. Aplica-se à navegação e às funcionalidades efetivamente disponibilizadas, como cadastro, acesso à conta, contato e newsletter. A presença de um formulário não significa, por si só, que o serviço esteja ativo.</p><p>O tratamento deve observar a Lei nº 13.709/2018 (LGPD). Atividades exclusivamente jornalísticas têm regime próprio previsto na lei; cadastro, comunicação comercial e demais operações administrativas devem ser avaliados separadamente.</p></section><section id="dados" class="terms-section"><h2><span class="section-num">2</span> Quais dados podem ser tratados</h2><ul><li><strong>Cadastro e acesso:</strong> nome, e-mail e credenciais informadas nos campos da conta, quando o serviço estiver ativo.</li><li><strong>Contato:</strong> nome, e-mail, assunto e conteúdo da mensagem, quando o formulário efetivamente enviar as informações.</li><li><strong>Newsletter:</strong> e-mail informado para receber notícias, se houver inscrição ativa.</li><li><strong>Navegação:</strong> endereço IP, informações do navegador e registros técnicos podem ser tratados pelos serviços responsáveis por entregar o site.</li><li><strong>Preferências:</strong> tema visual, tamanho do texto e contraste podem ser armazenados no próprio navegador.</li></ul><p>Evite incluir senhas, documentos ou informações sensíveis em mensagens e campos que não solicitem esses dados.</p></section><section id="finalidades" class="terms-section"><h2><span class="section-num">3</span> Finalidades e bases legais</h2><p>Dados de conta, quando o serviço estiver ativo, destinam-se à criação e manutenção do acesso, com fundamento na execução de contrato ou em procedimentos solicitados pelo titular. Dados de contato destinam-se ao atendimento da solicitação; a base legal depende da natureza da demanda.</p><p>Comunicações opcionais devem depender de inscrição específica e permitir cancelamento. Quando o consentimento for a base legal, ele poderá ser revogado. Segurança e prevenção de abuso podem apoiar-se em legítimo interesse, após avaliação da necessidade e dos direitos do titular. Obrigações legais e exercício regular de direitos podem justificar tratamentos específicos.</p><p>A navegação ou a aceitação dos Termos de Uso não substituem consentimento específico quando ele for necessário.</p></section><section id="armazenamento" class="terms-section"><h2><span class="section-num">4</span> Cookies e armazenamento no navegador</h2><p>O portal utiliza armazenamento local do navegador para lembrar preferências visuais, incluindo tema e ajustes de acessibilidade. Essas preferências permanecem até serem alteradas ou removidas; limpar os dados do site pode restaurar a aparência padrão.</p><p>Cookies são arquivos usados por sites e serviços; armazenamento local é outro mecanismo de persistência no navegador. Você pode gerenciar ambos nas configurações do navegador. A remoção de dados relacionados à autenticação, quando existentes, pode encerrar a sessão.</p><p>Cookies de publicidade ou medição de audiência não devem ser habilitados sem informação específica sobre finalidade, fornecedores e duração, e sem a escolha do titular quando exigida. Esta página não instala ferramentas de publicidade ou análise de audiência.</p></section><section id="terceiros" class="terms-section"><h2><span class="section-num">5</span> Serviços externos e compartilhamento</h2><p>As páginas carregam recursos externos, incluindo Tailwind CSS, Font Awesome, Google Fonts em algumas páginas e VLibras nas páginas que disponibilizam esse recurso. Ao carregar recursos externos, o navegador se comunica com seus fornecedores, que podem receber IP e informações técnicas da requisição.</p><p>Links externos levam a ambientes regidos por políticas próprias. Eventuais serviços de hospedagem, autenticação, envio de mensagens ou newsletter devem ser identificados conforme a operação efetivamente adotada. Dados também poderão ser fornecidos para cumprimento de obrigação legal ou ordem de autoridade competente, nos limites aplicáveis.</p><p>Se um fornecedor tratar dados fora do Brasil, a operação deverá observar os requisitos de transferência internacional previstos na LGPD e na regulamentação aplicável.</p></section><section id="retencao" class="terms-section"><h2><span class="section-num">6</span> Conservação e segurança</h2><p>Dados pessoais devem ser conservados somente durante o período necessário à finalidade informada, salvo obrigação legal ou necessidade de exercício regular de direitos. Informações de conta e newsletter devem ter sua conservação revista após encerramento ou cancelamento. Registros técnicos seguem os prazos legais aplicáveis à operação.</p><p>Medidas de segurança devem ser proporcionais aos riscos, incluindo controle de acesso e proteção das credenciais. Esta política não constitui garantia de segurança absoluta. Incidentes com risco ou dano relevante devem receber o tratamento e as comunicações exigidos pela legislação.</p></section><section id="direitos" class="terms-section"><h2><span class="section-num">7</span> Seus direitos</h2><p>Nos termos e limites da LGPD, você pode solicitar:</p><ul><li>Confirmação do tratamento e acesso aos dados.</li><li>Correção de dados incompletos, inexatos ou desatualizados.</li><li>Anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade.</li><li>Portabilidade, conforme regulamentação aplicável.</li><li>Informações sobre compartilhamento e sobre a possibilidade de recusar consentimento.</li><li>Revogação do consentimento e eliminação dos dados tratados com essa base, ressalvadas as hipóteses legais de conservação.</li><li>Oposição nas hipóteses legais e revisão de decisões exclusivamente automatizadas que afetem seus interesses.</li></ul><p>Para proteger seus dados, pode ser necessária a verificação proporcional da sua identidade. Você também pode recorrer à ANPD pelos canais oficiais.</p></section><section id="menores" class="terms-section"><h2><span class="section-num">8</span> Crianças e adolescentes</h2><p>O tratamento de dados de crianças e adolescentes deve observar seu melhor interesse e os requisitos legais aplicáveis. As funcionalidades de cadastro não devem estimular o envio de informações desnecessárias de menores. Responsáveis podem solicitar análise e providências relacionadas a dados de crianças ou adolescentes.</p></section><section id="contato" class="terms-section"><h2><span class="section-num">9</span> Contato sobre privacidade</h2><p>Para dúvidas e solicitações, consulte a página <a href="fale-conosco.html">Fale conosco</a> e identifique o assunto como “Privacidade e dados pessoais”. Use somente canais de atendimento efetivamente disponibilizados pelo portal.</p><p>A identificação do responsável pelo tratamento e o canal direto de privacidade devem estar acessíveis ao leitor. Caso essas informações ou o envio do formulário não estejam disponíveis, não encaminhe documentos ou dados sensíveis por canais não verificados.</p></section><section id="alteracoes" class="terms-section"><h2><span class="section-num">10</span> Atualizações e referências</h2><p>Esta política poderá ser atualizada para refletir mudanças nas funcionalidades e no tratamento de dados. Alterações relevantes devem ser comunicadas de forma compatível com seu impacto. Última atualização: <strong>6 de outubro de 2026</strong>.</p><p>Consulte também os <a href="termo_de_uso.html">Termos de Uso</a>, a <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener noreferrer">LGPD</a> e as <a href="https://www.gov.br/governodigital/pt-br/lgpd-pagina-do-cidadao" target="_blank" rel="noopener noreferrer">orientações oficiais sobre direitos dos titulares</a>.</p></section></article></main>
+
+  <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <!-- Logo no Rodapé -->
+                <a href="index.html" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre o Brasil e o mundo.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="sobre_nos.html" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="politica_de_privacidade.html" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="termo_de_uso.html" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="fale-conosco.html" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+            <h6>Em desenvolvimento por alunos do turma de Banco de Dados</h6>
+        </div>
+    </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/nav.js" defer></script>
+
+  <script>
+    const root = document.documentElement;
+    const body = document.body;
+    const fontDown = document.getElementById('fontDown');
+    const fontUp = document.getElementById('fontUp');
+    const contrast = document.getElementById('contrast');
+    const resetAccess = document.getElementById('resetAccess');
+    const toast = document.getElementById('toast');
+
+    let scale = Number(localStorage.getItem('nca-privacy-font-scale') || 1);
+    let highContrast = localStorage.getItem('nca-privacy-contrast') === 'true';
+    let toastTimer;
+
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2300);
+    }
+
+    function applyAccess(){
+      scale = Math.min(1.25, Math.max(.9, scale));
+      root.style.setProperty('--font-scale', scale);
+      body.classList.toggle('high-contrast', highContrast);
+      contrast.setAttribute('aria-pressed', highContrast ? 'true' : 'false');
+      contrast.setAttribute('aria-label', highContrast ? 'Desativar alto contraste' : 'Ativar alto contraste');
+      localStorage.setItem('nca-privacy-font-scale', String(scale));
+      localStorage.setItem('nca-privacy-contrast', highContrast ? 'true' : 'false');
+    }
+
+    fontUp.addEventListener('click', () => {
+      scale += .1;
+      applyAccess();
+      showToast('Tamanho do texto aumentado');
+    });
+
+    fontDown.addEventListener('click', () => {
+      scale -= .1;
+      applyAccess();
+      showToast('Tamanho do texto reduzido');
+    });
+
+    contrast.addEventListener('click', () => {
+      highContrast = !highContrast;
+      applyAccess();
+      showToast(highContrast ? 'Alto contraste ativado' : 'Alto contraste desativado');
+    });
+
+    resetAccess.addEventListener('click', () => {
+      scale = 1;
+      highContrast = false;
+      applyAccess();
+      showToast('Configurações restauradas');
+    });
+
+    applyAccess();
+  </script>
+</body>
+</html>
