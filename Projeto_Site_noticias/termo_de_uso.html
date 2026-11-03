@@ -1,0 +1,888 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Termos de Uso do portal Não Clique Aqui.">
+  <meta name="theme-color" content="#0B1A31">
+  <title>Termos de Uso | Não Clique Aqui</title>
+  <script>
+    (function () {
+        try {
+            var t = localStorage.getItem('site-theme') || 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        } catch (e) {}
+    })();
+  </script>
+  <script src="https://kit.fontawesome.com/7c95230d43.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="css/theme.css">
+
+  <style>
+    :root{
+      --navy:#0B1A31;
+      --navy-2:#07111F;
+      --navy-3:#122A4A;
+      --red:#F00B0C;
+      --red-dark:#D00306;
+      --white:#FFFFFF;
+      --offwhite:#F7F8FA;
+      --text:#172033;
+      --muted:#58626F;
+      --line:#DDE2E9;
+      --soft-blue:#EDF3FA;
+      --soft-red:#FFF1F1;
+      --shadow:0 16px 44px rgba(11,26,49,.10);
+      --radius:20px;
+      --font-scale:1;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;font-size:calc(16px * var(--font-scale))}
+    body{
+      margin:0;
+      background:var(--offwhite);
+      color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+    button{font:inherit}
+    .container{width:min(1160px,calc(100% - 40px));margin-inline:auto}
+
+    .skip-link{
+      position:fixed;
+      left:16px;
+      top:-100px;
+      z-index:3000;
+      padding:12px 16px;
+      border-radius:10px;
+      background:#fff;
+      color:var(--navy);
+      font-weight:900;
+      box-shadow:var(--shadow);
+    }
+    .skip-link:focus{top:16px}
+
+    .topbar{
+      background:var(--navy-2);
+      color:#DCE5EF;
+      font-size:.82rem;
+    }
+    .topbar-inner{
+      min-height:38px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+    .topbar a{font-weight:700;text-decoration:none}
+    .topbar a:hover{text-decoration:underline}
+
+    .site-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid var(--line);
+      box-shadow:0 8px 24px rgba(11,26,49,.06);
+      backdrop-filter:blur(12px);
+    }
+    .header-inner{
+      min-height:84px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      text-decoration:none;
+    }
+    .brand-mark{
+      width:48px;
+      height:48px;
+      display:grid;
+      place-items:center;
+      border-radius:14px;
+      background:var(--red);
+      color:#fff;
+      font-weight:1000;
+      font-size:1.25rem;
+      box-shadow:0 8px 18px rgba(240,11,12,.25);
+    }
+    .brand-text{display:grid;line-height:1.05}
+    .brand-text strong{color:var(--navy);font-size:1.08rem;letter-spacing:.02em}
+    .brand-text span{margin-top:6px;color:var(--muted);font-size:.72rem;font-weight:750}
+    .back-link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      color:var(--navy);
+      font-weight:850;
+      text-decoration:none;
+    }
+    .back-link:hover{border-color:var(--red);color:var(--red)}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 86% 16%,rgba(240,11,12,.20),transparent 25%),
+        linear-gradient(145deg,var(--navy-3),var(--navy-2));
+      color:#fff;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;
+      width:330px;
+      height:330px;
+      right:-120px;
+      bottom:-220px;
+      border:42px solid rgba(255,255,255,.05);
+      border-radius:50%;
+    }
+    .hero-inner{position:relative;z-index:1;padding:64px 0 58px}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      margin:0 0 14px;
+      color:#FFD7D7;
+      font-size:.78rem;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .eyebrow::before{content:"";width:28px;height:4px;border-radius:6px;background:var(--red)}
+    h1{max-width:760px;margin:0;font-size:clamp(2.25rem,6vw,4.25rem);line-height:1.03;letter-spacing:-.045em}
+    .hero p{max-width:760px;margin:20px 0 0;color:#D8E2EF;font-size:1.04rem}
+    .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+    .meta-pill{
+      padding:8px 12px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      color:#F2F6FA;
+      font-size:.82rem;
+      font-weight:750;
+    }
+
+    .draft-note{
+      margin:26px auto 0;
+      padding:18px 20px;
+      display:flex;
+      align-items:flex-start;
+      gap:14px;
+      border:1px solid #FFD0D0;
+      border-left:6px solid var(--red);
+      border-radius:14px;
+      background:var(--soft-red);
+      color:#521113;
+      box-shadow:0 8px 20px rgba(11,26,49,.04);
+    }
+    .draft-note strong{display:block;margin-bottom:2px;color:#300809}
+    .draft-note span[aria-hidden="true"]{font-size:1.35rem;line-height:1.4}
+
+    .page-grid{
+      display:grid;
+      grid-template-columns:280px minmax(0,1fr);
+      gap:34px;
+      align-items:start;
+      padding:34px 0 64px;
+    }
+
+    .toc{
+      position:sticky;
+      top:112px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:16px;
+      background:#fff;
+      box-shadow:0 10px 28px rgba(11,26,49,.06);
+    }
+    .toc h2{margin:0;padding:18px 20px;background:var(--navy);color:#fff;font-size:.95rem}
+    .toc nav{display:grid;max-height:calc(100vh - 190px);overflow:auto;padding:10px}
+    .toc a{
+      padding:8px 10px;
+      border-radius:8px;
+      color:#465264;
+      font-size:.78rem;
+      font-weight:740;
+      line-height:1.25;
+      text-decoration:none;
+    }
+    .toc a:hover,.toc a:focus-visible{background:var(--soft-blue);color:var(--navy)}
+
+    .document{
+      overflow:hidden;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      background:#fff;
+      box-shadow:var(--shadow);
+    }
+    .summary{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      padding:24px;
+      border-bottom:1px solid var(--line);
+      background:linear-gradient(180deg,#fff,var(--soft-blue));
+    }
+    .summary-card{
+      padding:15px;
+      border:1px solid #D9E4F1;
+      border-radius:13px;
+      background:#fff;
+    }
+    .summary-card strong{display:block;color:var(--navy);font-size:.84rem}
+    .summary-card span{display:block;margin-top:4px;color:var(--muted);font-size:.76rem;line-height:1.45}
+
+    .terms-section{padding:30px 34px;border-bottom:1px solid var(--line);scroll-margin-top:110px}
+    .terms-section:last-child{border-bottom:0}
+    .terms-section h2{
+      display:flex;
+      align-items:flex-start;
+      gap:13px;
+      margin:0 0 14px;
+      color:var(--navy);
+      font-size:1.32rem;
+      line-height:1.25;
+      letter-spacing:-.015em;
+    }
+    .section-num{
+      flex:0 0 34px;
+      height:34px;
+      display:grid;
+      place-items:center;
+      border-radius:10px;
+      background:var(--red);
+      color:#fff;
+      font-size:.78rem;
+      font-weight:950;
+    }
+    .terms-section p{margin:10px 0;color:#303A4A}
+    .terms-section ul{margin:12px 0 0;padding-left:1.35rem}
+    .terms-section li{margin:7px 0;color:#303A4A}
+    .terms-section strong{color:#101827}
+    .terms-section a{color:#0A5B9C;font-weight:800}
+    .terms-section a:hover{color:var(--red)}
+
+    .identity-card{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:12px;
+      margin-top:16px;
+    }
+    .identity-item{
+      padding:14px 16px;
+      border:1px dashed #AAB5C4;
+      border-radius:12px;
+      background:#FAFBFC;
+    }
+    .identity-item small{display:block;color:var(--muted);font-size:.72rem;font-weight:850;text-transform:uppercase;letter-spacing:.06em}
+    .identity-item strong{display:block;margin-top:4px;overflow-wrap:anywhere;color:var(--navy)}
+    .identity-item .placeholder{color:#A00608}
+
+    .callout{
+      margin-top:16px;
+      padding:16px 18px;
+      border-left:5px solid var(--red);
+      border-radius:0 12px 12px 0;
+      background:var(--soft-red);
+      color:#461113;
+    }
+    .callout strong{color:#2F0809}
+
+    .legal-links{
+      display:grid;
+      gap:8px;
+      margin-top:16px;
+      padding:16px;
+      border-radius:12px;
+      background:var(--soft-blue);
+    }
+    .legal-links a{overflow-wrap:anywhere;font-size:.86rem}
+
+    .site-footer{background:var(--navy-2);color:#D4DDEA}
+    .footer-inner{
+      min-height:116px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+      padding:28px 0;
+    }
+    .footer-brand strong{display:block;color:#fff;font-size:1.05rem}
+    .footer-brand span{display:block;margin-top:5px;font-size:.82rem}
+    .footer-links{display:flex;flex-wrap:wrap;gap:16px}
+    .footer-links a{font-size:.8rem;font-weight:750;text-decoration:none}
+    .footer-links a:hover{text-decoration:underline;color:#fff}
+
+    .accessibility-dock{
+      position:fixed;
+      left:14px;
+      top:50%;
+      z-index:2000;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      padding:7px;
+      transform:translateY(-50%);
+      border:1px solid var(--line);
+      border-radius:14px;
+      background:rgba(255,255,255,.97);
+      box-shadow:0 12px 32px rgba(11,26,49,.18);
+    }
+    .accessibility-dock button{
+      width:46px;
+      min-height:46px;
+      border:2px solid var(--navy);
+      border-radius:10px;
+      background:#fff;
+      color:var(--navy);
+      font-weight:950;
+      cursor:pointer;
+    }
+    .accessibility-dock button:hover{background:var(--navy);color:#fff}
+    .accessibility-dock button[aria-pressed="true"]{background:#000;color:#fff}
+
+    .toast{
+      position:fixed;
+      right:20px;
+      bottom:20px;
+      z-index:2500;
+      max-width:320px;
+      padding:12px 15px;
+      border-radius:12px;
+      background:var(--navy);
+      color:#fff;
+      font-weight:750;
+      box-shadow:var(--shadow);
+      opacity:0;
+      transform:translateY(16px);
+      pointer-events:none;
+      transition:.2s ease;
+    }
+    .toast.show{opacity:1;transform:translateY(0)}
+
+    a:focus-visible,button:focus-visible{
+      outline:4px solid var(--red);
+      outline-offset:3px;
+    }
+
+    body.high-contrast{
+      --offwhite:#000;
+      --white:#000;
+      --text:#fff;
+      --muted:#fff;
+      --line:#fff;
+      --soft-blue:#000;
+      --soft-red:#000;
+      background:#000;
+      color:#fff;
+    }
+    body.high-contrast .site-header,
+    body.high-contrast .document,
+    body.high-contrast .toc,
+    body.high-contrast .summary,
+    body.high-contrast .summary-card,
+    body.high-contrast .identity-item,
+    body.high-contrast .draft-note,
+    body.high-contrast .callout,
+    body.high-contrast .legal-links,
+    body.high-contrast .accessibility-dock{background:#000;color:#fff;border-color:#fff}
+    body.high-contrast h1,
+    body.high-contrast h2,
+    body.high-contrast p,
+    body.high-contrast li,
+    body.high-contrast strong,
+    body.high-contrast small,
+    body.high-contrast span,
+    body.high-contrast a{color:#fff}
+    body.high-contrast .section-num,
+    body.high-contrast .brand-mark{background:#FFFF00;color:#000}
+    body.high-contrast a:focus-visible,
+    body.high-contrast button:focus-visible{outline-color:#FFFF00}
+
+    @media(max-width:940px){
+      .page-grid{grid-template-columns:1fr}
+      .toc{position:static}
+      .toc nav{max-height:none;grid-template-columns:repeat(2,1fr)}
+      .summary{grid-template-columns:1fr}
+    }
+
+    @media(max-width:680px){
+      .container{width:min(100% - 24px,1160px)}
+      .topbar-inner{justify-content:center}
+      .topbar-inner span:last-child{display:none}
+      .header-inner{min-height:72px}
+      .brand-mark{width:42px;height:42px}
+      .brand-text span{display:none}
+      .back-link span{display:none}
+      .hero-inner{padding:48px 0 44px}
+      .draft-note{margin-top:16px}
+      .page-grid{padding-top:20px;gap:20px}
+      .toc nav{grid-template-columns:1fr}
+      .terms-section{padding:24px 20px}
+      .identity-card{grid-template-columns:1fr}
+      .footer-inner{align-items:flex-start;flex-direction:column}
+      .accessibility-dock{
+        left:50%;
+        top:auto;
+        bottom:8px;
+        flex-direction:row;
+        transform:translateX(-50%);
+      }
+      .accessibility-dock button{width:43px;min-height:43px}
+      body{padding-bottom:64px}
+      .toast{right:12px;bottom:70px;left:12px;max-width:none}
+    }
+
+    @media print{
+      body{background:#fff;padding:0}
+      .topbar,.site-header,.accessibility-dock,.toc,.draft-note,.site-footer,.toast{display:none!important}
+      .hero{background:#fff;color:#000}
+      .hero-inner{padding:0 0 18px}
+      .hero p,.meta-pill{color:#333}
+      .meta-pill{border-color:#bbb;background:#fff}
+      .page-grid{display:block;padding:0}
+      .document{border:0;box-shadow:none}
+      .terms-section{break-inside:avoid;padding:18px 0}
+      .summary{padding:0 0 20px;background:#fff}
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#conteudo">Ir para o conteúdo principal</a>
+
+  <aside class="accessibility-dock" aria-label="Ferramentas de acessibilidade">
+    <button id="fontDown" type="button" aria-label="Diminuir tamanho do texto" title="Diminuir texto">A−</button>
+    <button id="fontUp" type="button" aria-label="Aumentar tamanho do texto" title="Aumentar texto">A+</button>
+    <button id="contrast" type="button" aria-label="Ativar alto contraste" aria-pressed="false" title="Alto contraste">◐</button>
+    <button id="resetAccess" type="button" aria-label="Restaurar configurações de acessibilidade" title="Restaurar">↺</button>
+  </aside>
+
+  <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" title="Página Inicial" class="flex-shrink-0">
+                <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded">
+            </a>
+
+            <div class="flex items-center gap-3">
+
+            <!-- Navegação Desktop -->
+            <nav class="hidden lg:flex space-x-2 xl:space-x-3 items-center">
+                <a href="esportes.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-futbol"></i> Esportes</a>
+                <a href="economia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-coins"></i> Economia</a>
+                <a href="politica.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-scale-balanced"></i> Política</a>
+                <a href="brasil.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-flag"></i> Brasil</a>
+                <a href="mundo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-earth-americas"></i> Mundo</a>
+                <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i> Saúde</a>
+                <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
+                <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
+            </nav>
+
+                <button id="theme-toggle-btn" type="button" aria-label="Mudar para o modo escuro">
+                    <i id="theme-icon-sun" class="fa-solid fa-sun"></i>
+                    <i id="theme-icon-moon" class="fa-solid fa-moon hidden"></i>
+                </button>
+
+                <a id="auth-nav-btn" href="login.html" class="relative text-gray-600 hover:text-blue-600 p-2" aria-label="Entrar ou cadastrar-se" title="Entrar ou cadastrar-se">
+                    <i id="auth-nav-icon" class="fa-regular fa-user text-lg"></i>
+                </a>
+
+            <!-- Botão de Menu Mobile -->
+            <button id="mobile-menu-btn" class="lg:hidden text-gray-600 hover:text-blue-600 focus:outline-none p-2">
+                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            </div>
+        </div>
+
+        <!-- Camada escura atrás do menu lateral -->
+        <div id="mobile-menu-overlay" class="hidden fixed inset-0 bg-black/40 z-40 lg:hidden"></div>
+
+        <!-- Menu Mobile: painel lateral à direita -->
+        <div id="mobile-menu" class="fixed top-0 right-0 z-50 h-full w-72 max-w-[80%] bg-white shadow-xl transform translate-x-full transition-transform duration-300 ease-in-out lg:hidden overflow-y-auto">
+            <div class="flex items-center justify-between px-4 py-4 border-b">
+                <span class="font-bold text-gray-700 uppercase text-sm tracking-wide">Menu</span>
+                <button id="mobile-menu-close" aria-label="Fechar menu" class="text-gray-600 hover:text-blue-600 p-1">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <div class="px-4 pt-3 pb-4 space-y-1">
+                <a href="esportes.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-futbol w-5 text-center mr-1"></i> Esportes</a>
+                <a href="economia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-coins w-5 text-center mr-1"></i> Economia</a>
+                <a href="politica.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-scale-balanced w-5 text-center mr-1"></i> Política</a>
+                <a href="brasil.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-flag w-5 text-center mr-1"></i> Brasil</a>
+                <a href="mundo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-earth-americas w-5 text-center mr-1"></i> Mundo</a>
+                <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-hand-holding-medical w-5 text-center mr-1"></i> Saúde</a>
+                <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-robot w-5 text-center mr-1"></i> Tecnologia</a>
+                <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-masks-theater w-5 text-center mr-1"></i> Entretenimento</a>
+                <a href="assinatura.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-credit-card w-5 text-center mr-1"></i> Assinatura</a>
+                <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-headset w-5 text-center mr-1"></i> Fale Conosco</a>
+            </div>
+        </div>
+    </header>
+
+  <section class="hero" aria-labelledby="page-title">
+    <div class="container hero-inner">
+      <p class="eyebrow">Documento institucional</p>
+      <h1 id="page-title">Termos de Uso</h1>
+      <p>Estas regras explicam como o portal Não Clique Aqui pode ser acessado e utilizado, quais são os direitos dos leitores e quais limites se aplicam aos conteúdos e serviços disponíveis.</p>
+      <div class="meta-row" aria-label="Informações do documento">
+        <span class="meta-pill">Versão 1.0</span>
+        <span class="meta-pill">Última atualização: 21 de setembro de 2026</span>
+        <span class="meta-pill">Legislação brasileira</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container draft-note" role="note">
+    <span aria-hidden="true">⚠</span>
+    <div>
+      <strong>Antes de publicar</strong>
+      Preencha, no bloco de configuração ao final deste arquivo, o responsável legal, CPF ou CNPJ, e-mail e cidade/UF. Depois, remova este aviso.
+    </div>
+  </div>
+
+  <main id="conteudo" class="container page-grid">
+    <aside class="toc" aria-label="Índice dos Termos de Uso">
+      <h2>Neste documento</h2>
+      <nav>
+        <a href="#aceitacao">1. Aceitação e alcance</a>
+        <a href="#identificacao">2. Identificação do portal</a>
+        <a href="#finalidade">3. Finalidade editorial</a>
+        <a href="#funcionalidades">4. Acesso e funcionalidades</a>
+        <a href="#uso-adequado">5. Uso adequado</a>
+        <a href="#conteudo-editorial">6. Conteúdo e correções</a>
+        <a href="#propriedade">7. Propriedade intelectual</a>
+        <a href="#terceiros">8. Links de terceiros</a>
+        <a href="#newsletter">9. Newsletter</a>
+        <a href="#publicidade">10. Publicidade</a>
+        <a href="#privacidade">11. Privacidade e cookies</a>
+        <a href="#menores">12. Crianças e adolescentes</a>
+        <a href="#acessibilidade">13. Acessibilidade</a>
+        <a href="#disponibilidade">14. Disponibilidade e segurança</a>
+        <a href="#responsabilidade">15. Responsabilidades</a>
+        <a href="#alteracoes">16. Alterações</a>
+        <a href="#legislacao">17. Lei e solução de conflitos</a>
+        <a href="#contato">18. Contato</a>
+      </nav>
+    </aside>
+
+    <article class="document" aria-label="Texto integral dos Termos de Uso">
+      <section class="summary" aria-label="Resumo dos principais pontos">
+        <div class="summary-card">
+          <strong>Uso livre e responsável</strong>
+          <span>O conteúdo pode ser lido e compartilhado por link, respeitando autoria e legislação.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Informação editorial</strong>
+          <span>Notícias podem ser corrigidas ou atualizadas; conteúdos não substituem orientação profissional.</span>
+        </div>
+        <div class="summary-card">
+          <strong>Privacidade separada</strong>
+          <span>Dados pessoais, newsletter e cookies devem ser detalhados nas políticas específicas do portal.</span>
+        </div>
+      </section>
+
+      <section id="aceitacao" class="terms-section">
+        <h2><span class="section-num">1</span> Aceitação e alcance</h2>
+        <p>Estes Termos de Uso regulam o acesso ao portal <strong>Não Clique Aqui</strong>, doravante denominado “Portal”, incluindo suas páginas, editorias, mecanismos de busca, newsletter e demais funcionalidades disponibilizadas.</p>
+        <p>Ao utilizar o Portal, a pessoa usuária declara ter lido e compreendido estes Termos e concorda em respeitá-los. Quando a legislação exigir consentimento específico — por exemplo, para determinada operação com dados pessoais — a simples aceitação destes Termos não substituirá essa manifestação.</p>
+        <p>Se a pessoa usuária não concordar com alguma condição, deverá interromper o uso da funcionalidade correspondente.</p>
+      </section>
+
+      <section id="identificacao" class="terms-section">
+        <h2><span class="section-num">2</span> Identificação do portal</h2>
+        <p>O Portal é mantido pelo responsável abaixo identificado:</p>
+        <div class="identity-card">
+          <div class="identity-item">
+            <small>Responsável legal</small>
+            <strong class="placeholder" data-config="responsavel">[PREENCHER]</strong>
+          </div>
+          <div class="identity-item">
+            <small>CPF ou CNPJ</small>
+            <strong class="placeholder" data-config="documento">[PREENCHER]</strong>
+          </div>
+          <div class="identity-item">
+            <small>Localidade</small>
+            <strong class="placeholder" data-config="localidade">[PREENCHER]</strong>
+          </div>
+          <div class="identity-item">
+            <small>E-mail oficial</small>
+            <strong class="placeholder" data-config="email">[PREENCHER]</strong>
+          </div>
+        </div>
+      </section>
+
+      <section id="finalidade" class="terms-section">
+        <h2><span class="section-num">3</span> Finalidade editorial</h2>
+        <p>O Não Clique Aqui é um portal de notícias e informação geral, organizado em editorias como Brasil, Mundo, Política, Economia, Saúde, Tecnologia, Esportes e outras que venham a ser criadas.</p>
+        <p>O Portal busca oferecer informação clara, contexto e uma experiência de leitura simples. O conteúdo tem finalidade <strong>informativa e jornalística</strong> e não substitui orientação individualizada de profissionais habilitados, especialmente em temas jurídicos, médicos, financeiros ou de segurança.</p>
+      </section>
+
+      <section id="funcionalidades" class="terms-section">
+        <h2><span class="section-num">4</span> Acesso e funcionalidades</h2>
+        <p>O acesso ao conteúdo aberto do Portal é gratuito, salvo indicação clara em sentido diferente antes da contratação de eventual serviço.</p>
+        <ul>
+          <li>O Portal oferece leitura, busca por notícias e inscrição voluntária em newsletter.</li>
+          <li>No momento, o Portal <strong>não hospeda comentários públicos nem publicações enviadas diretamente por usuários</strong>.</li>
+          <li>Elementos como “Entrar” ou “Seja Premium” somente caracterizarão oferta quando houver fluxo funcional, preço, condições de contratação e regras complementares claramente apresentados.</li>
+          <li>Novas funcionalidades poderão ter termos específicos. Em caso de conflito, prevalecerão as condições específicas para aquela funcionalidade, sem afastar direitos previstos em lei.</li>
+        </ul>
+      </section>
+
+      <section id="uso-adequado" class="terms-section">
+        <h2><span class="section-num">5</span> Uso adequado do portal</h2>
+        <p>A pessoa usuária compromete-se a utilizar o Portal de forma lícita, ética e compatível com sua finalidade. É proibido:</p>
+        <ul>
+          <li>praticar fraude, falsidade ideológica, violação de direitos ou qualquer atividade ilícita;</li>
+          <li>tentar acessar áreas restritas, contornar controles de segurança ou testar vulnerabilidades sem autorização;</li>
+          <li>transmitir código malicioso, interferir na disponibilidade do Portal ou sobrecarregar intencionalmente sua infraestrutura;</li>
+          <li>copiar, republicar ou explorar comercialmente conteúdo protegido sem autorização ou fundamento legal;</li>
+          <li>realizar coleta automatizada em escala que prejudique o serviço, desrespeite medidas técnicas ou viole direitos de terceiros.</li>
+        </ul>
+        <p>O acesso poderá ser limitado quando necessário para proteção do Portal, cumprimento legal ou interrupção de conduta abusiva, observados os direitos aplicáveis.</p>
+      </section>
+
+      <section id="conteudo-editorial" class="terms-section">
+        <h2><span class="section-num">6</span> Conteúdo editorial, atualizações e correções</h2>
+        <p>O Portal adota esforços razoáveis de apuração, revisão e atualização. Ainda assim, notícias podem refletir informações disponíveis no momento da publicação e sofrer alterações posteriores.</p>
+        <p>O Portal poderá corrigir, complementar, atualizar, despublicar ou reorganizar conteúdo quando identificar erro, mudança relevante, risco jurídico, violação de direitos ou necessidade editorial. Sempre que adequado, correções substanciais serão sinalizadas na própria matéria.</p>
+        <p>Pedidos de correção, retificação ou direito de resposta deverão identificar a matéria, o trecho questionado, a justificativa e um meio de contato verificável. As solicitações serão analisadas conforme a legislação e a política editorial aplicáveis.</p>
+        <div class="callout"><strong>Atenção:</strong> decisões importantes não devem ser tomadas exclusivamente com base em uma notícia. Consulte fontes oficiais e profissionais qualificados quando o assunto exigir.</div>
+      </section>
+
+      <section id="propriedade" class="terms-section">
+        <h2><span class="section-num">7</span> Propriedade intelectual</h2>
+        <p>Textos, identidade visual, marca, layout, fotografias, ilustrações, vídeos, áudios, bases de dados e demais elementos do Portal são protegidos pela legislação de propriedade intelectual, ressalvados os conteúdos de terceiros e os materiais em domínio público.</p>
+        <p>É permitido compartilhar links das matérias, com título e pequeno trecho para contextualização, desde que haja atribuição ao Não Clique Aqui e não seja criada aparência de parceria ou endosso inexistente.</p>
+        <p>A reprodução integral, distribuição, adaptação, venda, licenciamento, raspagem comercial ou criação de obra derivada depende de autorização prévia, salvo hipóteses expressamente permitidas em lei. Conteúdos de agências, parceiros ou terceiros seguem também as licenças e créditos indicados na publicação.</p>
+      </section>
+
+      <section id="terceiros" class="terms-section">
+        <h2><span class="section-num">8</span> Links e serviços de terceiros</h2>
+        <p>O Portal pode indicar fontes, documentos oficiais, redes sociais, vídeos, mapas, plataformas ou sites externos. Esses ambientes possuem regras, práticas de privacidade e medidas de segurança próprias.</p>
+        <p>A presença de um link não significa, por si só, parceria, aprovação ou garantia. O Portal não controla alterações posteriores, indisponibilidade ou práticas de terceiros, mas poderá remover referências quando informado de risco ou irregularidade relevante.</p>
+      </section>
+
+      <section id="newsletter" class="terms-section">
+        <h2><span class="section-num">9</span> Newsletter e comunicações</h2>
+        <p>A inscrição na newsletter é voluntária. Ao informar um e-mail e concluir a inscrição, a pessoa usuária solicita o recebimento de notícias, destaques e comunicações relacionadas ao Portal.</p>
+        <ul>
+          <li>A frequência de envio pode variar.</li>
+          <li>Todo envio deverá oferecer mecanismo simples de cancelamento.</li>
+          <li>O e-mail não deverá ser vendido ou utilizado para finalidade incompatível com a informação apresentada no momento da coleta.</li>
+          <li>O tratamento dos dados será detalhado na Política de Privacidade.</li>
+        </ul>
+      </section>
+
+      <section id="publicidade" class="terms-section">
+        <h2><span class="section-num">10</span> Publicidade e conteúdo patrocinado</h2>
+        <p>O Portal poderá exibir publicidade, publieditoriais, conteúdo patrocinado ou links comerciais. Quando houver relação comercial capaz de influenciar a percepção do leitor, o material deverá ser identificado de forma clara.</p>
+        <p>Anunciantes são responsáveis por suas ofertas, produtos, serviços, preços, condições e declarações. Eventual contratação ocorrerá diretamente com o terceiro indicado, salvo quando o Portal informar expressamente que é o fornecedor.</p>
+      </section>
+
+      <section id="privacidade" class="terms-section">
+        <h2><span class="section-num">11</span> Privacidade, dados pessoais e cookies</h2>
+        <p>O tratamento de dados pessoais relacionado ao Portal deverá respeitar a Lei Geral de Proteção de Dados Pessoais e o Marco Civil da Internet. Informações sobre dados coletados, finalidades, bases legais, compartilhamentos, prazos de retenção, direitos dos titulares e canal de atendimento deverão constar na <strong>Política de Privacidade</strong>.</p>
+        <p>O uso de cookies e tecnologias semelhantes deverá ser explicado em <strong>Política de Cookies</strong>. Cookies não essenciais, quando utilizados, deverão observar as escolhas da pessoa usuária e as exigências legais aplicáveis.</p>
+        <p>A pessoa titular poderá solicitar, quando cabível, confirmação de tratamento, acesso, correção, anonimização, bloqueio, eliminação, portabilidade, informação sobre compartilhamentos, revisão de decisões automatizadas e demais direitos previstos em lei.</p>
+      </section>
+
+      <section id="menores" class="terms-section">
+        <h2><span class="section-num">12</span> Crianças e adolescentes</h2>
+        <p>O conteúdo jornalístico pode ser acessado por diferentes públicos. Crianças e adolescentes devem utilizar funcionalidades que envolvam o fornecimento de dados pessoais com participação ou orientação de seus responsáveis legais, conforme a idade e a legislação aplicável.</p>
+        <p>O Portal não pretende coletar conscientemente dados de crianças de forma incompatível com seu melhor interesse. Caso o responsável identifique envio indevido de dados, poderá solicitar análise e adoção das providências cabíveis pelo canal de contato.</p>
+      </section>
+
+      <section id="acessibilidade" class="terms-section">
+        <h2><span class="section-num">13</span> Acessibilidade</h2>
+        <p>O Portal busca ampliar o acesso às informações por pessoas com diferentes necessidades, adotando recursos como navegação por teclado, contraste adequado, aumento de texto, estrutura semântica e compatibilidade progressiva com tecnologias assistivas.</p>
+        <p>Barreiras de acessibilidade podem ser informadas pelo canal oficial, preferencialmente com a página, o dispositivo, o navegador e uma breve descrição do problema.</p>
+      </section>
+
+      <section id="disponibilidade" class="terms-section">
+        <h2><span class="section-num">14</span> Disponibilidade e segurança</h2>
+        <p>O Portal poderá ficar temporariamente indisponível por manutenção, atualização, falha de infraestrutura, incidente de segurança, caso fortuito, força maior ou evento fora de controle razoável.</p>
+        <p>Serão adotadas medidas técnicas e administrativas compatíveis com os riscos e com a natureza do serviço. Nenhum ambiente digital, porém, é absolutamente imune a falhas. A pessoa usuária também deve manter dispositivo, navegador e ferramentas de proteção atualizados.</p>
+      </section>
+
+      <section id="responsabilidade" class="terms-section">
+        <h2><span class="section-num">15</span> Limites de responsabilidade</h2>
+        <p>Na extensão permitida pela legislação, o Portal não se responsabiliza por:</p>
+        <ul>
+          <li>decisões tomadas exclusivamente com base em conteúdo geral, sem verificação de fontes ou orientação profissional pertinente;</li>
+          <li>danos decorrentes de sites, produtos, serviços ou práticas de terceiros;</li>
+          <li>indisponibilidades ou falhas causadas por fatores fora de seu controle razoável;</li>
+          <li>uso ilícito, abusivo ou contrário a estes Termos realizado pela pessoa usuária.</li>
+        </ul>
+        <p>Nenhuma disposição destes Termos exclui responsabilidade que não possa ser afastada por lei, inclusive direitos de consumidores, titulares de dados, autores, pessoas retratadas e demais terceiros protegidos pelo ordenamento jurídico.</p>
+      </section>
+
+      <section id="alteracoes" class="terms-section">
+        <h2><span class="section-num">16</span> Alterações destes termos</h2>
+        <p>Estes Termos poderão ser atualizados para refletir mudanças legais, técnicas, editoriais ou funcionais. A versão vigente indicará a data da última atualização.</p>
+        <p>Alterações relevantes serão comunicadas de forma compatível com seu impacto, como aviso destacado no Portal ou comunicação às pessoas cadastradas, quando aplicável. Recursos pagos ou contas, quando ativados, poderão exigir nova manifestação de concordância.</p>
+      </section>
+
+      <section id="legislacao" class="terms-section">
+        <h2><span class="section-num">17</span> Legislação e solução de conflitos</h2>
+        <p>Estes Termos são regidos pela legislação da República Federativa do Brasil, especialmente pelas normas aplicáveis ao uso da internet, proteção de dados, direitos autorais, direito de resposta, acessibilidade e relações de consumo, quando configuradas.</p>
+        <p>As partes buscarão solução amigável pelo canal de contato. Não havendo acordo, será competente o foro definido pela legislação aplicável, preservado o direito do consumidor de recorrer ao foro de seu domicílio quando cabível.</p>
+        <div class="legal-links" aria-label="Base legal oficial">
+          <a href="https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2014/lei/l12965.htm" target="_blank" rel="noopener noreferrer">Marco Civil da Internet — Lei nº 12.965/2014</a>
+          <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_blank" rel="noopener noreferrer">Lei Geral de Proteção de Dados — Lei nº 13.709/2018</a>
+          <a href="https://www.planalto.gov.br/ccivil_03/leis/l9610.htm" target="_blank" rel="noopener noreferrer">Lei de Direitos Autorais — Lei nº 9.610/1998</a>
+          <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13188.htm" target="_blank" rel="noopener noreferrer">Direito de Resposta — Lei nº 13.188/2015</a>
+          <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13146.htm" target="_blank" rel="noopener noreferrer">Lei Brasileira de Inclusão — Lei nº 13.146/2015</a>
+          <a href="https://www.planalto.gov.br/ccivil_03/leis/l8078compilado.htm" target="_blank" rel="noopener noreferrer">Código de Defesa do Consumidor — Lei nº 8.078/1990</a>
+        </div>
+      </section>
+
+      <section id="contato" class="terms-section">
+        <h2><span class="section-num">18</span> Contato</h2>
+        <p>Dúvidas sobre estes Termos, comunicações de violação, pedidos de correção, questões de acessibilidade e solicitações relacionadas a dados pessoais podem ser encaminhados para:</p>
+        <p><strong>E-mail:</strong> <a id="contactEmail" data-config="email" href="#">[PREENCHER]</a></p>
+        <p><strong>Responsável:</strong> <span data-config="responsavel">[PREENCHER]</span></p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <!-- Logo no Rodapé -->
+                <a href="index.html" class="mb-4 inline-block" title="Página Inicial">
+                    <img src="img/logo 01.gif" alt="Logotipo do Site" class="h-24 w-auto rounded border border-gray-700 hover:opacity-80 transition-opacity">
+                </a>
+                <p class="text-gray-400 text-sm mt-2">
+                    A sua fonte confiável de informação diária. Cobertura completa sobre o Brasil e o mundo.
+                </p>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Links Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400">
+                    <li><a href="sobre_nos.html" class="hover:text-white transition-colors">Sobre nós</a></li>
+                    <li><a href="#" class="hover:text-white transition-colors">Política de Privacidade</a></li>
+                    <li><a href="termo_de_uso.html" class="hover:text-white transition-colors">Termos de Uso</a></li>
+                    <li><a href="fale-conosco.html" class="hover:text-white transition-colors">Contato</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-lg font-bold mb-4">Assine nossa Newsletter</h4>
+                <div class="flex">
+                    <input type="email" placeholder="Seu e-mail" class="px-4 py-2 w-full rounded-l-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-md font-semibold transition-colors">Assinar</button>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-sm text-gray-500">
+            &copy; 2026 Portal de Notícias Hoje. Todos os direitos reservados.
+            <h6>Em desenvolvimento por alunos do turma de Banco de Dados</h6>
+        </div>
+    </footer>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/theme.js" defer></script>
+  <script src="js/auth.js" defer></script>
+  <script src="js/nav.js" defer></script>
+
+  <script>
+    /*
+      PREENCHA ESTES DADOS ANTES DE PUBLICAR.
+      As informações são replicadas automaticamente nos pontos corretos da página.
+    */
+    const portalConfig = {
+      responsavel: '[NOME COMPLETO OU RAZÃO SOCIAL]',
+      documento: '[CPF OU CNPJ]',
+      localidade: '[CIDADE/UF]',
+      email: '[E-MAIL OFICIAL]'
+    };
+
+    document.querySelectorAll('[data-config]').forEach((element) => {
+      const key = element.dataset.config;
+      const value = portalConfig[key];
+      if (!value) return;
+
+      element.textContent = value;
+      element.classList.toggle('placeholder', value.startsWith('['));
+
+      if (element.id === 'contactEmail' && !value.startsWith('[')) {
+        element.href = `mailto:${value}`;
+      }
+    });
+
+    const root = document.documentElement;
+    const body = document.body;
+    const fontDown = document.getElementById('fontDown');
+    const fontUp = document.getElementById('fontUp');
+    const contrast = document.getElementById('contrast');
+    const resetAccess = document.getElementById('resetAccess');
+    const toast = document.getElementById('toast');
+
+    let scale = Number(localStorage.getItem('nca-terms-font-scale') || 1);
+    let highContrast = localStorage.getItem('nca-terms-contrast') === 'true';
+    let toastTimer;
+
+    function showToast(message){
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 2300);
+    }
+
+    function applyAccess(){
+      scale = Math.min(1.25, Math.max(.9, scale));
+      root.style.setProperty('--font-scale', scale);
+      body.classList.toggle('high-contrast', highContrast);
+      contrast.setAttribute('aria-pressed', highContrast ? 'true' : 'false');
+      contrast.setAttribute('aria-label', highContrast ? 'Desativar alto contraste' : 'Ativar alto contraste');
+      localStorage.setItem('nca-terms-font-scale', String(scale));
+      localStorage.setItem('nca-terms-contrast', highContrast ? 'true' : 'false');
+    }
+
+    fontUp.addEventListener('click', () => {
+      scale += .1;
+      applyAccess();
+      showToast('Tamanho do texto aumentado');
+    });
+
+    fontDown.addEventListener('click', () => {
+      scale -= .1;
+      applyAccess();
+      showToast('Tamanho do texto reduzido');
+    });
+
+    contrast.addEventListener('click', () => {
+      highContrast = !highContrast;
+      applyAccess();
+      showToast(highContrast ? 'Alto contraste ativado' : 'Alto contraste desativado');
+    });
+
+    resetAccess.addEventListener('click', () => {
+      scale = 1;
+      highContrast = false;
+      applyAccess();
+      showToast('Configurações restauradas');
+    });
+
+    applyAccess();
+  </script>
+</body>
+</html>
