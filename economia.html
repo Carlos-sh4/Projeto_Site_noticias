@@ -99,127 +99,13 @@
     </div>
 
    <!-- CONTEÚDO PRINCIPAL (Main + Sidebar) -->
-    <main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
-        
-        <!-- SEÇÃO DE NOTÍCIAS (Lado Esquerdo - 2/3 da tela) -->
-        <section class="lg:w-2/3 flex flex-col gap-8">
-            <!-- Notícia Principal (Destaque Econômico) -->
-            <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
-                <!-- Substitua 'noticia-selic.html' pelo link da página correta -->
-                <a href="noticia-selic.html" class="block">
-                    <img src="../Projeto_Site_noticias//img/bc.jpg" alt="Notícia Principal" class="w-full h-auto object-cover group-hover:opacity-90 transition">
-                    <div class="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-6 text-white">
-                        <span class="bg-blue-600 text-xs font-bold uppercase px-2 py-1 rounded mb-2 inline-block">Mercado</span>
-                        <h1 class="text-2xl md:text-3xl font-bold mt-1 group-hover:underline">Banco Central define novos rumos para a taxa Selic nesta quarta-feira</h1>
-                        <p class="hidden md:block mt-2 text-gray-200 text-sm">Especialistas projetam impactos diretos nos financiamentos e na poupança após a reunião do Copom.</p>
-                    </div>
-                </a>
-            </article>
-
-            <!-- Grade de 3 Colunas de Notícias Menores -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Notícia 1 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <!-- Substitua 'noticia-ibovespa.html' pelo link da página correta -->
-                    <a href="noticia-ibovespa.html" class="block group">
-                        <img src="../Projeto_Site_noticias/img/ibovespa.png" alt="Notícia 1" class="w-full h-40 object-cover group-hover:opacity-90 transition">
-                        <div class="p-4">
-                            <span class="text-blue-600 text-xs font-bold uppercase mb-1 block">Bolsa de Valores</span>
-                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 leading-tight">Ibovespa fecha em alta impulsionado por setor de commodities</h2>
-                        </div>
-                    </a>
-                </article>
-
-                <!-- Notícia 2 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <!-- Substitua 'noticia-restituicao-ir.html' pelo link da página correta -->
-                    <a href="noticia-restituicao-ir.html" class="block group">
-                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Imposto+de+Renda" alt="Notícia 2" class="w-full h-40 object-cover group-hover:opacity-90 transition">
-                        <div class="p-4">
-                            <span class="text-blue-600 text-xs font-bold uppercase mb-1 block">Tributos</span>
-                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 leading-tight">Receita Federal libera consulta ao novo lote de restituição do IR</h2>
-                        </div>
-                    </a>
-                </article>
-
-                <!-- Notícia 3 -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <!-- Substitua 'noticia-empregos.html' pelo link da página correta -->
-                    <a href="noticia-empregos.html" class="block group">
-                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Empregos" alt="Notícia 3" class="w-full h-40 object-cover group-hover:opacity-90 transition">
-                        <div class="p-4">
-                            <span class="text-blue-600 text-xs font-bold uppercase mb-1 block">Carreira</span>
-                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-blue-700 leading-tight">Geração de empregos formais supera expectativas no trimestre</h2>
-                        </div>
-                    </a>
-                </article>
-            </div>
-        </section>
-
-        <!-- BARRA LATERAL / SIDEBAR (Lado Direito - 1/3 da tela) -->
-        <aside class="lg:w-1/3 flex flex-col gap-6">
-            
-            <!-- Widget: Conversor de Moedas -->
-            <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-blue-600">
-                <h3 class="text-xl font-bold mb-4 flex items-center text-gray-800">
-                    <svg class="w-6 h-6 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                    Calculadora de Câmbio
-                </h3>
-                
-                <div class="space-y-4">
-                    <!-- Campo de Valor -->
-                    <div>
-                        <label for="amount" class="block text-sm font-medium text-gray-700 mb-1">Valor a converter:</label>
-                        <input type="number" id="amount" placeholder="Ex: 100" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" value="100">
-                    </div>
-                    
-                    <!-- Seletor de Moeda -->
-                    <div>
-                        <label for="currency" class="block text-sm font-medium text-gray-700 mb-1">De qual moeda para Real (BRL)?</label>
-                        <select id="currency" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white">
-                            <option value="USD">Dólar Americano (USD)</option>
-                            <option value="EUR">Euro (EUR)</option>
-                            <option value="GBP">Libra Esterlina (GBP)</option>
-                        </select>
-                    </div>
-
-                    <!-- Informação de Taxa -->
-                    <div class="text-sm text-gray-500 italic">
-                        Cotação usada: <span id="taxa-aplicada" class="font-semibold">Buscando...</span>
-                    </div>
-
-                    <!-- Resultado da Conversão -->
-                    <div class="bg-gray-100 p-4 rounded-md text-center">
-                        <span class="block text-sm text-gray-600 mb-1">Você pagará aproximadamente:</span>
-                        <span id="conversion-result" class="text-2xl font-bold text-green-600">Calculando...</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Widget: Indicadores Econômicos Estáticos -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <h3 class="text-lg font-bold mb-4 border-b pb-2 text-gray-800">Indicadores Brasil</h3>
-                <ul class="space-y-3">
-                    <li class="flex justify-between items-center">
-                        <span class="text-gray-600">Taxa Selic (Meta)</span>
-                        <span class="font-bold">10,50% a.a.</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-gray-600">IPCA (12 meses)</span>
-                        <span class="font-bold">4,23%</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-gray-600">CDI</span>
-                        <span class="font-bold">10,40% a.a.</span>
-                    </li>
-                    <li class="flex justify-between items-center">
-                        <span class="text-gray-600">Salário Mínimo</span>
-                        <span class="font-bold">R$ 1.412,00</span>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-    </main>
+    <main id="categoria-dinamica" data-categoria="Economia" class="container mx-auto px-4 py-10 flex-grow">
+  <h1 class="text-3xl font-extrabold mb-3 text-gray-900">Economia</h1>
+  <p class="text-gray-600 mb-8">Últimas notícias publicadas sobre economia.</p>
+  <section data-grade class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" aria-live="polite">
+    <p class="text-gray-500">Carregando notícias...</p>
+  </section>
+</main>
 
     <!-- RODAPÉ / FOOTER -->
     <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
@@ -257,6 +143,10 @@
     </footer>
 
     <!-- SCRIPTS (Menu Mobile, API Financeira e Lógica da Calculadora) -->
+    <script src="js/config.js" defer></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/noticias-ui.js" defer></script>
+    <script src="js/categoria-dinamica.js" defer></script>
     <script src="js/theme.js" defer></script>
     <script src="js/auth.js" defer></script>
     <script src="js/nav.js" defer></script>
