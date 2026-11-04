@@ -1,0 +1,158 @@
+/* ============================================================
+   Sistema de Cores (Claro / Escuro) - Notícias Hoje
+   Variáveis de marca + botão de alternância de tema
+   ============================================================ */
+
+:root {
+    --color-bg: #FBF7F7;
+    --color-surface: #FFFFFF;
+    --color-header: #0B1A31;
+    --color-header-text: #FBF7F7;
+    --color-text-strong: #0B1A31;
+    --color-text-secondary: #58626F;
+    --color-accent: #F00B0C;
+    --color-accent-hover: #D00306;
+    --color-border: #E5E7EB;
+}
+
+[data-theme="dark"] {
+    --color-bg: #060F1E;
+    --color-surface: #0B1A31;
+    --color-header: #0B1A31;
+    --color-header-text: #FBF7F7;
+    --color-text-strong: #FBF7F7;
+    --color-text-secondary: #9AA5B3;
+    --color-accent: #F00B0C;
+    --color-accent-hover: #FF4142;
+    --color-border: #1C2C46;
+}
+
+html, body {
+    transition: background-color .25s ease, color .25s ease;
+}
+
+/* Fundo geral da página */
+body {
+    background-color: var(--color-bg) !important;
+}
+
+/* Cartões e superfícies claras dentro do conteúdo (não mexe no cabeçalho nem no menu mobile) */
+main .bg-white,
+aside .bg-white,
+section .bg-white {
+    background-color: var(--color-surface) !important;
+}
+main, aside, section {
+    color: var(--color-text-strong);
+}
+main .text-gray-800, main .text-gray-900,
+aside .text-gray-800, aside .text-gray-900 {
+    color: var(--color-text-strong) !important;
+}
+main .text-gray-600, main .text-gray-500, main .text-gray-400, main .text-gray-700,
+aside .text-gray-600, aside .text-gray-500, aside .text-gray-400, aside .text-gray-700 {
+    color: var(--color-text-secondary) !important;
+}
+main .border-gray-100, main .border-gray-200, main .border-gray-300,
+aside .border-gray-100, aside .border-gray-200, aside .border-gray-300 {
+    border-color: var(--color-border) !important;
+}
+
+/* Cabeçalho: sempre com fundo navy e texto claro, nos dois temas */
+header.bg-white {
+    background-color: var(--color-header) !important;
+}
+header .text-gray-600, header .text-gray-700 {
+    color: var(--color-header-text) !important;
+    opacity: .82;
+}
+header .hover\:text-blue-600:hover, header .hover\:text-blue-700:hover {
+    color: var(--color-accent) !important;
+    opacity: 1;
+}
+header a.text-blue-600 {
+    color: var(--color-accent) !important;
+    opacity: 1;
+}
+header .border-blue-600 {
+    border-color: var(--color-accent) !important;
+}
+
+/* Menu mobile (dentro do cabeçalho) */
+#mobile-menu.bg-white {
+    background-color: var(--color-header) !important;
+    border-color: var(--color-border) !important;
+}
+#mobile-menu a {
+    color: var(--color-header-text) !important;
+}
+#mobile-menu a.text-blue-700.bg-blue-50 {
+    background-color: rgba(240, 11, 12, .18) !important;
+    color: var(--color-accent) !important;
+}
+#mobile-menu a:hover {
+    color: var(--color-accent) !important;
+}
+
+/* Rodapé */
+footer.bg-gray-900 {
+    background-color: var(--color-header) !important;
+}
+footer .text-gray-400, footer .text-gray-500 {
+    color: var(--color-text-secondary) !important;
+}
+footer .border-gray-800 {
+    border-color: var(--color-border) !important;
+}
+footer .bg-blue-600 {
+    background-color: var(--color-accent) !important;
+}
+footer .hover\:bg-blue-700:hover {
+    background-color: var(--color-accent-hover) !important;
+}
+footer input {
+    background-color: var(--color-surface) !important;
+}
+
+/* Formulário da página Fale Conosco */
+#form-contato {
+    background-color: var(--color-surface) !important;
+}
+#form-contato input, #form-contato select, #form-contato textarea {
+    background-color: var(--color-bg) !important;
+    color: var(--color-text-strong) !important;
+    border-color: var(--color-border) !important;
+}
+#form-contato button[type="submit"] {
+    background-color: var(--color-accent) !important;
+}
+#form-contato button[type="submit"]:hover {
+    background-color: var(--color-accent-hover) !important;
+}
+#form-contato .focus\:ring-blue-500:focus {
+    --tw-ring-color: var(--color-accent) !important;
+}
+
+/* Botão de alternância de tema (sol / lua) */
+#theme-toggle-btn {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    border: 1px solid rgba(251, 247, 247, .35);
+    background: transparent;
+    color: var(--color-header-text);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: color .2s ease, border-color .2s ease, transform .2s ease;
+}
+#theme-toggle-btn:hover {
+    color: var(--color-accent);
+    border-color: var(--color-accent);
+    transform: scale(1.06);
+}
+#theme-toggle-btn i {
+    font-size: 1rem;
+}
