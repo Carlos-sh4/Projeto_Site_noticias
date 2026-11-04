@@ -1,0 +1,48 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc; /* Tailwind slate-50 */
+}
+/* Efeito suave de transição em links e botões */
+a, button {
+    transition: all 0.2s ease-in-out;
+}
+
+/* Animação para o ticker (letreiro de jogos) */
+.ticker-wrap {
+    width: 100%;
+    overflow: hidden;
+    background-color: #111827; /* gray-900 */
+    box-sizing: content-box;
+}
+.ticker {
+    display: inline-block;
+    white-space: nowrap;
+    padding-right: 100%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    animation-name: ticker;
+    animation-duration: 45s; /* Aumentado para 45s para ler melhor caso venham muitos jogos */
+}
+.ticker:hover {
+    animation-play-state: paused;
+}
+.ticker-item {
+    display: inline-block;
+    padding: 0 2rem;
+    font-size: 0.875rem;
+    color: #d1d5db; /* gray-300 */
+}
+.ticker-item span.score {
+    color: #fff;
+    font-weight: 700;
+}
+.ticker-item span.live {
+    color: #ef4444; /* red-500 */
+    font-weight: 700;
+    margin-right: 0.5rem;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+@keyframes ticker {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-100%, 0, 0); }
+}
