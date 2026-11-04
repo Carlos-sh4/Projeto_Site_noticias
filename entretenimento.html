@@ -99,81 +99,13 @@
     </div>
 
     <!-- CONTEÚDO PRINCIPAL: ENTRETENIMENTO -->
-    <main class="container mx-auto px-4 py-8 flex flex-col lg:flex-row gap-8">
-        <section class="lg:w-2/3 flex flex-col gap-8">
-            <!-- NOTÍCIA PRINCIPAL -->
-            <article class="bg-white rounded-lg shadow-md overflow-hidden relative group">
-                <!-- Substitua 'noticia-series.html' pelo link da página correta -->
-                <a href="noticia-series.html" class="block">
-                    <img src="https://placehold.co/800x400/eeeeee/333333?text=Cultura+Pop" alt="Notícia Principal" class="w-full h-auto object-cover group-hover:opacity-90 transition">
-                    <div class="absolute bottom-0 bg-gradient-to-t from-black/80 to-transparent w-full p-6 text-white">
-                        <span class="bg-pink-600 text-xs font-bold uppercase px-2 py-1 rounded mb-2 inline-block">Streaming</span>
-                        <h1 class="text-2xl md:text-3xl font-bold mt-1 group-hover:underline">Séries mais aguardadas do ano ganham data de estreia; veja o calendário</h1>
-                        <p class="hidden md:block mt-2 text-gray-200 text-sm">Plataformas anunciam suas principais apostas para a temporada de premiações.</p>
-                    </div>
-                </a>
-            </article>
-
-            <!-- NOTÍCIAS SECUNDÁRIAS -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Secundária 1: Dicas Práticas -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <!-- Substitua 'noticia-jdownloader.html' pelo link da página correta -->
-                    <a href="noticia-jdownloader.html" class="block group">
-                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Downloads" class="w-full h-40 object-cover group-hover:opacity-90 transition">
-                        <div class="p-4">
-                            <span class="text-pink-600 text-xs font-bold uppercase mb-1 block">Dicas Práticas</span>
-                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-pink-700 leading-tight">Como instalar e usar o JDownloader 2 via Prompt de Comando (CMD)</h2>
-                        </div>
-                    </a>
-                </article>
-                
-                <!-- Secundária 2: Games -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <!-- Substitua 'noticia-games-indies.html' pelo link da página correta -->
-                    <a href="noticia-games-indies.html" class="block group">
-                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Games" class="w-full h-40 object-cover group-hover:opacity-90 transition">
-                        <div class="p-4">
-                            <span class="text-pink-600 text-xs font-bold uppercase mb-1 block">Games</span>
-                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-pink-700 leading-tight">Estúdios indies roubam a cena na principal feira de games do ano</h2>
-                        </div>
-                    </a>
-                </article>
-                
-                <!-- Secundária 3: Música -->
-                <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition">
-                    <!-- Substitua 'noticia-vinil.html' pelo link da página correta -->
-                    <a href="noticia-vinil.html" class="block group">
-                        <img src="https://placehold.co/400x250/eeeeee/333333?text=Musica" class="w-full h-40 object-cover group-hover:opacity-90 transition">
-                        <div class="p-4">
-                            <span class="text-pink-600 text-xs font-bold uppercase mb-1 block">Música</span>
-                            <h2 class="text-lg font-bold text-gray-900 group-hover:text-pink-700 leading-tight">Retorno do vinil: Vendas superam CDs pela primeira vez na década</h2>
-                        </div>
-                    </a>
-                </article>
-            </div>
-        </section>
-
-        <aside class="lg:w-1/3 flex flex-col gap-6">
-            <div class="bg-white rounded-lg shadow-md p-6 border-t-4 border-pink-600">
-                <h3 class="text-xl font-bold mb-4 text-gray-800">Top Bilheterias</h3>
-                <ul class="space-y-3">
-                    <li class="flex items-center gap-3 border-b pb-2">
-                        <span class="text-2xl font-bold text-gray-300">1</span>
-                        <span class="font-medium text-gray-700">O Grande Épico</span>
-                    </li>
-                    <li class="flex items-center gap-3 border-b pb-2">
-                        <span class="text-2xl font-bold text-gray-300">2</span>
-                        <span class="font-medium text-gray-700">Animação de Verão</span>
-                    </li>
-                    <li class="flex items-center gap-3">
-                        <span class="text-2xl font-bold text-gray-300">3</span>
-                        <span class="font-medium text-gray-700">Comédia Nacional</span>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-    </main>
+    <main id="categoria-dinamica" data-categoria="Entretenimento" class="container mx-auto px-4 py-10 flex-grow">
+  <h1 class="text-3xl font-extrabold mb-3 text-gray-900">Entretenimento</h1>
+  <p class="text-gray-600 mb-8">Últimas notícias publicadas sobre entretenimento.</p>
+  <section data-grade class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" aria-live="polite">
+    <p class="text-gray-500">Carregando notícias...</p>
+  </section>
+</main>
 
     <!-- RODAPÉ / FOOTER -->
     <footer class="bg-gray-900 text-white py-12 mt-12 border-t-4 border-blue-600">
@@ -211,6 +143,10 @@
     </footer>
 
     <!-- SCRIPT MENU MOBILE -->
+    <script src="js/config.js" defer></script>
+    <script src="js/api.js" defer></script>
+    <script src="js/noticias-ui.js" defer></script>
+    <script src="js/categoria-dinamica.js" defer></script>
     <script src="js/theme.js" defer></script>
     <script src="js/auth.js" defer></script>
     <script src="js/nav.js" defer></script>
