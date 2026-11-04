@@ -1,0 +1,4 @@
+feedparser>=6.0,<7
+requests>=2.31,<3
+python-dotenv>=1,<2
+pyodbc>=5,<6
