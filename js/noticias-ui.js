@@ -11,15 +11,25 @@ window.NoticiasUI = (() => {
     const e = document.createElement(tag); if(classe) e.className=classe;
     if(texto!==undefined) e.textContent=String(texto ?? ''); return e;
   }
+  // Imagens são opcionais: não usar a logo do portal como se fosse uma foto da matéria.
   function imagem(n, classe) {
-    const img = elemento('img', classe);
     const url = String(n.imagem_url || '').trim();
-    // Não aceita javascript:, data: ou protocolos desconhecidos no campo de imagem.
-    if (url && (/^https?:\/\//i.test(url) || /^(?:\.\/?|\/)?[\w% -]+(?:\/[\w% .-]+)*\.(?:png|jpg|jpeg|webp|gif)(?:\?[^#]*)?$/i.test(url))) {
-      img.src = url;
-    } else img.src='img/logo 01.gif';
-    img.alt = 'Imagem da notícia: ' + (n.titulo || ''); img.loading='lazy';
-    img.onerror=()=>{img.onerror=null;img.src='img/logo 01.gif';};
+    const valido = /^https?:\/\/[^\s]+$/i.test(url) || /^(?:\.\/?|\/)?[\w% -]+(?:\/[\w% .-]+)*\.(?:png|jpg|jpeg|webp|gif)(?:\?[^#]*)?$/i.test(url);
+    const fallback = () => {
+      const placeholder = elemento('div', classe + ' noticia-sem-foto flex flex-col items-center justify-center gap-3 bg-gradient-to-br from-slate-100 via-blue-50 to-slate-200 text-slate-600 text-center p-5');
+      placeholder.setAttribute('role', 'img');
+      placeholder.setAttribute('aria-label', 'Notícia sem imagem cadastrada');
+      placeholder.append(elemento('span', 'text-4xl', '▤'));
+      placeholder.append(elemento('span', 'text-xs sm:text-sm font-semibold uppercase tracking-widest', n.categoria || 'Notícias'));
+      return placeholder;
+    };
+    if (!valido) return fallback();
+    const img = elemento('img', classe);
+    img.src = url;
+    img.alt = 'Imagem ilustrativa da notícia: ' + (n.titulo || '');
+    img.loading = 'lazy';
+    img.referrerPolicy = 'no-referrer';
+    img.onerror = () => { img.replaceWith(fallback()); };
     return img;
   }
   function card(n) {

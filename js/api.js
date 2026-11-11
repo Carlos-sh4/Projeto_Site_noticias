@@ -11,7 +11,7 @@
   }
   window.NoticiasAPI = {
     base: API_BASE,
-    obterNoticias: (categoria = '', limite = 24) => requisitar('/noticias', {categoria, limite}),
+    obterNoticias: (categoria = '', limite = 24, pagina = 1) => requisitar('/noticias', {categoria, limite, pagina}),
     obterDestaques: (limite = 8) => requisitar('/noticias/destaques', {limite}),
     obterNoticia: (id) => requisitar('/noticias/' + encodeURIComponent(id)),
     obterCategorias: () => requisitar('/categorias'),

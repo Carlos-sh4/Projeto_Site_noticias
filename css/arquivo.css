@@ -1,0 +1,8 @@
+/* Estilos exclusivos da página de arquivo. Preserva o tema original do portal. */
+#arquivo-paginacao[hidden] { display: none !important; }
+#arquivo-grade[aria-busy="true"] { opacity: .65; }
+#arquivo-grade a:focus-visible, #arquivo-principal button:focus-visible,
+#arquivo-principal input:focus-visible, #arquivo-principal select:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}

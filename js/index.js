@@ -3,12 +3,12 @@ document.addEventListener('DOMContentLoaded', async () => {
   const grade=document.getElementById('noticias-recentes');
   if(!hero || !grade)return;
   try {
-    const [noticias,destaques]=await Promise.all([NoticiasAPI.obterNoticias('',30),NoticiasAPI.obterDestaques(8)]);
+    const [noticias,destaques]=await Promise.all([NoticiasAPI.obterNoticias('',7),NoticiasAPI.obterDestaques(8)]);
     if (!Array.isArray(noticias) || !Array.isArray(destaques)) throw new Error('Formato inválido da API');
     const principal=destaques[0] || noticias[0];
     if(principal) hero.replaceChildren(NoticiasUI.destaque(principal));
     else NoticiasUI.aviso(hero,'Ainda não há notícias publicadas.');
-    const secundarias=noticias.filter(n=>n.id!==principal?.id);
+    const secundarias=noticias.filter(n=>n.id!==principal?.id).slice(0,6);
     if(secundarias.length) grade.replaceChildren(...secundarias.map(NoticiasUI.card));
     else NoticiasUI.aviso(grade,'Não há outras notícias publicadas no momento.');
   } catch(erro) {

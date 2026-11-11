@@ -53,6 +53,7 @@
                 <a href="saude.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-hand-holding-medical"></i> Saúde</a>
                 <a href="tecnologia.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-robot"></i> Tecnologia</a>
                 <a href="entretenimento.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-masks-theater"></i> Entretenimento</a>
+                <a href="arquivo.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-regular fa-folder-open"></i> Arquivo</a>
                 <a href="assinatura.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-credit-card"></i> Assinatura</a>
                 <a href="fale-conosco.html" class="text-gray-600 hover:text-blue-600 font-semibold px-1 py-1.5 text-xs uppercase tracking-wide"><i class="fa-solid fa-headset"></i> Fale Conosco</a>
             </nav>
@@ -95,6 +96,7 @@
                 <a href="saude.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-hand-holding-medical w-5 text-center mr-1"></i> Saúde</a>
                 <a href="tecnologia.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-robot w-5 text-center mr-1"></i> Tecnologia</a>
                 <a href="entretenimento.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-masks-theater w-5 text-center mr-1"></i> Entretenimento</a>
+                <a href="arquivo.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-regular fa-folder-open w-5 text-center mr-1"></i> Arquivo de notícias</a>
                 <a href="assinatura.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-credit-card w-5 text-center mr-1"></i> Assinatura</a>
                 <a href="fale-conosco.html" class="block px-3 py-2 rounded-md text-base font-semibold text-gray-700 hover:text-blue-700 hover:bg-blue-50 uppercase"><i class="fa-solid fa-headset w-5 text-center mr-1"></i> Fale Conosco</a>
             </div>
@@ -103,6 +105,13 @@
 
 
     <!-- Conteúdo editorial carregado exclusivamente da API no_click_db -->
+    <div class="bg-blue-50 border-b border-blue-100">
+      <div class="container mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+        <p class="text-sm font-semibold text-blue-900">Últimas notícias em destaque • O histórico completo continua disponível</p>
+        <a href="arquivo.html" class="inline-flex items-center rounded-lg bg-blue-700 text-white px-5 py-2.5 text-sm font-bold hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">Acessar todas as notícias e arquivo →</a>
+      </div>
+    </div>
+
     <main class="flex-grow container mx-auto px-4 py-8 w-full">
       <section class="mb-14" aria-labelledby="titulo-destaque">
         <h2 id="titulo-destaque" class="mb-5 text-sm font-bold tracking-widest text-red-600 uppercase">● Destaque</h2>
@@ -110,12 +119,14 @@
       </section>
       <section aria-labelledby="titulo-principais">
         <div class="flex items-center justify-between mb-8 border-b pb-4">
-          <h2 id="titulo-principais" class="text-2xl font-bold text-gray-900">Principais notícias do dia</h2>
+          <h2 id="titulo-principais" class="text-2xl font-bold text-gray-900">Últimas notícias publicadas</h2>
+          <a href="arquivo.html" class="text-sm sm:text-base font-semibold text-blue-700 hover:text-blue-900 hover:underline ml-4">Ver arquivo e notícias anteriores →</a>
         </div>
         <div id="noticias-recentes" class="grid grid-cols-1 md:grid-cols-3 gap-8" aria-live="polite">
           <p class="text-gray-500">Carregando notícias...</p>
         </div>
       </section>
+      <div class="mt-10 text-center"><a href="arquivo.html" class="inline-flex items-center rounded-lg bg-blue-600 px-6 py-3 text-white font-bold shadow-sm hover:bg-blue-700">Explorar o arquivo de notícias →</a></div>
     </main>
 
     <!-- RODAPÉ / FOOTER (Padronizado com economia.html) -->
